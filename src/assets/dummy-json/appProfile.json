@@ -1,0 +1,8 @@
+{
+  "active": true,
+  "appVersionsAdviceRequired": ["1.0.0"],
+  "appVersionsSupported": ["0.0.1", "0.0.2", "0.0.3"],
+  "creationDateTime": "2021-09-02T14:54:47.775",
+  "logonSessionExpiryTime": 15,
+  "logonSessionWarningTime": 10
+}

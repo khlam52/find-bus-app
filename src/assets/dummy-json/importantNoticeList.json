@@ -1,0 +1,31 @@
+{
+  "importantNoticeList": [
+    {
+      "active": true,
+      "bodyEnUS": "<p>Notice Body</p><p><a href=\"https://abc.html\">Click here</a> for more details.</p>",
+      "bodyZhCN": "<p>Notice Body zh</p><p>詳情请<a href=\"https://abc.html\">按此</a>。</p>",
+      "bodyZhHK": "<p>Notice Body zhhk</p><p>詳情請<a href=\"https://abc.html\">按此</a>。</p>",
+      "creationDateTime": "2020-08-28T19:35:30.3",
+      "lastUpdateDateTime": "2020-10-04T07:04:42.174",
+      "noticeId": "XXX_XXX",
+      "priority": 1000,
+      "subjectEnUS": "Notice Subject",
+      "subjectZhCN": "Notice Subject zh",
+      "subjectZhHK": "Notice Subject zhhk"
+    },
+    {
+      "active": true,
+      "bodyEnUS": "<p>Notice Body 2</p><p><a href=\"https://abc.html\">Click here</a> for more details.</p>",
+      "bodyZhCN": "<p>Notice Body 2 zh</p><p>詳情请<a href=\"https://abc.html\">按此</a>。</p>",
+      "bodyZhHK": "<p>Notice Body 2 zhhk</p><p>詳情請<a href=\"https://abc.html\">按此</a>。</p>",
+      "creationDateTime": "2020-05-20T18:26:32.188",
+      "lastUpdateDateTime": "2020-05-20T18:26:32.188",
+      "noticeId": "XXX-001",
+      "priority": 999,
+      "subjectEnUS": "Important Security Messages",
+      "subjectZhCN": "重要保安讯息",
+      "subjectZhHK": "重要保安訊息"
+    }
+  ],
+  "lastUpdateDateTime": "2020-10-04T07:04:42.174"
+}

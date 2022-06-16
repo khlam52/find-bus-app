@@ -1,0 +1,22 @@
+{
+  "name": "react-native-common-util",
+  "version": "1.0.0",
+  "description": "Common Util",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "homepage": "https://github.com/author/RNCommonUtil.git",
+  "author": {
+    "name": "Tom Cheung",
+    "email": "tom.cheung@formssihk.com"
+  },
+  "license": "MIT",
+  "licenseFilename": "LICENSE",
+  "peerDependencies": {
+    "react-native": "0.64.2"
+  }
+}

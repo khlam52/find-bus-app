@@ -1,0 +1,32 @@
+// @flow
+export type Header = {
+    [headerName: string]: string;
+}
+
+export type Cookies = {
+    [cookieName: string]: string;
+}
+
+export type Options = {
+    body?: string | {},
+    credentials?: string,
+    headers?: Header,
+    method?: 'DELETE' | 'GET' | 'POST' | 'PUT',
+    sslPinning: {
+        certs: Array<string>
+    },
+    timeoutInterval?: number,
+}
+
+export type Response = {
+    bodyString: string,
+    headers: Header,
+    status: number,
+    url: string,
+    json: () => Promise<{ [key: string]: any}>,
+    text: () => Promise<string>,
+}
+
+declare export function fetch(url: string, options: Options): Promise<Response>;
+declare export function removeCookieByName(cookieName: string): Promise<void>
+declare export function getCookies(domain: string): Promise<Cookies>

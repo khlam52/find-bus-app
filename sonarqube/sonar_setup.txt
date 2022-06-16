@@ -1,0 +1,64 @@
+Javascript
+
+1. download sonarqube & sonar-scanner
+2. cd sonarqube-9.3.0.51899/bin/macosx-universal-64
+3. start server, 'sh sonar.sh console' (start maybe not working)
+4. go http://localhost:9000/, create new project, named e.g. 'RNProject'
+5. get the login token and put it in sonar-project.properties
+6. copy sonar-project.properties to project root
+7. type 'sonar-scanner' in project root
+
+* you might need to add path in zshrc, e.g:
+export PATH=$PATH:/Users/kenlo/Documents/code/code_scan/sonarqube-9.3.0.51899/bin/macosx-universal-64
+export PATH=$PATH:/Users/kenlo/Documents/code/code_scan/sonar-scanner-4.7.0.2747-macosx/bin
+
+* need to use java 11 to run above version sonarqube
+
+# sonar-project.properties example
+sonar.projectKey=rnproject-app
+sonar.projectName=rnproject-app
+sonar.host.url=http://localhost:9000
+sonar.login=3d521516bea848add9dca40d4cb809c58a930ec7
+sonar.sources=src
+
+==========================================================================================
+Android
+
+Repeat 1-4
+5. Project root build.gradle add 
+classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.3"
+6. App build.gradle
+apply plugin: "org.sonarqube"
+sonarqube {
+    properties {
+        property "sonar.projectName", project.env.get("APP_NAME")+' Android'
+        property "sonar.projectKey", project.env.get("APP_NAME")+' Android'
+        property "sonar.language", "java"
+        property "sonar.sources", "src/main/java/"
+        property "sonar.binaries", "build"
+        property "sonar.sourceEncoding", "UTF-8"
+    }
+}
+7. gradle.properties
+systemProp.sonar.host.url=http://localhost:9000
+systemProp.sonar.login=3d521516bea848add9dca40d4cb809c58a930ec7
+
+8. Go to Android project, run
+./gradlew sonarqube \
+  -Dsonar.projectKey=RNProject-Android \
+  -Dsonar.host.url=http://localhost:9000 \
+  -Dsonar.login=3d521516bea848add9dca40d4cb809c58a930ec7
+
+
+==========================================================================================
+Xcode
+Repeat 1-4
+https://github.com/Idean/sonar-swift
+https://dev.to/onmyway133/how-to-use-sonarqube-in-swift-projects-5db5
+
+5. brew install xctool
+6. brew install oclint
+
+
+sonar-scanner or ./run-sonar-swift.sh -nounittests
+

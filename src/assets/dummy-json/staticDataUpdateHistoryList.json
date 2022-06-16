@@ -1,0 +1,32 @@
+{
+  "staticDataUpdateHistoryList": [
+    {
+      "dataType": "Branch",
+      "lastUpdateDateTime": "2020-03-13T19:01:27"
+    },
+    {
+      "dataType": "ImportantNotice",
+      "lastUpdateDateTime": "2020-03-13T19:04:00"
+    },
+    {
+      "dataType": "BranchFeature",
+      "lastUpdateDateTime": "2020-03-13T18:57:31"
+    },
+    {
+      "dataType": "CriticalNotice",
+      "lastUpdateDateTime": "2020-03-13T19:04:15"
+    },
+    {
+      "dataType": "BranchDistrict",
+      "lastUpdateDateTime": "2020-03-13T18:51:00"
+    },
+    {
+      "dataType": "BranchSubDistrict",
+      "lastUpdateDateTime": "2020-03-13T18:56:43"
+    },
+    {
+      "dataType": "BranchOpeningHours",
+      "lastUpdateDateTime": "2020-03-13T18:50:11"
+    }
+  ]
+}

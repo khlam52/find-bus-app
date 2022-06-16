@@ -1,0 +1,36 @@
+{
+  "status": "Success",
+  "scope": "string",
+  "tokenRefreshCount": 0,
+  "userId": "string",
+  "errors": [
+    {
+      "code": "string",
+      "desc": "string",
+      "params": [
+        {
+          "key": "string",
+          "value": "string"
+        }
+      ]
+    }
+  ],
+  "params": [
+    {
+      "key": "string",
+      "value": "string"
+    }
+  ],
+  "warnings": [
+    {
+      "code": "string",
+      "desc": "string",
+      "params": [
+        {
+          "key": "string",
+          "value": "string"
+        }
+      ]
+    }
+  ]
+}

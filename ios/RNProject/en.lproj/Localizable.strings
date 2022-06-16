@@ -1,0 +1,3 @@
+"jailbreak_alert" = "The Mobile device's operating system has been modified. No operation can be performed in this device. RNProject App is invalidated. Please use another device which is not jailbroken or rooted to open the App. (%1$@)";
+"security_risk" = "We cannot proceed with your request. If the problem persists, please contact Customer Service. (%1$@)";
+"common_exit" = "OK";

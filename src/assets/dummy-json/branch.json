@@ -1,0 +1,598 @@
+{
+  "branchList": [
+    {
+      "id": "1",
+      "name": {
+        "zhhk": "永安集團大廈分行 (只提供海外合約僱員貸款)",
+        "en": "WING ON HOUSE BRANCH (For Overseas Contract Workers Loan Only)"
+      },
+      "address": {
+        "zhhk": "中環德輔道中71號永安集團大廈11樓1109-1110室",
+        "en": "Room 1109-1110, 11/F., Wing On House, 71 Des Voeux Road Central, Central"
+      },
+      "status": "AVAILABLE",
+      "ordering": 0,
+      "mobileNo": "25245603",
+      "email": "ocw.woh@publicfinance.com.hk",
+      "fax": "25245603",
+      "ocwlMobileNo": "2524 5603",
+      "ocwlEmail": "ocw.woh@publicfinance.com.hk",
+      "ocwlFax": "2537 2909",
+      "businessHours": [
+        {
+          "label": {
+            "zhhk": "星期一至五 上午 09:30 - 下午 05:30",
+            "en": "09:30 a.m. - 05:30 p.m. (Mon - Fri)"
+          },
+          "isOcwl": true,
+          "ordering": 1
+        },
+        {
+          "label": {
+            "zhhk": "星期六至日 上午 09:00 - 下午 05:30",
+            "en": "09:00 a.m. - 05:30 p.m. (Sat - Sun)"
+          },
+          "isOcwl": true,
+          "ordering": 2
+        },
+        {
+          "label": {
+            "zhhk": "每月第一個星期日 上午 08:30 - 下午 05:00",
+            "en": "08:30 a.m. - 05:00 p.m. (The 1st Sun of Each Month)"
+          },
+          "isOcwl": true,
+          "ordering": 3
+        }
+      ],
+      "district": "HK",
+      "coordinate": "22.284086514995657, 114.15645654232868",
+      "isOcwl": true,
+      "nearBy": "2",
+      "isExtendedHr": true,
+      "remarks": {
+        "zhhk": "僅限海外合同工貸款",
+        "en": "Overseas Contract Workers Loan Only"
+      }
+    },
+    {
+      "id": "2",
+      "name": {
+        "zhhk": "環球大廈分行 (只提供海外合約僱員貸款)",
+        "en": "WORLD-WIDE HOUSE BRANCH (For Overseas Contract Workers Loan Only)"
+      },
+      "address": {
+        "zhhk": "中環德輔道中19號環球大廈20樓2,3及5號室",
+        "en": "Room 2,3 & 5, 20/F., World-Wide House, 19 Des Voeux Road Central, Central"
+      },
+      "status": "AVAILABLE",
+      "ordering": 1,
+      "mobileNo": "25245603",
+      "email": "ocw.woh@publicfinance.com.hk",
+      "fax": "",
+      "ocwlMobileNo": "",
+      "ocwlEmail": "",
+      "ocwlFax": "",
+      "businessHours": [
+        {
+          "label": {
+            "zhhk": "星期一至五 上午 09:30 - 下午 05:30",
+            "en": "09:30 a.m. - 05:30 p.m. (Mon - Fri)"
+          },
+          "isOcwl": false,
+          "ordering": 1
+        },
+        {
+          "label": {
+            "zhhk": "星期六至日 上午 09:00 - 下午 05:30",
+            "en": "09:00 a.m. - 05:30 p.m. (Sat - Sun)"
+          },
+          "isOcwl": false,
+          "ordering": 2
+        },
+        {
+          "label": {
+            "zhhk": "每月第一個星期日 上午 08:30 - 下午 05:00",
+            "en": "08:30 a.m. - 05:00 p.m. (The 1st Sun of Each Month)"
+          },
+          "isOcwl": false,
+          "ordering": 3
+        }
+      ],
+      "district": "KLN",
+      "coordinate": "22.28259972237646, 114.15768463558156",
+      "isOcwl": false,
+      "nearBy": "1",
+      "isExtendedHr": false,
+      "remarks": {
+        "zhhk": "營業至晚上 7:00 （週一至週五）",
+        "en": "Open until 7:00 p.m. (Mon - Fri) "
+      }
+    },
+    {
+      "id": "3",
+      "name": {
+        "zhhk": "永安集團大廈分行 (只提供海外合約僱員貸款)",
+        "en": "WING ON HOUSE BRANCH (For Overseas Contract Workers Loan Only)"
+      },
+      "address": {
+        "zhhk": "中環德輔道中71號永安集團大廈11樓1109-1110室",
+        "en": "Room 1109-1110, 11/F., Wing On House, 71 Des Voeux Road Central, Central"
+      },
+      "status": "AVAILABLE",
+      "ordering": 0,
+      "mobileNo": "25245603",
+      "email": "ocw.woh@publicfinance.com.hk",
+      "fax": "25245603",
+      "ocwlMobileNo": "2524 5603",
+      "ocwlEmail": "ocw.woh@publicfinance.com.hk",
+      "ocwlFax": "2537 2909",
+      "businessHours": [
+        {
+          "label": {
+            "zhhk": "星期一至五 上午 09:30 - 下午 05:30",
+            "en": "09:30 a.m. - 05:30 p.m. (Mon - Fri)"
+          },
+          "isOcwl": true,
+          "ordering": 1
+        },
+        {
+          "label": {
+            "zhhk": "星期六至日 上午 09:00 - 下午 05:30",
+            "en": "09:00 a.m. - 05:30 p.m. (Sat - Sun)"
+          },
+          "isOcwl": true,
+          "ordering": 2
+        },
+        {
+          "label": {
+            "zhhk": "每月第一個星期日 上午 08:30 - 下午 05:00",
+            "en": "08:30 a.m. - 05:00 p.m. (The 1st Sun of Each Month)"
+          },
+          "isOcwl": true,
+          "ordering": 3
+        }
+      ],
+      "district": "HK",
+      "coordinate": "22.284086514995657, 114.15645654232868",
+      "isOcwl": true,
+      "nearBy": "2",
+      "isExtendedHr": true,
+      "remarks": {
+        "zhhk": "僅限海外合同工貸款",
+        "en": "Overseas Contract Workers Loan Only"
+      }
+    },
+    {
+      "id": "4",
+      "name": {
+        "zhhk": "永安集團大廈分行 (只提供海外合約僱員貸款)",
+        "en": "WING ON HOUSE BRANCH (For Overseas Contract Workers Loan Only)"
+      },
+      "address": {
+        "zhhk": "中環德輔道中71號永安集團大廈11樓1109-1110室",
+        "en": "Room 1109-1110, 11/F., Wing On House, 71 Des Voeux Road Central, Central"
+      },
+      "status": "AVAILABLE",
+      "ordering": 0,
+      "mobileNo": "25245603",
+      "email": "ocw.woh@publicfinance.com.hk",
+      "fax": "25245603",
+      "ocwlMobileNo": "2524 5603",
+      "ocwlEmail": "ocw.woh@publicfinance.com.hk",
+      "ocwlFax": "2537 2909",
+      "businessHours": [
+        {
+          "label": {
+            "zhhk": "星期一至五 上午 09:30 - 下午 05:30",
+            "en": "09:30 a.m. - 05:30 p.m. (Mon - Fri)"
+          },
+          "isOcwl": true,
+          "ordering": 1
+        },
+        {
+          "label": {
+            "zhhk": "星期六至日 上午 09:00 - 下午 05:30",
+            "en": "09:00 a.m. - 05:30 p.m. (Sat - Sun)"
+          },
+          "isOcwl": true,
+          "ordering": 2
+        },
+        {
+          "label": {
+            "zhhk": "每月第一個星期日 上午 08:30 - 下午 05:00",
+            "en": "08:30 a.m. - 05:00 p.m. (The 1st Sun of Each Month)"
+          },
+          "isOcwl": true,
+          "ordering": 3
+        }
+      ],
+      "district": "HK",
+      "coordinate": "22.284086514995657, 114.15645654232868",
+      "isOcwl": true,
+      "nearBy": "2",
+      "isExtendedHr": true,
+      "remarks": {
+        "zhhk": "僅限海外合同工貸款",
+        "en": "Overseas Contract Workers Loan Only"
+      }
+    },
+    {
+      "id": "5",
+      "name": {
+        "zhhk": "永安集團大廈分行 (只提供海外合約僱員貸款)",
+        "en": "WING ON HOUSE BRANCH (For Overseas Contract Workers Loan Only)"
+      },
+      "address": {
+        "zhhk": "中環德輔道中71號永安集團大廈11樓1109-1110室",
+        "en": "Room 1109-1110, 11/F., Wing On House, 71 Des Voeux Road Central, Central"
+      },
+      "status": "AVAILABLE",
+      "ordering": 0,
+      "mobileNo": "25245603",
+      "email": "ocw.woh@publicfinance.com.hk",
+      "fax": "25245603",
+      "ocwlMobileNo": "2524 5603",
+      "ocwlEmail": "ocw.woh@publicfinance.com.hk",
+      "ocwlFax": "2537 2909",
+      "businessHours": [
+        {
+          "label": {
+            "zhhk": "星期一至五 上午 09:30 - 下午 05:30",
+            "en": "09:30 a.m. - 05:30 p.m. (Mon - Fri)"
+          },
+          "isOcwl": true,
+          "ordering": 1
+        },
+        {
+          "label": {
+            "zhhk": "星期六至日 上午 09:00 - 下午 05:30",
+            "en": "09:00 a.m. - 05:30 p.m. (Sat - Sun)"
+          },
+          "isOcwl": true,
+          "ordering": 2
+        },
+        {
+          "label": {
+            "zhhk": "每月第一個星期日 上午 08:30 - 下午 05:00",
+            "en": "08:30 a.m. - 05:00 p.m. (The 1st Sun of Each Month)"
+          },
+          "isOcwl": true,
+          "ordering": 3
+        }
+      ],
+      "district": "HK",
+      "coordinate": "22.284086514995657, 114.15645654232868",
+      "isOcwl": true,
+      "nearBy": "2",
+      "isExtendedHr": true,
+      "remarks": {
+        "zhhk": "僅限海外合同工貸款",
+        "en": "Overseas Contract Workers Loan Only"
+      }
+    },
+    {
+      "id": "6",
+      "name": {
+        "zhhk": "永安集團大廈分行 (只提供海外合約僱員貸款)",
+        "en": "WING ON HOUSE BRANCH (For Overseas Contract Workers Loan Only)"
+      },
+      "address": {
+        "zhhk": "中環德輔道中71號永安集團大廈11樓1109-1110室",
+        "en": "Room 1109-1110, 11/F., Wing On House, 71 Des Voeux Road Central, Central"
+      },
+      "status": "AVAILABLE",
+      "ordering": 0,
+      "mobileNo": "25245603",
+      "email": "ocw.woh@publicfinance.com.hk",
+      "fax": "25245603",
+      "ocwlMobileNo": "2524 5603",
+      "ocwlEmail": "ocw.woh@publicfinance.com.hk",
+      "ocwlFax": "2537 2909",
+      "businessHours": [
+        {
+          "label": {
+            "zhhk": "星期一至五 上午 09:30 - 下午 05:30",
+            "en": "09:30 a.m. - 05:30 p.m. (Mon - Fri)"
+          },
+          "isOcwl": true,
+          "ordering": 1
+        },
+        {
+          "label": {
+            "zhhk": "星期六至日 上午 09:00 - 下午 05:30",
+            "en": "09:00 a.m. - 05:30 p.m. (Sat - Sun)"
+          },
+          "isOcwl": true,
+          "ordering": 2
+        },
+        {
+          "label": {
+            "zhhk": "每月第一個星期日 上午 08:30 - 下午 05:00",
+            "en": "08:30 a.m. - 05:00 p.m. (The 1st Sun of Each Month)"
+          },
+          "isOcwl": true,
+          "ordering": 3
+        }
+      ],
+      "district": "HK",
+      "coordinate": "22.284086514995657, 114.15645654232868",
+      "isOcwl": true,
+      "nearBy": "2",
+      "isExtendedHr": true,
+      "remarks": {
+        "zhhk": "僅限海外合同工貸款",
+        "en": "Overseas Contract Workers Loan Only"
+      }
+    },
+    {
+      "id": "7",
+      "name": {
+        "zhhk": "永安集團大廈分行 (只提供海外合約僱員貸款)",
+        "en": "WING ON HOUSE BRANCH (For Overseas Contract Workers Loan Only)"
+      },
+      "address": {
+        "zhhk": "中環德輔道中71號永安集團大廈11樓1109-1110室",
+        "en": "Room 1109-1110, 11/F., Wing On House, 71 Des Voeux Road Central, Central"
+      },
+      "status": "AVAILABLE",
+      "ordering": 0,
+      "mobileNo": "25245603",
+      "email": "ocw.woh@publicfinance.com.hk",
+      "fax": "25245603",
+      "ocwlMobileNo": "2524 5603",
+      "ocwlEmail": "ocw.woh@publicfinance.com.hk",
+      "ocwlFax": "2537 2909",
+      "businessHours": [
+        {
+          "label": {
+            "zhhk": "星期一至五 上午 09:30 - 下午 05:30",
+            "en": "09:30 a.m. - 05:30 p.m. (Mon - Fri)"
+          },
+          "isOcwl": true,
+          "ordering": 1
+        },
+        {
+          "label": {
+            "zhhk": "星期六至日 上午 09:00 - 下午 05:30",
+            "en": "09:00 a.m. - 05:30 p.m. (Sat - Sun)"
+          },
+          "isOcwl": true,
+          "ordering": 2
+        },
+        {
+          "label": {
+            "zhhk": "每月第一個星期日 上午 08:30 - 下午 05:00",
+            "en": "08:30 a.m. - 05:00 p.m. (The 1st Sun of Each Month)"
+          },
+          "isOcwl": true,
+          "ordering": 3
+        }
+      ],
+      "district": "HK",
+      "coordinate": "22.284086514995657, 114.15645654232868",
+      "isOcwl": true,
+      "nearBy": "2",
+      "isExtendedHr": true,
+      "remarks": {
+        "zhhk": "僅限海外合同工貸款",
+        "en": "Overseas Contract Workers Loan Only"
+      }
+    },
+    {
+      "id": "8",
+      "name": {
+        "zhhk": "永安集團大廈分行 (只提供海外合約僱員貸款)",
+        "en": "WING ON HOUSE BRANCH (For Overseas Contract Workers Loan Only)"
+      },
+      "address": {
+        "zhhk": "中環德輔道中71號永安集團大廈11樓1109-1110室",
+        "en": "Room 1109-1110, 11/F., Wing On House, 71 Des Voeux Road Central, Central"
+      },
+      "status": "AVAILABLE",
+      "ordering": 0,
+      "mobileNo": "25245603",
+      "email": "ocw.woh@publicfinance.com.hk",
+      "fax": "25245603",
+      "ocwlMobileNo": "2524 5603",
+      "ocwlEmail": "ocw.woh@publicfinance.com.hk",
+      "ocwlFax": "2537 2909",
+      "businessHours": [
+        {
+          "label": {
+            "zhhk": "星期一至五 上午 09:30 - 下午 05:30",
+            "en": "09:30 a.m. - 05:30 p.m. (Mon - Fri)"
+          },
+          "isOcwl": true,
+          "ordering": 1
+        },
+        {
+          "label": {
+            "zhhk": "星期六至日 上午 09:00 - 下午 05:30",
+            "en": "09:00 a.m. - 05:30 p.m. (Sat - Sun)"
+          },
+          "isOcwl": true,
+          "ordering": 2
+        },
+        {
+          "label": {
+            "zhhk": "每月第一個星期日 上午 08:30 - 下午 05:00",
+            "en": "08:30 a.m. - 05:00 p.m. (The 1st Sun of Each Month)"
+          },
+          "isOcwl": true,
+          "ordering": 3
+        }
+      ],
+      "district": "HK",
+      "coordinate": "22.284086514995657, 114.15645654232868",
+      "isOcwl": true,
+      "nearBy": "2",
+      "isExtendedHr": true,
+      "remarks": {
+        "zhhk": "僅限海外合同工貸款",
+        "en": "Overseas Contract Workers Loan Only"
+      }
+    },
+    {
+      "id": "9",
+      "name": {
+        "zhhk": "永安集團大廈分行 (只提供海外合約僱員貸款)",
+        "en": "WING ON HOUSE BRANCH (For Overseas Contract Workers Loan Only)"
+      },
+      "address": {
+        "zhhk": "中環德輔道中71號永安集團大廈11樓1109-1110室",
+        "en": "Room 1109-1110, 11/F., Wing On House, 71 Des Voeux Road Central, Central"
+      },
+      "status": "AVAILABLE",
+      "ordering": 0,
+      "mobileNo": "25245603",
+      "email": "ocw.woh@publicfinance.com.hk",
+      "fax": "25245603",
+      "ocwlMobileNo": "2524 5603",
+      "ocwlEmail": "ocw.woh@publicfinance.com.hk",
+      "ocwlFax": "2537 2909",
+      "businessHours": [
+        {
+          "label": {
+            "zhhk": "星期一至五 上午 09:30 - 下午 05:30",
+            "en": "09:30 a.m. - 05:30 p.m. (Mon - Fri)"
+          },
+          "isOcwl": true,
+          "ordering": 1
+        },
+        {
+          "label": {
+            "zhhk": "星期六至日 上午 09:00 - 下午 05:30",
+            "en": "09:00 a.m. - 05:30 p.m. (Sat - Sun)"
+          },
+          "isOcwl": true,
+          "ordering": 2
+        },
+        {
+          "label": {
+            "zhhk": "每月第一個星期日 上午 08:30 - 下午 05:00",
+            "en": "08:30 a.m. - 05:00 p.m. (The 1st Sun of Each Month)"
+          },
+          "isOcwl": true,
+          "ordering": 3
+        }
+      ],
+      "district": "HK",
+      "coordinate": "22.284086514995657, 114.15645654232868",
+      "isOcwl": true,
+      "nearBy": "2",
+      "isExtendedHr": true,
+      "remarks": {
+        "zhhk": "僅限海外合同工貸款",
+        "en": "Overseas Contract Workers Loan Only"
+      }
+    },
+    {
+      "id": "10",
+      "name": {
+        "zhhk": "永安集團大廈分行 (只提供海外合約僱員貸款)",
+        "en": "WING ON HOUSE BRANCH (For Overseas Contract Workers Loan Only)"
+      },
+      "address": {
+        "zhhk": "中環德輔道中71號永安集團大廈11樓1109-1110室",
+        "en": "Room 1109-1110, 11/F., Wing On House, 71 Des Voeux Road Central, Central"
+      },
+      "status": "AVAILABLE",
+      "ordering": 0,
+      "mobileNo": "25245603",
+      "email": "ocw.woh@publicfinance.com.hk",
+      "fax": "25245603",
+      "ocwlMobileNo": "2524 5603",
+      "ocwlEmail": "ocw.woh@publicfinance.com.hk",
+      "ocwlFax": "2537 2909",
+      "businessHours": [
+        {
+          "label": {
+            "zhhk": "星期一至五 上午 09:30 - 下午 05:30",
+            "en": "09:30 a.m. - 05:30 p.m. (Mon - Fri)"
+          },
+          "isOcwl": true,
+          "ordering": 1
+        },
+        {
+          "label": {
+            "zhhk": "星期六至日 上午 09:00 - 下午 05:30",
+            "en": "09:00 a.m. - 05:30 p.m. (Sat - Sun)"
+          },
+          "isOcwl": true,
+          "ordering": 2
+        },
+        {
+          "label": {
+            "zhhk": "每月第一個星期日 上午 08:30 - 下午 05:00",
+            "en": "08:30 a.m. - 05:00 p.m. (The 1st Sun of Each Month)"
+          },
+          "isOcwl": true,
+          "ordering": 3
+        }
+      ],
+      "district": "HK",
+      "coordinate": "22.284086514995657, 114.15645654232868",
+      "isOcwl": true,
+      "nearBy": "2",
+      "isExtendedHr": true,
+      "remarks": {
+        "zhhk": "僅限海外合同工貸款",
+        "en": "Overseas Contract Workers Loan Only"
+      }
+    },
+    {
+      "id": "1",
+      "name": {
+        "zhhk": "永安集團大廈分行 (只提供海外合約僱員貸款)",
+        "en": "WING ON HOUSE BRANCH (For Overseas Contract Workers Loan Only)"
+      },
+      "address": {
+        "zhhk": "中環德輔道中71號永安集團大廈11樓1109-1110室",
+        "en": "Room 1109-1110, 11/F., Wing On House, 71 Des Voeux Road Central, Central"
+      },
+      "status": "AVAILABLE",
+      "ordering": 0,
+      "mobileNo": "25245603",
+      "email": "ocw.woh@publicfinance.com.hk",
+      "fax": "25245603",
+      "ocwlMobileNo": "2524 5603",
+      "ocwlEmail": "ocw.woh@publicfinance.com.hk",
+      "ocwlFax": "2537 2909",
+      "businessHours": [
+        {
+          "label": {
+            "zhhk": "星期一至五 上午 09:30 - 下午 05:30",
+            "en": "09:30 a.m. - 05:30 p.m. (Mon - Fri)"
+          },
+          "isOcwl": true,
+          "ordering": 1
+        },
+        {
+          "label": {
+            "zhhk": "星期六至日 上午 09:00 - 下午 05:30",
+            "en": "09:00 a.m. - 05:30 p.m. (Sat - Sun)"
+          },
+          "isOcwl": true,
+          "ordering": 2
+        },
+        {
+          "label": {
+            "zhhk": "每月第一個星期日 上午 08:30 - 下午 05:00",
+            "en": "08:30 a.m. - 05:00 p.m. (The 1st Sun of Each Month)"
+          },
+          "isOcwl": true,
+          "ordering": 3
+        }
+      ],
+      "district": "HK",
+      "coordinate": "22.284086514995657, 114.15645654232868",
+      "isOcwl": true,
+      "nearBy": "2",
+      "isExtendedHr": true,
+      "remarks": {
+        "zhhk": "僅限海外合同工貸款",
+        "en": "Overseas Contract Workers Loan Only"
+      }
+    }
+  ]
+}

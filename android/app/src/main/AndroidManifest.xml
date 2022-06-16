@@ -1,0 +1,40 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.rnproject"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<uses-permission android:name="android.permission.INTERNET" />
+
+  <application
+      android:name=".MainApplication"
+      android:label="@string/APP_NAME"
+      android:icon="@mipmap/ic_launcher"
+      android:roundIcon="@mipmap/ic_launcher_round"
+      android:allowBackup="false"
+      android:theme="@style/AppTheme"
+      tools:replace="android:label">
+    <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="@string/AOS_GOOGLE_MAPS_API_KEY"/>
+    <activity
+        android:name=".MainActivity"
+        android:label="@string/APP_NAME"
+        android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode|layoutDirection|locale"
+        android:launchMode="singleTask"
+        android:screenOrientation="portrait"
+        android:windowSoftInputMode="adjustResize"
+        android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+      <intent-filter android:autoVerify="true">
+        <action android:name="android.intent.action.VIEW"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.BROWSABLE"/>
+        <data android:host="@string/UNIVERSAL_LINK" android:scheme="https"/>
+        <data android:host="@string/UNIVERSAL_LINK" android:scheme="http"/>
+      </intent-filter>
+    </activity>
+  </application>
+
+</manifest>

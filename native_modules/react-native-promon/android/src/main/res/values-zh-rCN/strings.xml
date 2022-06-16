@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<resources>
+	<string name="rooted_alert">我们检测到您手机装置的操作系统已被修改。出于安全理由，您的RNProject App已被停用。 为了保护您账户的安全，请使用其他装置开启本应用程式。(%1$s)</string>
+	<string name="security_risk">本行未能處理 閣下的要求。如果问题持续，请联络客户服务。(%1$s)</string>
+	<string name="common_exit">离开</string>
+</resources>

@@ -1,0 +1,62 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "no.promon.shield",
+    "module": "ShieldSDK-secure-local-storage",
+    "version": "4.2.6",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.5",
+      "buildId": "cpl34ldvubd2jdqsvgoeoy4loe"
+    }
+  },
+  "variants": [
+    {
+      "name": "runtime",
+      "attributes": {
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "no.promon.shield",
+          "module": "ShieldSDK-common",
+          "version": {
+            "requires": "4.2.6"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "ShieldSDK-secure-local-storage-4.2.6.aar",
+          "url": "ShieldSDK-secure-local-storage-4.2.6.aar",
+          "size": 2053,
+          "sha512": "1aa6aacfa78583c64351ff75d83a0d80c9107cf598dc0de0c2001772261d3ff9a7337147b16005d88cbd62857dbdd1eb3f54d46f2f71dcee161cad21a08042d6",
+          "sha256": "69cc5b63bf0f34639cf6baf859570423a6d779af7e567d8a44d48a52e73948b0",
+          "sha1": "c2edfdab44b452b1caefd4cfb8b6a1c21081a1e9",
+          "md5": "7f22d5d3c7d42561d25f278ae478a5b2"
+        }
+      ]
+    },
+    {
+      "name": "api",
+      "attributes": {
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "ShieldSDK-secure-local-storage-4.2.6.aar",
+          "url": "ShieldSDK-secure-local-storage-4.2.6.aar",
+          "size": 2053,
+          "sha512": "1aa6aacfa78583c64351ff75d83a0d80c9107cf598dc0de0c2001772261d3ff9a7337147b16005d88cbd62857dbdd1eb3f54d46f2f71dcee161cad21a08042d6",
+          "sha256": "69cc5b63bf0f34639cf6baf859570423a6d779af7e567d8a44d48a52e73948b0",
+          "sha1": "c2edfdab44b452b1caefd4cfb8b6a1c21081a1e9",
+          "md5": "7f22d5d3c7d42561d25f278ae478a5b2"
+        }
+      ]
+    }
+  ]
+}

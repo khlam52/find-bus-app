@@ -1,0 +1,62 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "no.promon.shield",
+    "module": "ShieldSDK-config",
+    "version": "4.2.6",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.5",
+      "buildId": "cpl34ldvubd2jdqsvgoeoy4loe"
+    }
+  },
+  "variants": [
+    {
+      "name": "runtime",
+      "attributes": {
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "no.promon.shield",
+          "module": "ShieldSDK-common",
+          "version": {
+            "requires": "4.2.6"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "ShieldSDK-config-4.2.6.aar",
+          "url": "ShieldSDK-config-4.2.6.aar",
+          "size": 2371,
+          "sha512": "01c51c72e5b2dfa75d7b6ffe6312299fad21a630898aa2320d8b2d9a3d46f226f6be7415494db36c80a50678228d4a0bb6557ca2003ea6e1fef33fb885849c8c",
+          "sha256": "014fc4d03c66f1fa11c97d5f8ff9c99fba01e4d95b94608d6ef41fb7480bb2c5",
+          "sha1": "47ed7394be1bc829b4f04a648d56922461413f05",
+          "md5": "031514dda315de59c1d57ccc6d64ca19"
+        }
+      ]
+    },
+    {
+      "name": "api",
+      "attributes": {
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "ShieldSDK-config-4.2.6.aar",
+          "url": "ShieldSDK-config-4.2.6.aar",
+          "size": 2371,
+          "sha512": "01c51c72e5b2dfa75d7b6ffe6312299fad21a630898aa2320d8b2d9a3d46f226f6be7415494db36c80a50678228d4a0bb6557ca2003ea6e1fef33fb885849c8c",
+          "sha256": "014fc4d03c66f1fa11c97d5f8ff9c99fba01e4d95b94608d6ef41fb7480bb2c5",
+          "sha1": "47ed7394be1bc829b4f04a648d56922461413f05",
+          "md5": "031514dda315de59c1d57ccc6d64ca19"
+        }
+      ]
+    }
+  ]
+}

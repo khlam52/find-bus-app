@@ -1,0 +1,6 @@
+framework module ShieldSDK {
+  umbrella header "Shield.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+"CFBundleDisplayName" = "RNProject";
+"CFBundleName" = "RNProject";
+"NSFaceIDUsageDescription" = "请允许「RNProject」取用「Face ID」以使用流动保安编码。";
+"NSCameraUsageDescription" = "请允许「RNProject」取用「相机」以使用身份识别功能。";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "请允许「RNProject」取用「位置」以找出最接近您之分行。";
+"NSLocationAlwaysUsageDescription" = "请允许「RNProject」取用「位置」以找出最接近您之分行。";

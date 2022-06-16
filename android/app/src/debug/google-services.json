@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "31302610973",
+    "project_id": "rnproject-dev-2ee4e",
+    "storage_bucket": "rnproject-dev-2ee4e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:31302610973:android:e70675dad2b5e7c54896f4",
+        "android_client_info": {
+          "package_name": "com.forms.rnproj.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "31302610973-3rp7kdignn843mr4bgr1i0vb89meupg5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.forms.rnproj.dev",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "31302610973-7pgqh69b2r7isk3hjqlafiln414tjnof.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsV14NMBzLJQS_xak9L7k23rkiMaZUAY4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "31302610973-7pgqh69b2r7isk3hjqlafiln414tjnof.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "31302610973-30fv7827jhtsr9aaodjbcvdi438k1ahk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.forms.rnproj.dev"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

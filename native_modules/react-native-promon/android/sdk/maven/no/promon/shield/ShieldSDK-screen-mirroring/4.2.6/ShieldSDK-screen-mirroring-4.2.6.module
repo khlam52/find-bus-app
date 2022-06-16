@@ -1,0 +1,62 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "no.promon.shield",
+    "module": "ShieldSDK-screen-mirroring",
+    "version": "4.2.6",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.5",
+      "buildId": "cpl34ldvubd2jdqsvgoeoy4loe"
+    }
+  },
+  "variants": [
+    {
+      "name": "runtime",
+      "attributes": {
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "no.promon.shield",
+          "module": "ShieldSDK-common",
+          "version": {
+            "requires": "4.2.6"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "ShieldSDK-screen-mirroring-4.2.6.aar",
+          "url": "ShieldSDK-screen-mirroring-4.2.6.aar",
+          "size": 1918,
+          "sha512": "b407e5d4305a730b27d37e1339c39ebbad63084aeb53cce5859aafbeed8868f5c235ac992fc8bbf5e9213da1e8910b556a568f580ba488cafcb5f2c9e5ee23b1",
+          "sha256": "54b9d91f6a6ae44735ba5ad0fabee66fc66d0646bd70afe4037a02ab6a9e1350",
+          "sha1": "18c529b456c42567610ce81eee293786221af372",
+          "md5": "c875faddafbed9a540040c4c82e9772b"
+        }
+      ]
+    },
+    {
+      "name": "api",
+      "attributes": {
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "ShieldSDK-screen-mirroring-4.2.6.aar",
+          "url": "ShieldSDK-screen-mirroring-4.2.6.aar",
+          "size": 1918,
+          "sha512": "b407e5d4305a730b27d37e1339c39ebbad63084aeb53cce5859aafbeed8868f5c235ac992fc8bbf5e9213da1e8910b556a568f580ba488cafcb5f2c9e5ee23b1",
+          "sha256": "54b9d91f6a6ae44735ba5ad0fabee66fc66d0646bd70afe4037a02ab6a9e1350",
+          "sha1": "18c529b456c42567610ce81eee293786221af372",
+          "md5": "c875faddafbed9a540040c4c82e9772b"
+        }
+      ]
+    }
+  ]
+}

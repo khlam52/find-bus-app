@@ -1,0 +1,16 @@
+{
+  "staticDataVersionHistoryList": [
+    {
+      "creationDateTime": "2020-02-24T14:46:55.457",
+      "dataType": "TermsAndConditionsVersion",
+      "dataVersion": "0.0.1-beta",
+      "lastUpdateDateTime": "2020-02-24T14:46:55.457"
+    },
+    {
+      "creationDateTime": "2020-02-24T14:46:55.457",
+      "dataType": "MobileAppTnCVersion",
+      "dataVersion": "0.0.1-beta",
+      "lastUpdateDateTime": "2020-02-24T14:46:55.457"
+    }
+  ]
+}
