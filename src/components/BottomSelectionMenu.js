@@ -119,7 +119,7 @@ const getStyle = (insets, theme) => {
       backgroundColor: 'transparent',
     },
     separator: {
-      borderBottomColor: theme.colors.underlayerLt,
+      borderBottomColor: theme.colors.text,
       borderBottomWidth: sh(1),
     },
     outerContainer: {

@@ -13,7 +13,6 @@ import { TabStack } from '~src/navigations/TabStack';
 import LandingScreen from '~src/screens/auth/landing/LandingScreen';
 import FavouriteScreen from '~src/screens/favourite/FavouriteScreen';
 import FindBusScreen from '~src/screens/find-bus/FindBusScreen';
-import OnboardingTutorialScreen from '~src/screens/first-launch/onboarding-tutorial/OnboardingTutorialScreen';
 import SplashScreen from '~src/screens/first-launch/splash/SplashScreen';
 import SearchScreen from '~src/screens/search/SearchScreen';
 
@@ -26,7 +25,6 @@ const commonScreens = {};
 // One time launching Screens
 const launchingScreens = {};
 launchingScreens[Route.SPLASH_SCREEN] = SplashScreen;
-launchingScreens[Route.ONBOARDING_TUTORIAL_SCREEN] = OnboardingTutorialScreen;
 
 // Pre login Screens
 const authScreens = {};

@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 
 import { THEME_NAME } from '~src/constants/Constant';
-import { AppDefaultTheme, AppZoomedTheme } from '~src/contexts/theme/AppTheme';
+import { AppDarkTheme, AppLightTheme } from '~src/contexts/theme/AppTheme';
 
 // import { StorageService } from '~src/services';
 
 const ThemeContext = React.createContext();
 
 export const ThemeContextProvider = ({ theme, children }) => {
-  const [themeObj, changeTheme] = useState(theme || AppDefaultTheme);
+  const [themeObj, changeTheme] = useState(theme || AppDarkTheme);
 
   const setTheme = (t) => {
     const themeObjCaptured =
-      t.toUpperCase() === THEME_NAME.DEFAULT ? AppDefaultTheme : AppZoomedTheme;
+      t.toUpperCase() === THEME_NAME.DARK ? AppDarkTheme : AppLightTheme;
     changeTheme(themeObjCaptured);
   };
 
@@ -35,7 +35,7 @@ export const ThemeContextProvider = ({ theme, children }) => {
   return (
     <ThemeContext.Provider
       value={{
-        theme: AppDefaultTheme,
+        theme: AppDarkTheme,
         themeSwitched: themeObj,
         setTheme: (t) => setTheme(t),
         isHiddenByTheme: (_props) => isHiddenByTheme(_props),

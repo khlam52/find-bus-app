@@ -9,14 +9,12 @@ import RootNavigation from '~src/navigations/RootNavigation';
 import Route from '~src/navigations/Route';
 import AlertScreen from '~src/screens/modals/AlertScreen';
 import HtmlCodeViewModal from '~src/screens/modals/HtmlCodeViewModal';
-import OtpScreen from '~src/screens/modals/OtpScreen';
 import PDFModal from '~src/screens/modals/PDFModal';
 import SpecialAnnouncementModal from '~src/screens/modals/SpecialAnnouncementModal';
 import WebViewModal from '~src/screens/modals/WebViewModal';
 import CustomEventEmitter from '~src/utils/CustomEventEmitter';
 
 const commonModals = {};
-commonModals[Route.OTP_SCREEN] = OtpScreen;
 commonModals[Route.PDF_MODAL] = PDFModal;
 commonModals[Route.WEBVIEW_MODAL] = WebViewModal;
 commonModals[Route.ALERT_SCREEN] = AlertScreen;

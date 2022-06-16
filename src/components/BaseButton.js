@@ -112,8 +112,8 @@ const BaseButton = ({
                 height={sw(20)}
                 fill={
                   pressed
-                    ? Colors.opacity(theme.colors.supportive, 0.3)
-                    : theme.colors.supportive
+                    ? Colors.opacity(theme.colors.text, 0.3)
+                    : theme.colors.text
                 }
               />
             </View>

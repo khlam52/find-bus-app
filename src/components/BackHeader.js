@@ -23,7 +23,7 @@ const BackHeader = ({
   ...props
 }) => {
   const backBtnBGColor = 'transparent';
-  const headerTextColor = theme.colors.text900;
+  const headerTextColor = theme.colors.text;
   const navBarBGColor = isTransparent ? 'transparent' : theme.colors.secondary;
 
   return (

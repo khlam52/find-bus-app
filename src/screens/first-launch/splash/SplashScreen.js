@@ -123,15 +123,15 @@ export default function SplashScreen({ navigation }) {
 
   const loadTheme = async () => {
     console.log('SplashScreen -> loadTheme !!');
-    // setTheme(AppDefaultTheme);
+    // setTheme(AppDarkTheme);
 
     let savedTheme = await StorageService.getTheme();
-    let themeName = THEME_NAME.DEFAULT;
+    let themeName = THEME_NAME.DARK;
     console.log('SplashScreen -> loadTheme -> savedTheme : ', savedTheme);
     // console.log('SplashScreen -> loadTheme -> theme : ', theme);
     if (
       !savedTheme ||
-      (savedTheme !== THEME_NAME.DEFAULT && savedTheme !== THEME_NAME.ZOOMED)
+      (savedTheme !== THEME_NAME.DARK && savedTheme !== THEME_NAME.LIGHT)
     ) {
       StorageService.setTheme(themeName).then((pl) => {
         console.log(

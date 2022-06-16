@@ -14,7 +14,7 @@ const AppButton = (props) => {
   return (
     <BaseButton
       btnTextFontSize={
-        themeName === THEME_NAME.ZOOMED ? theme.fonts.size.lead : null
+        themeName === THEME_NAME.LIGHT ? theme.fonts.size.lead : null
       }
       isRound={true}
       btnHeight={sw(45)}
@@ -34,8 +34,8 @@ export const AppSecondaryButton = withAllContext((props) => {
   // console.log('AppSecondaryButton (SUB) -> props : ', props);
   return (
     <AppButton
-      btnTextColor={theme.colors.textOnSecondary}
-      backgroundColor={theme.colors.secondary}
+      btnTextColor={theme.colors.text}
+      backgroundColor={theme.colors.background}
       {...props}
     />
   );
@@ -50,8 +50,8 @@ export const AppButtonOutlined = withAllContext((props) => {
   // console.log('AppSecondaryButton (SUB) -> props : ', props);
   return (
     <AppButton
-      btnTextColor={theme.colors.supportive}
-      borderColor={theme.colors.supportive}
+      btnTextColor={theme.colors.text}
+      borderColor={theme.colors.text}
       btnTextFontSize={theme.fonts.size.lead}
       isTransparent={true}
       borderWidth={sw(1) >= 1 ? sw(1) : 1}

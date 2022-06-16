@@ -3,8 +3,8 @@ import { default as ColorPalette } from '~src/contexts/theme/AppColorPalette';
 import { Typography } from '~src/styles';
 
 // const AppScreenThemesAvailability = {
-//   DEFAULT: [THEME_NAME.DEFAULT],
-//   TAB_ACCOUNT_OVERVIEW_SCREEN: [THEME_NAME.DEFAULT, THEME_NAME.ZOOMED],
+//   DEFAULT: [THEME_NAME.DARK],
+//   TAB_ACCOUNT_OVERVIEW_SCREEN: [THEME_NAME.DARK, THEME_NAME.LIGHT],
 // };
 
 const baseComponentDisplays = {};
@@ -27,77 +27,33 @@ const baseRadiuses = {
 };
 
 // Info System
-//// Checking & Saving
-//// Fixed Deposit
-//// Loans & Credit Card
 
-const baseColorScheme = {
-  border: 'transparent', // RN
-  borderFocus: 'transparent',
-  inputFocus: '#FFFFFF',
-  inputBlur: '#DFEAF5',
-  buttonText: '#ffffff',
-  card: 'rgb(255, 255, 255)', // RN
-  disabled: 'rgba(0, 0, 0, 0.26)',
-  separator: ColorPalette.uiBlue.bt100,
-  separatorOverUnderlayer: ColorPalette.appBlue.raw + '1A',
+const darkColorScheme = {
+  background: ColorPalette.blue.background,
+  primary: ColorPalette.blue.primary,
+  secondary: ColorPalette.blue.secondary,
+  yellow: ColorPalette.yellow.dark,
+  text: ColorPalette.grey.text,
+  heart: ColorPalette.red.dark,
+  keyboardBackground: ColorPalette.blue.keyboardBackground,
+  keyboardTextBlock: ColorPalette.blue.keyboardTextBlock,
+  tabBackground: ColorPalette.blue.keyboardTextBlock,
+  tabOnfocus: ColorPalette.blue.primary,
+  tabOutFocus: ColorPalette.blue.tabOutFocus,
+};
 
-  // ↓↓↓ Text Color System ↓↓↓
-  text: '#000000',
-  text950: ColorPalette.grey.bt400,
-  text900: ColorPalette.grey.bt900,
-  text800: ColorPalette.grey.bt700,
-  text700: ColorPalette.grey.bt700,
-  text600: ColorPalette.grey.bt500,
-  text500: ColorPalette.grey.bt500,
-  text400: ColorPalette.grey.bt400,
-  text300: ColorPalette.grey.bt200,
-  text200: ColorPalette.grey.bt200,
-  text100: ColorPalette.grey.bt200,
-  textAppBlue: ColorPalette.appBlue.raw,
-  textPositive: ColorPalette.green.raw,
-  textDimmed: '#C3C8CD',
-  textOnPale: ColorPalette.uiBlue.bt800,
-  textOnPaleLight: ColorPalette.uiBlue.bt400,
-  textOnPrimary: ColorPalette.white.raw,
-  onPrimary: ColorPalette.white.raw,
-  textOnSecondary: ColorPalette.appBlue.raw,
-  textOnSupportive: '#ffffff',
-  inputText: '#000000',
-  onBackground: '#000000',
-  onSurface: '#000000',
-  underText950: ColorPalette.grey.tl50,
-
-  // ↓↓↓ Background Color System ↓↓↓
-  backdrop: 'rgba(0, 0, 0, 0.5)',
-  surface: ColorPalette.white.raw,
-  background: ColorPalette.white.raw,
-  underlayerLt: '#E5E5E5',
-  underlayerDk: ColorPalette.paleBlue.dimmer,
-  underlayerPale: ColorPalette.paleBlue.bt100,
-  underlayer: ColorPalette.paleBlue.raw,
-
-  // ↓↓↓ Function/Info Color System ↓↓↓
-  positive: ColorPalette.green.raw,
-  underPositive: ColorPalette.green.light,
-  alert: ColorPalette.red.raw,
-  alertSoft: ColorPalette.red.bt100,
-  underAlert: ColorPalette.red.lightSoft,
-  alertUnderline: ColorPalette.red.light,
-  error: ColorPalette.pinkRed.raw,
-
-  // ↓↓↓ Component Color System ↓↓↓
-  primary: ColorPalette.appRed.lightWarm,
-  primaryDimmed: ColorPalette.appRed.lightSoft,
-  overPrimary: ColorPalette.oceanBlue.tl80,
-  overPrimaryPressed: ColorPalette.oceanBlue.tl50,
-  underPrimary: ColorPalette.oceanBlue.light,
-  secondary: ColorPalette.white.raw,
-  secondaryDimmed: ColorPalette.white.tl50,
-  supportive: '#357CB6',
-  placeholder: '#0B234B99',
-  placeholderFocus: '#0B234B99',
-  notification: '#f50057',
+const lightColorScheme = {
+  background: ColorPalette.grey.text,
+  primary: ColorPalette.white.raw,
+  secondary: ColorPalette.blue.secondaryLight,
+  yellow: ColorPalette.yellow.light,
+  text: ColorPalette.blue.primary,
+  heart: ColorPalette.red.light,
+  keyboardBackground: ColorPalette.grey.keyboardBackgroundLight,
+  keyboardTextBlock: ColorPalette.white.raw,
+  tabBackground: ColorPalette.grey.tabBackgroundLight,
+  tabOnfocus: ColorPalette.blue.secondaryLight,
+  tabOutFocus: ColorPalette.blue.tabOutFocusLight,
 };
 
 const baseFonts = {
@@ -127,28 +83,24 @@ const baseFonts = {
   },
 };
 
-const AppDefaultTheme = {
-  name: THEME_NAME.DEFAULT,
+const AppDarkTheme = {
+  name: THEME_NAME.DARK,
   settings: {
     roundness: baseRadiuses,
     spacings: baseSpacings,
-    colors: baseColorScheme,
+    colors: darkColorScheme,
     fonts: baseFonts,
     animation: { scale: 1 },
   },
   displays: baseComponentDisplays,
 };
 
-const AppZoomedTheme = {
-  name: THEME_NAME.ZOOMED,
+const AppLightTheme = {
+  name: THEME_NAME.LIGHT,
   settings: {
     roundness: baseRadiuses,
     spacings: baseSpacings,
-    colors: {
-      ...baseColorScheme,
-      primary: ColorPalette.appBlue.raw,
-      underPrimary: ColorPalette.appBlue.light,
-    },
+    colors: lightColorScheme,
     fonts: {
       weight: { ...baseFonts.weight },
       size: {
@@ -175,4 +127,4 @@ const AppZoomedTheme = {
   displays: baseComponentDisplays,
 };
 
-export { AppDefaultTheme, AppZoomedTheme };
+export { AppDarkTheme, AppLightTheme };

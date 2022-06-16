@@ -33,8 +33,8 @@ export const SERVER_ERR_CODE_MSG_MAP = [
 ];
 
 export const THEME_NAME = {
-  DEFAULT: 'DEFAULT',
-  ZOOMED: 'ZOOMED',
+  DARK: 'DARK',
+  LIGHT: 'LIGHT',
 };
 
 // Used in LoginScreen for normal login and biometric enable

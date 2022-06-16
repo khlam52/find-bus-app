@@ -53,7 +53,7 @@ const BaseHeader = ({
           backgroundColor={
             props.backgroundColor
               ? props.backgroundColor
-              : theme.colors.supportive
+              : theme.colors.background
           }
           animated={false}
         />
@@ -98,7 +98,7 @@ const BaseHeader = ({
                 style={[
                   styles.subTitleText,
                   {
-                    color: theme.colors.text500,
+                    color: theme.colors.text,
                   },
                 ]}>
                 {props.secondTitle ? props.secondTitle : ''}

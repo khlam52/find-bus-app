@@ -182,7 +182,7 @@ const getStyle = (insets, { theme, themeName }) => {
       color: theme.colors.text,
     },
     separator: {
-      borderBottomColor: theme.colors.underlayerLt,
+      borderBottomColor: theme.colors.text,
       borderBottomWidth: sh(1),
     },
     round: {
