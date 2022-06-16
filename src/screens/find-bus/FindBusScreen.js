@@ -5,6 +5,7 @@ import { useStoreActions, useStoreState } from 'easy-peasy';
 import { StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import BackHeader from '~src/components/BackHeader';
 import useAppContext from '~src/contexts/app';
 import useLocalization from '~src/contexts/i18n';
 import useAppTheme from '~src/contexts/theme';
@@ -34,7 +35,12 @@ export default function FindBusScreen({ navigation }) {
   }, []);
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={styles.container}>
+      <BackHeader
+        leftElement={null}
+        isTransparent={true}
+        title={'Find Your Bus'}
+      />
       <Text>FindBusScreen</Text>
     </View>
   );
@@ -42,6 +48,10 @@ export default function FindBusScreen({ navigation }) {
 
 const getStyle = (insets, theme) => {
   return StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#26262C',
+    },
     buttonContainer: {
       marginHorizontal: sw(theme.spacings.s3),
     },

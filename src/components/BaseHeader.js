@@ -39,7 +39,7 @@ const BaseHeader = ({
       ? props.backgroundColor
       : theme.colors.supportive;
 
-  const headerTextColor = '#000000';
+  const headerTextColor = '#EFF0F2';
   return (
     <View
       onLayout={props.onLayoutEvent !== undefined ? props.onLayoutEvent : null}>
@@ -87,12 +87,7 @@ const BaseHeader = ({
               adjustsFontSizeToFit={true}
               numberOfLines={props.secondTitle ? 1 : 2}
               ellipsizeMode={'tail'}
-              style={[
-                styles.titleText,
-                {
-                  color: textColor !== null ? textColor : headerTextColor,
-                },
-              ]}>
+              style={styles.titleText}>
               {title ? title : ''}
             </Text>
             {props.secondTitle ? (
@@ -147,6 +142,7 @@ const getStyle = (theme, props) => {
     titleText: {
       ...Typography.ts(theme.fonts.weight.bold, theme.fonts.size.para),
       textAlign: 'center',
+      color: '#EFF0F2',
     },
     subTitleText: {
       ...Typography.ts(theme.fonts.weight.regular, theme.fonts.size.desc),
