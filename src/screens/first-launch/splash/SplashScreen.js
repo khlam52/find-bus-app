@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { useStoreState } from 'easy-peasy';
+import { useStoreActions, useStoreState } from 'easy-peasy';
 import i18n from 'i18n-js';
 import { View, StyleSheet } from 'react-native';
 import * as RNLocalize from 'react-native-localize';
@@ -10,13 +10,12 @@ import { LANG_EN, LANG_TC, THEME_NAME } from '~src/constants/Constant';
 import useLocalization from '~src/contexts/i18n';
 import useAppTheme from '~src/contexts/theme';
 import Route from '~src/navigations/Route';
+import ApiService from '~src/services/ApiService';
 import AppInitService from '~src/services/AppInitService';
 import LinkingService from '~src/services/LinkingService';
 import PushService from '~src/services/PushService';
 import StorageService from '~src/services/StorageService';
 import { sw } from '~src/styles/Mixins';
-import CommonUtil from '~src/utils/CommonUtil';
-import ErrorUtil from '~src/utils/ErrorUtil';
 
 export default function SplashScreen({ navigation }) {
   const { locale, setLocale, t } = useLocalization();
@@ -24,6 +23,14 @@ export default function SplashScreen({ navigation }) {
   const styles = getStyle();
 
   const appState = useStoreState((state) => state.appState);
+
+  const setAllBusRouteList = useStoreActions(
+    (action) => action.user.setAllBusRouteList,
+  );
+
+  const setFavouriteList = useStoreActions(
+    (action) => action.user.setFavouriteList,
+  );
 
   useEffect(() => {
     console.log('SplashScreen -> useEffect');
@@ -43,11 +50,7 @@ export default function SplashScreen({ navigation }) {
     console.log('isTncRead:', isTncRead);
     console.log('isFirstLaunch:', isFirstLaunch);
 
-    if (isFirstLaunch) {
-      navigation.navigate(Route.ONBOARDING_TUTORIAL_SCREEN, {});
-    } else {
-      navigation.navigate(Route.MAIN_STACK, { screen: Route.TAB_STACK });
-    }
+    navigation.navigate(Route.MAIN_STACK, { screen: Route.TAB_STACK });
   };
 
   const loadData = async () => {
@@ -56,17 +59,33 @@ export default function SplashScreen({ navigation }) {
     await setDefaultLocale();
     await loadSavedAppValue();
 
-    initAppData()
-      .then(() => {
-        console.log('SplashScreen -> initAppData -> success');
-        setTimeout(() => {
-          goNextPage();
-        }, 3000);
-      })
-      .catch((error) => {
-        ErrorUtil.showApiErrorMsgAlert(error, CommonUtil.exitApp);
-        console.log('SplashScreen -> initAppData -> error: ', error);
-      });
+    let favouriteList = await StorageService.getFavouriteList();
+    setFavouriteList(favouriteList);
+
+    try {
+      let response = await ApiService.getKMBAllRouteList();
+      console.log('getKMBAllRouteList response:', response);
+      if (response.data) {
+        setAllBusRouteList(response.data);
+      }
+      setTimeout(() => {
+        goNextPage();
+      }, 3000);
+    } catch (error) {
+      console.log('getKMBAllRouteList error ->', error);
+    }
+
+    // initAppData()
+    //   .then(() => {
+    //     console.log('SplashScreen -> initAppData -> success');
+    //     setTimeout(() => {
+    //       goNextPage();
+    //     }, 3000);
+    //   })
+    //   .catch((error) => {
+    //     ErrorUtil.showApiErrorMsgAlert(error, CommonUtil.exitApp);
+    //     console.log('SplashScreen -> initAppData -> error: ', error);
+    //   });
   };
 
   const initAppData = async () => {

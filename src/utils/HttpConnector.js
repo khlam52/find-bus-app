@@ -155,8 +155,8 @@ const makeRequest = async (
 
       // format not valid, maybe calling another domain api
       if (!bodyString.result) {
-        if (bodyString.data) {
-          return Promise.resolve(bodyString.data);
+        if (bodyString) {
+          return Promise.resolve(bodyString);
         }
         return Promise.resolve(bodyString);
       }
@@ -167,12 +167,10 @@ const makeRequest = async (
         bodyString.result.code === '200'
       ) {
         // apic access token
-        if (bodyString.data && bodyString.data.access_token)
-          store
-            .getActions()
-            .appState.setAccessToken(bodyString.data.access_token);
+        if (bodyString && bodyString.access_token)
+          store.getActions().appState.setAccessToken(bodyString.access_token);
 
-        return Promise.resolve(bodyString.data ? bodyString.data : {});
+        return Promise.resolve(bodyString ? bodyString : {});
       } else if (
         isLoggedIn &&
         (bodyString.result.code === 'CHN-00101' ||

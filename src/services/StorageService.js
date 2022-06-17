@@ -9,11 +9,10 @@ const DB_KEY_SAVED_LOCALE = '@locale';
 const DB_KEY_SAVED_THEME = '@theme';
 const DB_KEY_SAVED_IS_FIRST_LAUNCH = '@isFirstLaunch';
 
+const DB_KEY_FAVOURITE_LIST = '@favouriteList';
+
 // Soft Update
 const DE_KEY_SAVED_NOT_SHOW_SOFT_UPDATE = '@notShowSoftUpdate';
-
-//Biometric Auth
-const DB_KEY_SAVED_IS_REGISTERED_BIO_AUTH = '@isRegisteredBioAuth';
 
 // Static Data
 function getIsViewedCriticalNotice() {
@@ -80,15 +79,12 @@ function setIsNotShowSoftUpdate(isShow) {
   return DataPersister.setBoolean(DE_KEY_SAVED_NOT_SHOW_SOFT_UPDATE, isShow);
 }
 
-function getIsRegisteredBioAuth() {
-  return DataPersister.getBoolean(DB_KEY_SAVED_IS_REGISTERED_BIO_AUTH, false);
+function getFavouriteList() {
+  return DataPersister.getJson(DB_KEY_FAVOURITE_LIST, []);
 }
 
-function setIsRegisteredBioAuth(isRegistered) {
-  return DataPersister.setBoolean(
-    DB_KEY_SAVED_IS_REGISTERED_BIO_AUTH,
-    isRegistered,
-  );
+function setFavouriteList(list) {
+  return DataPersister.setJson(DB_KEY_FAVOURITE_LIST, list);
 }
 
 export default {
@@ -106,6 +102,6 @@ export default {
   setIsFirstLaunch,
   getIsNotShowSoftUpdate,
   setIsNotShowSoftUpdate,
-  getIsRegisteredBioAuth,
-  setIsRegisteredBioAuth,
+  getFavouriteList,
+  setFavouriteList,
 };

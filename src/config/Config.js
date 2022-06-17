@@ -21,17 +21,6 @@ const config = {
     clientId: env.CLIENT_ID,
     timeout: 30000,
   },
-  idle: {
-    postLoginIdleWarningMin: parseInt(env.POST_LOGIN_IDLE_WARNING_MINUTE, 10),
-    postLoginIdleForegroundLogoutMin: parseInt(
-      env.POST_LOGIN_IDLE_FOREGROUND_LOGOUT_MINUTE,
-      10,
-    ),
-    postLoginIdleBackgroundLogoutMin: parseInt(
-      env.POST_LOGIN_IDLE_BACKGROUND_LOGOUT_MINUTE,
-      10,
-    ),
-  },
   linking: {
     universalLink: env.UNIVERSAL_LINK,
   },
@@ -52,52 +41,11 @@ export const CLIENT_CERT_NAME = config.clientCertName;
 export const CLIENT_CERT_PW = config.clientCertPw;
 export const IS_ENABLE_PROMON = config.isEnablePromon;
 
-// Idle timer
-export const POST_LOGIN_IDLE_WARNING_MINUTE =
-  config.idle.postLoginIdleWarningMin;
-export const POST_LOGIN_IDLE_FOREGROUND_LOGOUT_MINUTE =
-  config.idle.postLoginIdleForegroundLogoutMin;
-export const POST_LOGIN_IDLE_BACKGROUND_LOGOUT_MINUTE =
-  config.idle.postLoginIdleBackgroundLogoutMin;
-
 // Universal Link
 export const UNIVERSAL_LINK = config.linking.universalLink;
 
 // API URL
-export const API_ENDPOINT =
-  config.api.host +
-  (ENV !== 'prod' ? '/XXX-p2' : '') +
-  (ENV === 'sit' || ENV === 'dev' ? '-sit' : '');
-
-export const API_CHANNEL_ENDPOINT =
-  config.api.host +
-  '/XXX/channel-xxx-bff' +
-  (ENV !== 'prod' ? '-p2' : '') +
-  (ENV === 'sit' || ENV === 'dev' ? '-sit' : '');
-
-// Access Token
-export const ACCESS_TOKEN_URL = API_ENDPOINT + '/refresh';
-export const APP_PROFILE_URL = API_CHANNEL_ENDPOINT + '/bff/XXX/appProfile';
+export const API_KMB_ENDPOINT = config.api.host + 'kmb';
 
 // Static Data
-export const ACTIVE_CRITICAL_NOTICE_URL =
-  API_CHANNEL_ENDPOINT + '/bff/XXX/activeCriticalNotice';
-export const IMPORTANT_NOTICE_LIST_URL =
-  API_CHANNEL_ENDPOINT + '/bff/XXX/importantNoticeList';
-export const STATIC_DATA_UPDATE_HISTORY_LIST_URL =
-  API_CHANNEL_ENDPOINT + '/bff/XXX/staticDataUpdateHistory';
-export const STATIC_DATA_VERSION_HISTORY_LIST_URL =
-  API_CHANNEL_ENDPOINT + '/auth/staticDataVersionHistory';
-export const TERMS_AND_CONDITIONS_VERSIONS_QUERY_URL =
-  API_CHANNEL_ENDPOINT + '/auth/termsAndConditionsVersion/query';
-export const MOBILE_APP_TERMS_AND_CONDITIONS_VERSIONS_QUERY_URL =
-  API_CHANNEL_ENDPOINT + '/auth/mobileAppTnCVersion/query';
-
-export const BRANCH_LIST_URL = API_CHANNEL_ENDPOINT + '/bff/XXX/branchList';
-export const FAQ_LIST_URL = API_CHANNEL_ENDPOINT + '/bff/XXX/faqList';
-
-//SMS
-export const GENERATE_SMS_OPT_URL =
-  API_CHANNEL_ENDPOINT + '/auth/xxxLogon/smsOtp/generate';
-export const VERIFY_SMS_OPT_URL =
-  API_CHANNEL_ENDPOINT + '/auth/xxxLogon/smsOtp/verify';
+export const KMB_GET_ALL_ROUTE_LIST_URL = API_KMB_ENDPOINT + '/route/';

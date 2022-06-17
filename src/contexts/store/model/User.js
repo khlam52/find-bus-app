@@ -1,87 +1,31 @@
-import React from 'react';
+import { action } from 'easy-peasy';
 
-import { action, thunk } from 'easy-peasy';
-import i18n from 'i18n-js';
-import _ from 'lodash';
-
-import { WarningIcon } from '~src/assets/images';
-import RootNavigation from '~src/navigations/RootNavigation';
-import Route from '~src/navigations/Route';
-import AlertHelper from '~src/utils/AlertHelper';
-import CustomEventEmitter from '~src/utils/CustomEventEmitter';
-
-let initialUserProfile = {
-  usrId: '',
-  fullname: '',
-  email: '',
-  nickname: '',
-  fcrUcr: '',
-  engName: '',
-  mobCtryCod: '',
-  mobNum: '',
-  lstSuccessTS: '',
-  lstAttemptTS: '',
+let initalAllBusRouteList = {
+  bound: null,
+  dest_en: null,
+  dest_sc: null,
+  dest_tc: null,
+  orig_en: null,
+  orig_sc: null,
+  orig_tc: null,
+  route: null,
+  service_type: null,
 };
 
-let loginResponse = {
-  lstSuccessTS: '',
-};
+let initFavouriteList = [];
 
 export default {
   isLoggedIn: false,
-  userProfile: initialUserProfile,
-  loginResponse: loginResponse,
+  allBusRouteList: initalAllBusRouteList,
+  favouriteList: initFavouriteList,
 
-  // Login
-  setLogin: thunk(async (actions, payload) => {
-    actions.setLoginState(payload);
-    actions.updateUserProfile(payload);
-    RootNavigation.navigate(Route.MAIN_STACK, { screen: Route.TAB_STACK });
-    CustomEventEmitter.emit(CustomEventEmitter.EVENT_USER_LOGIN);
-  }),
-  setLoginState: action((state, payload) => {
-    console.log('User -> setLogin');
-    state.isLoggedIn = true;
+  setAllBusRouteList: action((state, payload) => {
+    state.allBusRouteList = payload;
+    console.log('allBusRouteList ->', state.allBusRouteList);
   }),
 
-  updateUserProfile: action((state, payload) => {
-    console.log('User -> updateUserProfile');
-    console.log('payload:', payload);
-    state.userProfile = payload.userProfile;
-  }),
-
-  // Logout
-  setLogoutState: action((state, payload) => {
-    console.log('User -> setLogout', payload);
-    state.userProfile = initialUserProfile;
-    state.isLoggedIn = false;
-  }),
-
-  setLogout: thunk(async (actions, payload) => {
-    //Data Config
-    CustomEventEmitter.emit(CustomEventEmitter.EVENT_USER_LOGOUT);
-
-    actions.setLogoutState(payload);
-
-    // AuthService.logout().catch((error) => {
-    //   console.log('User -> AuthService logout -> error :', error);
-    // });
-
-    RootNavigation.navigate(Route.LANDING_SCREEN);
-    if (_.get(payload, 'isIdleLogout', false)) {
-      let icon = <WarningIcon width={60} height={69} fill={'#D9000D'} />;
-
-      AlertHelper.showAlertWithOneButton(
-        icon,
-        i18n.t('ALERT.APP_TITLE'),
-        i18n.t('ERROR.IDLED_FOR_15_MINUTES_MSG'),
-        i18n.t('BUTTONS.QUIT'),
-        () => {},
-      );
-    }
-  }),
-
-  updateUserId: action((state, payload) => {
-    state.userProfile.usrId = payload.usrId;
+  setFavouriteList: action((state, payload) => {
+    state.favouriteList = payload;
+    console.log('favouriteList ->', state.favouriteList);
   }),
 };
