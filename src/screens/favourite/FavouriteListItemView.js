@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect } from 'react';
 
-import { useFocusEffect } from '@react-navigation/native';
 import { useStoreActions, useStoreState } from 'easy-peasy';
 import { StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -9,7 +8,6 @@ import {
   BusIcon,
   DarkLongRouteToRouteIcon,
   FillHeartIcon,
-  HeartIcon,
   LightLongRouteToRouteIcon,
 } from '~src/assets/images';
 import AppPressable from '~src/components/AppPressable';
@@ -35,9 +33,6 @@ export default function FavouriteListItemView({ item, index }) {
   } = useAppTheme();
   const styles = getStyle(insets, theme, locale);
 
-  const [isHeartIconPressed, setIsHeartIconPressed] = useState(false);
-  const isHeartIconPressedRef = useRef(false);
-
   const favouriteList = useStoreState((state) => state.user.favouriteList);
 
   const setFavouriteList = useStoreActions(
@@ -48,25 +43,8 @@ export default function FavouriteListItemView({ item, index }) {
     console.log('FavouriteListItemView -> useEffect');
   }, []);
 
-  useFocusEffect(
-    useCallback(() => {
-      ListHelper.updateHeartIconFunc(
-        item,
-        favouriteList,
-        setIsHeartIconPressed,
-        isHeartIconPressedRef,
-      );
-    }, []),
-  );
-
   const onHeartIconPressed = () => {
-    setIsHeartIconPressed(!isHeartIconPressed);
-    isHeartIconPressedRef.current = !isHeartIconPressedRef.current;
-    if (isHeartIconPressedRef.current) {
-      ListHelper.setFavouriteListFunc(item, favouriteList, setFavouriteList);
-    } else {
-      ListHelper.deleteFavouriteListFunc(item, favouriteList, setFavouriteList);
-    }
+    ListHelper.deleteFavouriteListFunc(item, favouriteList, setFavouriteList);
   };
 
   const getOriginStationName = () => {
@@ -106,11 +84,7 @@ export default function FavouriteListItemView({ item, index }) {
       </View>
       <View style={styles.stationRightView}>
         <AppPressable onPress={onHeartIconPressed} disableDelayPress={true}>
-          {isHeartIconPressed ? (
-            <FillHeartIcon width={sw(25)} height={sw(22)} />
-          ) : (
-            <HeartIcon width={sw(25)} height={sw(22)} />
-          )}
+          <FillHeartIcon width={sw(25)} height={sw(22)} />
         </AppPressable>
       </View>
     </View>

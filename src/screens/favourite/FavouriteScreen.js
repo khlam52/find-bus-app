@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import { useStoreState } from 'easy-peasy';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
@@ -17,10 +17,6 @@ import { sw } from '~src/styles/Mixins';
 export default function FavouriteScreen({ navigation }) {
   const { locale, setLocale, t } = useLocalization();
   const { showLoading, hideLoading, setIsFinishLaunching } = useAppContext();
-
-  const menuRef = useRef(null);
-
-  const [selectedLang, setSelectedLang] = useState({});
 
   const insets = useSafeAreaInsets();
   const {

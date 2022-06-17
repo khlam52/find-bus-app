@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useStoreActions } from 'easy-peasy';
 import { StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -11,6 +12,7 @@ import useAppTheme from '~src/contexts/theme';
 import FavouriteScreen from '~src/screens/favourite/FavouriteScreen';
 import FindBusScreen from '~src/screens/find-bus/FindBusScreen';
 import SearchScreen from '~src/screens/search/SearchScreen';
+import StorageService from '~src/services/StorageService';
 import { sw } from '~src/styles/Mixins';
 
 const Tab = createBottomTabNavigator();
@@ -22,6 +24,10 @@ export const TabStack = (props) => {
     themeSwitched: { settings: theme, name: themeName },
   } = useAppTheme();
   const styles = getStyle(insets, theme);
+
+  const setFavouriteList = useStoreActions(
+    (action) => action.user.setFavouriteList,
+  );
 
   const getTabIconStyle = (focused, tabNum) => {
     let icon;
@@ -101,7 +107,10 @@ export const TabStack = (props) => {
             },
           }}
           listeners={() => ({
-            tabPress: (event) => {},
+            tabPress: async (event) => {
+              let favouriteList = await StorageService.getFavouriteList();
+              setFavouriteList(favouriteList);
+            },
           })}
         />
         <Tab.Screen
@@ -113,7 +122,10 @@ export const TabStack = (props) => {
             },
           }}
           listeners={() => ({
-            tabPress: (event) => {},
+            tabPress: async (event) => {
+              let favouriteList = await StorageService.getFavouriteList();
+              setFavouriteList(favouriteList);
+            },
           })}
         />
       </Tab.Navigator>

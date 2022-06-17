@@ -50,12 +50,13 @@ export default function RouteListItemView({ item, index }) {
 
   useFocusEffect(
     useCallback(() => {
-      ListHelper.updateHeartIconFunc(
-        item,
-        favouriteList,
-        setIsHeartIconPressed,
-        isHeartIconPressedRef,
-      );
+      if (ListHelper.isFavouriteItem(item) === true) {
+        setIsHeartIconPressed(true);
+        isHeartIconPressedRef.current = true;
+      } else {
+        setIsHeartIconPressed(false);
+        isHeartIconPressedRef.current = false;
+      }
     }, []),
   );
 

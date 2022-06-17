@@ -1,5 +1,6 @@
 import _ from 'lodash';
 
+import { store } from '~src/contexts/store/Store';
 import StorageService from '~src/services/StorageService';
 
 // Set Favourite List Item
@@ -30,29 +31,30 @@ const deleteFavouriteListFunc = async (
 };
 
 // Set Heart Icon Fill In Logic
-const updateHeartIconFunc = async (
-  item,
-  favouriteList,
-  setIsHeartIconPressed,
-  isHeartIconPressedRef,
-) => {
+const isFavouriteItem = (item) => {
+  let favouriteList = store.getState().user.favouriteList;
   if (favouriteList && favouriteList.length > 0) {
-    favouriteList.map((favItem, favIndex) => {
-      if (
-        favItem.route === item.route &&
-        favItem.dest_en === item.dest_en &&
-        favItem.orig_en === item.orig_en &&
-        favItem.service_type === item.service_type
-      ) {
-        setIsHeartIconPressed(true);
-        isHeartIconPressedRef.current = true;
-      }
+    let haveList = [];
+
+    haveList = _.filter(favouriteList, {
+      route: item.route,
+      dest_en: item.dest_en,
+      orig_en: item.orig_en,
+      service_type: item.service_type,
     });
+
+    console.log('isFavouriteItem haveList:', haveList);
+    if (haveList.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
+  return false;
 };
 
 export default {
   setFavouriteListFunc,
   deleteFavouriteListFunc,
-  updateHeartIconFunc,
+  isFavouriteItem,
 };
