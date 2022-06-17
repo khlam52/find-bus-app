@@ -1,7 +1,9 @@
+import AddHeartIcon from '~src/assets/images/icon/add-heart-icon.svg';
 import AppIcon from '~src/assets/images/icon/app-icon.svg';
 import BackIcon from '~src/assets/images/icon/back-icon.svg';
 import BusIcon from '~src/assets/images/icon/bus-icon.svg';
 import CloseIcon from '~src/assets/images/icon/close-icon.svg';
+import DarkLongRouteToRouteIcon from '~src/assets/images/icon/dark-long-route-to-route-icon.svg';
 import DarkRouteToRouteIcon from '~src/assets/images/icon/dark-route-to-route-icon.svg';
 import DarkThemeIcon from '~src/assets/images/icon/dark-theme-icon.svg';
 import DarkTickIcon from '~src/assets/images/icon/dark-tick-icon.svg';
@@ -9,6 +11,7 @@ import DarkUnTickIcon from '~src/assets/images/icon/dark-untick-icon.svg';
 import EarthIcon from '~src/assets/images/icon/earth-icon.svg';
 import FillHeartIcon from '~src/assets/images/icon/fill-heart-icon.svg';
 import HeartIcon from '~src/assets/images/icon/heart-icon.svg';
+import LightLongRouteToRouteIcon from '~src/assets/images/icon/light-long-route-to-route-icon.svg';
 import LightRouteToRouteIcon from '~src/assets/images/icon/light-route-to-route-icon.svg';
 import LightThemeIcon from '~src/assets/images/icon/light-theme-icon.svg';
 import LightTickIcon from '~src/assets/images/icon/light-tick-icon.svg';
@@ -35,4 +38,7 @@ export {
   LightRouteToRouteIcon,
   HeartIcon,
   FillHeartIcon,
+  DarkLongRouteToRouteIcon,
+  LightLongRouteToRouteIcon,
+  AddHeartIcon,
 };

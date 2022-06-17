@@ -94,14 +94,11 @@ const getStyle = (insets, theme) => {
       flex: 1,
       backgroundColor: theme.colors.background,
     },
-    buttonContainer: {
-      marginHorizontal: sw(theme.spacings.s3),
-    },
     listHeaderView: {
       paddingTop: sw(36),
     },
     listFooterView: {
-      paddingBottom: sw(100),
+      paddingBottom: sw(120),
     },
   });
 };
