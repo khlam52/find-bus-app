@@ -10,7 +10,6 @@ import { store } from '~src/contexts/store/Store';
 import useAppTheme from '~src/contexts/theme';
 import { ThemeContextProvider } from '~src/contexts/theme/ThemeContext';
 import RootStack from '~src/navigations/RootStack';
-import { IdleService } from '~src/services/IdleService';
 
 if (!(AppConfig.ENV === 'dev' || AppConfig.ENV === 'sit')) {
   LogBox.ignoreAllLogs();
@@ -33,9 +32,7 @@ const ThemeConsumer = (props) => {
   return (
     <StoreProvider store={store}>
       <AppContextProvider>
-        <IdleService>
-          <RootStack />
-        </IdleService>
+        <RootStack />
       </AppContextProvider>
     </StoreProvider>
   );

@@ -21,7 +21,7 @@ export default function FindBusScreen({ navigation }) {
 
   const insets = useSafeAreaInsets();
   const {
-    theme: { settings: theme },
+    themeSwitched: { settings: theme, name: themeName },
   } = useAppTheme();
   const styles = getStyle(insets, theme);
 
@@ -38,8 +38,8 @@ export default function FindBusScreen({ navigation }) {
     <View style={styles.container}>
       <BackHeader
         leftElement={null}
-        isTransparent={true}
         title={'Find Your Bus'}
+        isShowChangeLang={true}
       />
       <Text>FindBusScreen</Text>
     </View>
@@ -50,7 +50,7 @@ const getStyle = (insets, theme) => {
   return StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#26262C',
+      backgroundColor: theme.colors.background,
     },
     buttonContainer: {
       marginHorizontal: sw(theme.spacings.s3),

@@ -19,7 +19,7 @@ export const TabStack = (props) => {
   const insets = useSafeAreaInsets();
   const { locale, t } = useLocalization();
   const {
-    themeSwitched: { settings: theme },
+    themeSwitched: { settings: theme, name: themeName },
   } = useAppTheme();
   const styles = getStyle(insets, theme);
 
@@ -27,13 +27,25 @@ export const TabStack = (props) => {
     let icon;
     switch (tabNum) {
       case 1:
-        icon = <TabSearchIcon fill={focused ? '#C5F1FE' : '#2E4052'} />;
+        icon = (
+          <TabSearchIcon
+            fill={focused ? theme.colors.secondary : theme.colors.tabOutFocus}
+          />
+        );
         break;
       case 2:
-        icon = <TabHomeIcon fill={focused ? '#C5F1FE' : '#2E4052'} />;
+        icon = (
+          <TabHomeIcon
+            fill={focused ? theme.colors.secondary : theme.colors.tabOutFocus}
+          />
+        );
         break;
       case 3:
-        icon = <TabHeartIcon fill={focused ? '#C5F1FE' : '#2E4052'} />;
+        icon = (
+          <TabHeartIcon
+            fill={focused ? theme.colors.secondary : theme.colors.tabOutFocus}
+          />
+        );
         break;
     }
 
@@ -122,7 +134,7 @@ const getStyle = (insets, theme) => {
       shadowOpacity: 0.8,
       shadowRadius: 10.0,
       shadowOffset: { 0: 15 },
-      backgroundColor: '#17181E',
+      backgroundColor: theme.colors.tabBackground,
       borderTopWidth: 0,
       elevation: 50,
     },
@@ -132,7 +144,7 @@ const getStyle = (insets, theme) => {
     iconUnderline: {
       width: sw(36),
       height: sw(3),
-      backgroundColor: '#C5F1FE',
+      backgroundColor: theme.colors.secondary,
       borderRadius: sw(100),
       marginTop: sw(8),
     },

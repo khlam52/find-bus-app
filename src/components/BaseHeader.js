@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 
+import { useFocusEffect } from '@react-navigation/native';
 import {
   Text,
   View,
@@ -10,7 +11,14 @@ import {
 } from 'react-native';
 
 import AppFocusAwareStatusBar from './AppFocusAwareStatusBar';
+import AppPressable from './AppPressable';
+import { DarkThemeIcon, EarthIcon, LightThemeIcon } from '~src/assets/images';
+import { THEME_NAME } from '~src/constants/Constant';
+import useAppContext from '~src/contexts/app';
+import useAppTheme from '~src/contexts/theme';
+import AppColorPalette from '~src/contexts/theme/AppColorPalette';
 import { withAllContext } from '~src/contexts/withAllContext';
+import StorageService from '~src/services/StorageService';
 import { Typography } from '~src/styles';
 import { sw } from '~src/styles/Mixins';
 import CommonUtil from '~src/utils/CommonUtil';
@@ -20,51 +28,107 @@ const BaseHeader = ({
   titleContainerStyle,
   leftElement,
   leftElementContainerStyle,
-  rightElement,
   rightElementContainerStyle,
-  appTheme: {
-    theme: { settings: theme },
-  },
-  isTransparent,
   additionalStyle,
-  textColor,
+  isShowChangeLang,
   ...props
 }) => {
-  console.log('BaseHeader -> isTransparent : ', isTransparent);
-  const styles = getStyle(theme, { ...props, isTransparent: isTransparent });
-  const headerBackgroundColor =
-    isTransparent === true
-      ? '#FFFFFF00'
-      : props.backgroundColor
-      ? props.backgroundColor
-      : theme.colors.supportive;
+  const {
+    theme: { settings: theme },
+    themeSwitched: { name: themeName },
+    setTheme,
+  } = useAppTheme();
+  const { showLoading, hideLoading } = useAppContext();
+  const styles = getStyle(theme, themeName, { ...props });
 
-  const headerTextColor = '#EFF0F2';
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+  const getBackgroundThemeColor = () => {
+    return props.backgroundColor
+      ? props.backgroundColor
+      : themeName !== THEME_NAME.LIGHT
+      ? AppColorPalette.blue.background
+      : AppColorPalette.grey.text;
+  };
+
+  const getEarthIconThemeColor = () => {
+    return themeName !== THEME_NAME.LIGHT
+      ? AppColorPalette.blue.secondary
+      : AppColorPalette.blue.secondaryLight;
+  };
+
+  useFocusEffect(
+    React.useCallback(() => {
+      console.log('isDarkTheme:', isDarkTheme);
+      checkThemeSelection();
+      return () => {};
+    }, []),
+  );
+
+  const onEarthIconPressed = () => {};
+
+  // Theme Setting
+  const checkThemeSelection = async () => {
+    let savedTheme = await StorageService.getTheme();
+    let intThemeName =
+      !savedTheme ||
+      savedTheme === undefined ||
+      savedTheme === null ||
+      (savedTheme !== THEME_NAME.DARK && savedTheme !== THEME_NAME.LIGHT)
+        ? THEME_NAME.DARK
+        : savedTheme;
+    console.log('savedTheme:', savedTheme);
+    console.log('intThemeName:', intThemeName);
+    if (
+      (intThemeName === THEME_NAME.LIGHT && !isDarkTheme) ||
+      (intThemeName !== THEME_NAME.LIGHT && isDarkTheme)
+    )
+      setIsDarkTheme(intThemeName === THEME_NAME.LIGHT);
+    if (
+      (intThemeName === THEME_NAME.LIGHT && themeName !== THEME_NAME.LIGHT) ||
+      (intThemeName !== THEME_NAME.LIGHT && themeName === THEME_NAME.LIGHT)
+    )
+      setTheme(intThemeName);
+  };
+
+  const setThemeSelection = async (_themeName) => {
+    StorageService.setTheme(_themeName).then((pl) => {
+      console.log(
+        'SettingScreen -> setTheme -> StorageService.setTheme : ',
+        pl,
+      );
+    });
+    hideLoading();
+    setTheme(_themeName);
+  };
+
+  const onThemeIconPressed = () => {
+    showLoading();
+    setIsDarkTheme((previousState) => {
+      setThemeSelection(
+        previousState === true ? THEME_NAME.DARK : THEME_NAME.LIGHT,
+      );
+      return !previousState;
+    });
+  };
+  ////
+
   return (
     <View
       onLayout={props.onLayoutEvent !== undefined ? props.onLayoutEvent : null}>
-      {!isTransparent && (
-        <AppFocusAwareStatusBar
-          barStyle={
-            CommonUtil.getColorBrightness(headerBackgroundColor) > 150
-              ? 'dark-content'
-              : 'light-content'
-          }
-          backgroundColor={
-            props.backgroundColor
-              ? props.backgroundColor
-              : theme.colors.background
-          }
-          animated={false}
-        />
-      )}
+      <AppFocusAwareStatusBar
+        barStyle={
+          CommonUtil.getColorBrightness(getBackgroundThemeColor()) > 150
+            ? 'dark-content'
+            : 'light-content'
+        }
+        backgroundColor={getBackgroundThemeColor()}
+        animated={false}
+      />
       <SafeAreaView
-        style={[
-          styles.safeArea,
-          {
-            backgroundColor: headerBackgroundColor,
-          },
-        ]}>
+        style={{
+          backgroundColor: getBackgroundThemeColor(),
+        }}>
         <View
           style={{
             ...styles.container,
@@ -76,7 +140,21 @@ const BaseHeader = ({
               styles.sideLeft,
               leftElementContainerStyle ? leftElementContainerStyle : null,
             ]}>
-            {leftElement ? leftElement : null}
+            {leftElement ? (
+              leftElement
+            ) : (
+              <AppPressable
+                onPress={onThemeIconPressed}
+                disableDelayPress={true}>
+                <View>
+                  {themeName !== THEME_NAME.LIGHT ? (
+                    <DarkThemeIcon />
+                  ) : (
+                    <LightThemeIcon />
+                  )}
+                </View>
+              </AppPressable>
+            )}
           </View>
           <View
             style={{
@@ -90,35 +168,28 @@ const BaseHeader = ({
               style={styles.titleText}>
               {title ? title : ''}
             </Text>
-            {props.secondTitle ? (
-              <Text
-                adjustsFontSizeToFit={true}
-                numberOfLines={1}
-                ellipsizeMode={'tail'}
-                style={[
-                  styles.subTitleText,
-                  {
-                    color: theme.colors.text,
-                  },
-                ]}>
-                {props.secondTitle ? props.secondTitle : ''}
-              </Text>
-            ) : null}
           </View>
+
           <View
             style={[
               styles.sideElementContainer,
               styles.sideRight,
               rightElementContainerStyle ? rightElementContainerStyle : null,
             ]}>
-            {rightElement ? rightElement : null}
+            {isShowChangeLang && (
+              <AppPressable onPress={onEarthIconPressed}>
+                <View>
+                  <EarthIcon fill={getEarthIconThemeColor()} />
+                </View>
+              </AppPressable>
+            )}
           </View>
         </View>
       </SafeAreaView>
     </View>
   );
 };
-const getStyle = (theme, props) => {
+const getStyle = (theme, themeName, props) => {
   const { StatusBarManager } = NativeModules;
   return StyleSheet.create({
     safeArea: {},
@@ -142,7 +213,10 @@ const getStyle = (theme, props) => {
     titleText: {
       ...Typography.ts(theme.fonts.weight.bold, theme.fonts.size.para),
       textAlign: 'center',
-      color: '#EFF0F2',
+      color:
+        themeName !== THEME_NAME.LIGHT
+          ? AppColorPalette.grey.text
+          : AppColorPalette.blue.primary,
     },
     subTitleText: {
       ...Typography.ts(theme.fonts.weight.regular, theme.fonts.size.desc),
@@ -152,11 +226,11 @@ const getStyle = (theme, props) => {
       minWidth: sw(theme.spacings.s5),
     },
     sideLeft: {
-      marginLeft: sw(theme.spacings.s3),
+      marginLeft: sw(28),
       alignItems: 'flex-start',
     },
     sideRight: {
-      marginRight: sw(theme.spacings.s3),
+      marginRight: sw(28),
       alignItems: 'flex-end',
     },
   });

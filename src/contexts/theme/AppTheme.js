@@ -101,27 +101,7 @@ const AppLightTheme = {
     roundness: baseRadiuses,
     spacings: baseSpacings,
     colors: lightColorScheme,
-    fonts: {
-      weight: { ...baseFonts.weight },
-      size: {
-        ...baseFonts.size,
-        ...{
-          note2: 18,
-          note1: 19,
-          desc: 20,
-          para: 24,
-          lead: 28,
-          ///
-          h5: 28,
-          h4: 32,
-          h3: 38,
-          h2: 44,
-          h1: 64,
-        },
-      },
-      // size: { ...baseFonts.size, ...{ note2: 20 } },
-      // Above is an example to demostrate how we can only revise specific and required values from base settings.
-    },
+    fonts: baseFonts,
     animation: { scale: 1 },
   },
   displays: baseComponentDisplays,

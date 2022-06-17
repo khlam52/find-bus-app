@@ -29,7 +29,6 @@ const BackHeader = ({
   return (
     <BaseHeader
       title={title}
-      backgroundColor={navBarBGColor}
       leftElement={
         <AppPressable
           style={{
