@@ -47,6 +47,7 @@ const getScreenOptions = (route) => {
     case Route.COMMON_ALERT_MODAL:
     case Route.ALERT_SCREEN:
     case Route.SPECIAL_ANNOUNCEMENT_MODAL:
+    case Route.BOTTOM_SHEET_SELECTION_MODAL:
       return modalOption;
     case Route.MAIN_STACK:
     case Route.ONBOARDING_TUTORIAL_MODAL:

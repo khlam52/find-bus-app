@@ -8,6 +8,7 @@ import { MainStack } from '~src/navigations/MainStack';
 import RootNavigation from '~src/navigations/RootNavigation';
 import Route from '~src/navigations/Route';
 import AlertScreen from '~src/screens/modals/AlertScreen';
+import BottomSheetSelectionModal from '~src/screens/modals/BottomSheetSelectionModal';
 import HtmlCodeViewModal from '~src/screens/modals/HtmlCodeViewModal';
 import PDFModal from '~src/screens/modals/PDFModal';
 import SpecialAnnouncementModal from '~src/screens/modals/SpecialAnnouncementModal';
@@ -20,6 +21,7 @@ commonModals[Route.WEBVIEW_MODAL] = WebViewModal;
 commonModals[Route.ALERT_SCREEN] = AlertScreen;
 commonModals[Route.HTML_CODE_VIEW_MODAL] = HtmlCodeViewModal;
 commonModals[Route.SPECIAL_ANNOUNCEMENT_MODAL] = SpecialAnnouncementModal;
+commonModals[Route.BOTTOM_SHEET_SELECTION_MODAL] = BottomSheetSelectionModal;
 
 const Stack = createStackNavigator();
 

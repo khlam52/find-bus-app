@@ -1,16 +1,21 @@
 import React, { useEffect } from 'react';
 
-import _ from 'lodash';
 import { StyleSheet, Text, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { TickIcon, UntickIcon } from '~src/assets/images';
-import AppPressable from '~src/components/AppPressable';
+import AppPressable from './AppPressable';
+import {
+  DarkTickIcon,
+  DarkUnTickIcon,
+  LightTickIcon,
+  LightUnTickIcon,
+} from '~src/assets/images';
+import { THEME_NAME } from '~src/constants/Constant';
 import useAppContext from '~src/contexts/app';
 import useLocalization from '~src/contexts/i18n';
 import useAppTheme from '~src/contexts/theme';
-import { Colors, Typography } from '~src/styles';
+import { Typography } from '~src/styles';
 import { sh, sw } from '~src/styles/Mixins';
 
 SelectionFlatList.defaultProps = {
@@ -44,123 +49,58 @@ export default function SelectionFlatList({
     }
   };
 
-  const SelectionListRowItem = ({ item, index }) => {
-    let rowView = (
-      <View
-        style={[
-          styles.row,
-          index !== itemList.length - 1 ? styles.separator : {},
-        ]}>
-        <View style={{ flexDirection: 'row' }}>
-          <Text
-            style={[
-              styles.rowText,
-              (selectedItem === item ||
-                getField(selectedItem, 'name') === getField(item, 'name') ||
-                selectedItem === getField(item, 'name')) &&
-                Typography.ts(theme.fonts.weight.bold, theme.fonts.size.para),
-            ]}>
-            {getField(item, 'name')}
-          </Text>
-          {_.get(item, 'ccyDesc', '') !== null && (
-            <Text style={styles.itemDescText}>
-              {_.get(item, 'ccyDesc', '')}
-            </Text>
-          )}
-        </View>
-
-        {selectedItem === item ||
-        getField(selectedItem, 'name') === getField(item, 'name') ||
-        selectedItem === getField(item, 'name') ? (
-          <TickIcon
-            width={sw(22)}
-            height={sw(22)}
-            fill={theme.colors.primary}
-          />
-        ) : (
-          <UntickIcon width={sw(22)} height={sw(22)} fill={'#E4E4E4'} />
-        )}
-      </View>
-    );
-    if (
-      selectedItem === item ||
-      getField(selectedItem, 'name') === getField(item, 'name') ||
-      selectedItem === getField(item, 'name')
-    ) {
-      return rowView;
-    } else {
-      return (
-        <AppPressable
-          onPress={() => {
-            onListItemPressed(item);
-          }}>
-          {rowView}
-        </AppPressable>
-      );
-    }
-  };
-
-  const RoundSelectionListRowItem = ({ item, index }) => {
-    let rowView = (
-      <View style={[styles.row, styles.round]}>
-        <Text
-          style={[
-            styles.rowText,
-            (selectedItem === item ||
-              getField(selectedItem, 'name') === getField(item, 'name') ||
-              selectedItem === getField(item, 'name')) &&
-              Typography.ts(theme.fonts.weight.bold, theme.fonts.size.para),
-          ]}>
-          {getField(item, 'name')}
-        </Text>
-        {selectedItem === item ||
-        getField(selectedItem, 'name') === getField(item, 'name') ||
-        selectedItem === getField(item, 'name') ? (
-          <TickIcon
-            width={sw(30)}
-            height={sw(30)}
-            fill={theme.colors.primary}
-          />
-        ) : null}
-      </View>
-    );
-    if (
-      selectedItem === item ||
-      getField(selectedItem, 'name') === getField(item, 'name') ||
-      selectedItem === getField(item, 'name')
-    ) {
-      return rowView;
-    } else {
-      return (
-        <AppPressable
-          onPress={() => {
-            onListItemPressed(item);
-          }}>
-          {rowView}
-        </AppPressable>
-      );
-    }
-  };
-
-  const renderRowItem = ({ item, index }) => {
-    return isItemRound ? (
-      <RoundSelectionListRowItem item={item} index={index} />
+  const getTickIconTheme = (item) => {
+    return themeName === THEME_NAME.DARK ? (
+      selectedItem === item ? (
+        <DarkTickIcon />
+      ) : (
+        <DarkUnTickIcon />
+      )
+    ) : selectedItem === item ? (
+      <LightTickIcon />
     ) : (
-      <SelectionListRowItem item={item} index={index} />
+      <LightUnTickIcon />
+    );
+  };
+
+  const renderItem = ({ item, index }) => {
+    return (
+      <AppPressable
+        key={index}
+        onPress={() => {
+          onListItemPressed(item);
+        }}>
+        <View style={styles.row}>
+          <Text
+            style={{
+              ...Typography.ts(
+                selectedItem === item
+                  ? theme.fonts.weight.bold
+                  : theme.fonts.weight.semibold,
+                theme.fonts.size.lead,
+              ),
+              color:
+                selectedItem === item
+                  ? theme.colors.secondary
+                  : theme.colors.text,
+            }}>
+            {item.name}
+          </Text>
+          {getTickIconTheme(item)}
+        </View>
+      </AppPressable>
     );
   };
 
   const renderSeparator = ({ item, index }) => {
-    return isItemRound ? <View style={styles.spaceSeparator} /> : null;
+    return <View style={styles.spaceSeparator} />;
   };
 
   return (
     <FlatList
-      style={{ maxHeight: sw(700) }}
       data={itemList}
-      renderItem={renderRowItem}
+      renderItem={renderItem}
       keyExtractor={(item, index) => 'SelectionListRowItem' + index.toString()}
-      scrollEnabled={true}
       showsVerticalScrollIndicator={false}
       ItemSeparatorComponent={renderSeparator}
     />
@@ -175,28 +115,12 @@ const getStyle = (insets, { theme, themeName }) => {
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      backgroundColor: Colors.WHITE,
-    },
-    rowText: {
-      ...Typography.ts(theme.fonts.weight.regular, theme.fonts.size.para),
-      color: theme.colors.text,
-    },
-    separator: {
-      borderBottomColor: theme.colors.text,
-      borderBottomWidth: sh(1),
-    },
-    round: {
-      borderRadius: sw(theme.roundness.item),
+      backgroundColor: theme.colors.primary,
     },
     spaceSeparator: {
-      height: sh(10),
-    },
-    itemDescText: {
-      ...Typography.ts(theme.fonts.weight.regular, theme.fonts.size.desc),
-      color: '#657693',
-      position: 'absolute',
-      paddingHorizontal: sw(90),
-      alignSelf: 'center',
+      height: sh(1),
+      backgroundColor: theme.colors.text,
+      marginHorizontal: sw(theme.spacings.s2),
     },
   });
 };

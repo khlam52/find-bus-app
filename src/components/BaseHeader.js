@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { useFocusEffect } from '@react-navigation/native';
 import {
@@ -15,9 +15,12 @@ import AppPressable from './AppPressable';
 import { DarkThemeIcon, EarthIcon, LightThemeIcon } from '~src/assets/images';
 import { THEME_NAME } from '~src/constants/Constant';
 import useAppContext from '~src/contexts/app';
+import useLocalization from '~src/contexts/i18n';
 import useAppTheme from '~src/contexts/theme';
 import AppColorPalette from '~src/contexts/theme/AppColorPalette';
 import { withAllContext } from '~src/contexts/withAllContext';
+import RootNavigation from '~src/navigations/RootNavigation';
+import Route from '~src/navigations/Route';
 import StorageService from '~src/services/StorageService';
 import { Typography } from '~src/styles';
 import { sw } from '~src/styles/Mixins';
@@ -38,9 +41,48 @@ const BaseHeader = ({
     themeSwitched: { name: themeName },
     setTheme,
   } = useAppTheme();
+  const { locale, setLocale, t } = useLocalization();
   const { showLoading, hideLoading } = useAppContext();
   const styles = getStyle(theme, themeName, { ...props });
 
+  const [selectedLang, setSelectedLang] = useState({});
+
+  const LANG_ARRAY = useRef([
+    {
+      locale: 'en',
+      name: 'English',
+    },
+    {
+      locale: 'zh-Hant',
+      name: '中文',
+    },
+  ]);
+
+  useEffect(() => {
+    console.log('setSelectedLang');
+    LANG_ARRAY.current.forEach((item) => {
+      if (item.locale === locale) {
+        setSelectedLang(item);
+      }
+    });
+    return () => {};
+  }, [locale]);
+
+  const onEarthIconPressed = () => {
+    RootNavigation.navigate(Route.BOTTOM_SHEET_SELECTION_MODAL, {
+      selectedCallback: onSelectLangItem,
+      selectedItem: selectedLang,
+      selectionListArray: LANG_ARRAY.current,
+      title: 'Select Language',
+    });
+  };
+
+  const onSelectLangItem = (langObj) => {
+    setLocale(langObj.locale);
+    setSelectedLang(langObj);
+  };
+
+  // Theme Color Func
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   const getBackgroundThemeColor = () => {
@@ -56,6 +98,7 @@ const BaseHeader = ({
       ? AppColorPalette.blue.secondary
       : AppColorPalette.blue.secondaryLight;
   };
+  ////
 
   useFocusEffect(
     React.useCallback(() => {
@@ -64,8 +107,6 @@ const BaseHeader = ({
       return () => {};
     }, []),
   );
-
-  const onEarthIconPressed = () => {};
 
   // Theme Setting
   const checkThemeSelection = async () => {
