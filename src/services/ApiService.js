@@ -25,6 +25,25 @@ function getKMBAllRouteList() {
   return getRequest(AppConfig.KMB_GET_ALL_ROUTE_LIST_URL);
 }
 
+function getKMBRouteStopList(route, bound, serviceType) {
+  let direction = bound === 'I' ? 'inbound' : 'outbound';
+  return getRequest(
+    AppConfig.KMB_GET_ROUTE_STOP_LIST_URL +
+      `${route}/${direction}/${serviceType}`,
+  );
+}
+
+function getKMBStopLatLongDetail(stopId) {
+  return getRequest(AppConfig.KMB_GET_STOP_LAT_LONG_DETAIL_URL + stopId);
+}
+
+function getKMBStopThreeETA(stopId) {
+  return getRequest(AppConfig.KMB_GET_STOP_THREE_ETA_URL + stopId);
+}
+
 export default {
   getKMBAllRouteList,
+  getKMBRouteStopList,
+  getKMBStopLatLongDetail,
+  getKMBStopThreeETA,
 };

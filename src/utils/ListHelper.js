@@ -54,7 +54,6 @@ const isFavouriteItem = (item) => {
       service_type: item.service_type,
     });
 
-    console.log('isFavouriteItem haveList:', haveList);
     if (haveList.length > 0) {
       return true;
     } else {

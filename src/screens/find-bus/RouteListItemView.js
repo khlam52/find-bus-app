@@ -17,6 +17,8 @@ import { THEME_NAME } from '~src/constants/Constant';
 import useAppContext from '~src/contexts/app';
 import useLocalization from '~src/contexts/i18n';
 import useAppTheme from '~src/contexts/theme';
+import RootNavigation from '~src/navigations/RootNavigation';
+import Route from '~src/navigations/Route';
 import { Typography } from '~src/styles';
 import { sw } from '~src/styles/Mixins';
 import ListHelper from '~src/utils/ListHelper';
@@ -70,6 +72,10 @@ export default function RouteListItemView({ item, index }) {
     }
   };
 
+  const onItemPressed = () => {
+    RootNavigation.navigate(Route.ROUTE_MAP_SCREEN);
+  };
+
   const getOriginStationName = () => {
     return locale === 'en' ? item.orig_en : item.orig_tc;
   };
@@ -79,44 +85,46 @@ export default function RouteListItemView({ item, index }) {
   };
 
   return (
-    <View key={index} style={styles.itemView}>
-      <View style={styles.routeView}>
-        <BusIcon fill={theme.colors.secondary} />
-        <Text style={styles.routeText}>{item.route}</Text>
-      </View>
-      <View style={styles.stationView}>
-        <View style={styles.stationLeftView}>
-          {themeName === THEME_NAME.DARK ? (
-            <DarkRouteToRouteIcon />
-          ) : (
-            <LightRouteToRouteIcon />
-          )}
-          <View>
-            <Text
-              style={{ ...styles.stationText, paddingBottom: sw(12) }}
-              adjustsFontSizeToFit={true}
-              numberOfLines={1}>
-              {getOriginStationName()}
-            </Text>
-            <Text
-              style={styles.stationText}
-              adjustsFontSizeToFit={true}
-              numberOfLines={1}>
-              {getDestStationName()}
-            </Text>
+    <AppPressable onPress={onItemPressed}>
+      <View key={index} style={styles.itemView}>
+        <View style={styles.routeView}>
+          <BusIcon fill={theme.colors.secondary} />
+          <Text style={styles.routeText}>{item.route}</Text>
+        </View>
+        <View style={styles.stationView}>
+          <View style={styles.stationLeftView}>
+            {themeName === THEME_NAME.DARK ? (
+              <DarkRouteToRouteIcon />
+            ) : (
+              <LightRouteToRouteIcon />
+            )}
+            <View>
+              <Text
+                style={{ ...styles.stationText, paddingBottom: sw(12) }}
+                adjustsFontSizeToFit={true}
+                numberOfLines={1}>
+                {getOriginStationName()}
+              </Text>
+              <Text
+                style={styles.stationText}
+                adjustsFontSizeToFit={true}
+                numberOfLines={1}>
+                {getDestStationName()}
+              </Text>
+            </View>
+          </View>
+          <View style={styles.stationRightView}>
+            <AppPressable onPress={onHeartIconPressed} disableDelayPress={true}>
+              {isHeartIconPressed ? (
+                <FillHeartIcon width={sw(30)} height={sw(27)} />
+              ) : (
+                <HeartIcon width={sw(30)} height={sw(27)} />
+              )}
+            </AppPressable>
           </View>
         </View>
-        <View style={styles.stationRightView}>
-          <AppPressable onPress={onHeartIconPressed} disableDelayPress={true}>
-            {isHeartIconPressed ? (
-              <FillHeartIcon width={sw(30)} height={sw(27)} />
-            ) : (
-              <HeartIcon width={sw(30)} height={sw(27)} />
-            )}
-          </AppPressable>
-        </View>
       </View>
-    </View>
+    </AppPressable>
   );
 }
 

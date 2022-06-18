@@ -44,8 +44,18 @@ export const IS_ENABLE_PROMON = config.isEnablePromon;
 // Universal Link
 export const UNIVERSAL_LINK = config.linking.universalLink;
 
+//  https://data.etabus.gov.hk/v1/transport/kmb/stop : all stop detail
+//  https://data.etabus.gov.hk/v1/transport/kmb/stop/18492910339410B1 : one stop detail (lat long)
+//  https://data.etabus.gov.hk/v1/transport/kmb/route-stop : all stop sequence
+//  https://data.etabus.gov.hk/v1/transport/kmb/route-stop/89B/inbound/1 : one route stop sequence
+//  https://data.etabus.gov.hk/v1/transport/kmb/eta/18492910339410B1/1/1 : one route 3 eta（總站)
+//  https://data.etabus.gov.hk/v1/transport/kmb/stop-eta/18492910339410B1 : one stop 3 eta
+
 // API URL
 export const API_KMB_ENDPOINT = config.api.host + 'kmb';
 
 // Static Data
 export const KMB_GET_ALL_ROUTE_LIST_URL = API_KMB_ENDPOINT + '/route/';
+export const KMB_GET_ROUTE_STOP_LIST_URL = API_KMB_ENDPOINT + '/route-stop/';
+export const KMB_GET_STOP_LAT_LONG_DETAIL_URL = API_KMB_ENDPOINT + '/stop/';
+export const KMB_GET_STOP_THREE_ETA_URL = API_KMB_ENDPOINT + '/stop-eta/';

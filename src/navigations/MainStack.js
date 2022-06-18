@@ -14,6 +14,7 @@ import LandingScreen from '~src/screens/auth/landing/LandingScreen';
 import FavouriteScreen from '~src/screens/favourite/FavouriteScreen';
 import FindBusScreen from '~src/screens/find-bus/FindBusScreen';
 import SplashScreen from '~src/screens/first-launch/splash/SplashScreen';
+import RouteMapScreen from '~src/screens/route-map/RouteMapScreen';
 import SearchScreen from '~src/screens/search/SearchScreen';
 
 const Stack = createStackNavigator();
@@ -36,6 +37,7 @@ postLoginScreens[Route.TAB_STACK] = TabStack;
 postLoginScreens[Route.FIND_BUS_SCREEN] = FindBusScreen;
 postLoginScreens[Route.SEARCH_SCREEN] = SearchScreen;
 postLoginScreens[Route.FAVOURITE_SCREEN] = FavouriteScreen;
+postLoginScreens[Route.ROUTE_MAP_SCREEN] = RouteMapScreen;
 
 export const MainStack = () => {
   const isLoggedIn = useStoreState((state) => state.user.isLoggedIn);
