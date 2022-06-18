@@ -79,7 +79,11 @@ export default function AppPressable({
           extraStyle = style;
         }
         return [
-          pressed ? styles.btnDisabledStyle : styles.btnStyle,
+          props.disabled
+            ? styles.btnDisabledStyle
+            : pressed
+            ? styles.btnDisabledStyle
+            : styles.btnStyle,
           extraStyle,
         ];
       }}
