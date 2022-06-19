@@ -4,8 +4,15 @@ import Geolocation from '@react-native-community/geolocation';
 import { useStoreState } from 'easy-peasy';
 import _ from 'lodash';
 import moment from 'moment';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import {
+  LayoutAnimation,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import MapView, { Marker, Polyline } from 'react-native-maps';
 import { RESULTS } from 'react-native-permissions';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -42,6 +49,8 @@ export default function RouteMapScreen({ navigation, route }) {
   const stationTitle = _.get(route, 'params.stationTitle', '');
   const routeTitle = _.get(route, 'params.routeTitle', '');
 
+  const mapRef = useRef(null);
+
   const [currentLat, setCurrentLat] = useState(22.280499);
   const [currentLng, setCurrentLng] = useState(114.157612);
   const [isGotGeoLoc, setIsGotGeoLoc] = useState(false);
@@ -49,19 +58,29 @@ export default function RouteMapScreen({ navigation, route }) {
   const [selectedStop, setSelectedStop] = useState(null);
 
   const markerListRef = useRef([]);
+  const latLongListRef = useRef([]);
   const [stopETAList, setStopETAList] = useState(null);
+
+  const positionList = useRef([]);
+
+  const selectedStopPositionRef = useRef(null);
 
   const allStopDetailList = useStoreState(
     (state) => state.user.allStopDetailList,
   );
 
   useEffect(() => {
-    console.log('routeDetailListhhh:', routeDetailList);
+    console.log('routeDetailList:', routeDetailList);
     getCurrentLocation();
     getRestructuredList();
     console.log('markerList:', markerListRef);
   }, []);
 
+  const layoutAnimationFunc = () => {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+  };
+
+  // do First Task
   const getRestructuredList = () => {
     let intersectionList = _.intersectionBy(
       allStopDetailList,
@@ -78,6 +97,25 @@ export default function RouteMapScreen({ navigation, route }) {
         ...StopDetailItem,
       };
     });
+
+    latLongListRef.current = _.map(markerListRef.current, (item) => {
+      return {
+        latitude: item.lat,
+        longitude: item.long,
+      };
+    });
+  };
+
+  const getStopItemPositionList = (item, y) => {
+    if (markerListRef.current.length > 0) {
+      let list = _.find(markerListRef.current, (items) => {
+        return items.stop === item.stop;
+      });
+      positionList.current.push({
+        stop: list.stop,
+        yCoor: y,
+      });
+    }
   };
 
   const getCurrentLocation = async () => {
@@ -89,11 +127,58 @@ export default function RouteMapScreen({ navigation, route }) {
           setCurrentLng(position.coords.longitude);
           setIsGotGeoLoc(true);
 
-          // zoomToMap(position.coords.latitude, position.coords.longitude);
+          zoomToMap(position.coords.latitude, position.coords.longitude);
         },
         (error) => console.log(error.message),
         { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 },
       );
+    }
+  };
+  ////
+
+  const onMakerClick = async (item, index) => {
+    layoutAnimationFunc();
+    setSelectedStop(item);
+    setCurrentLat(item.lat);
+    setCurrentLng(item.long);
+    zoomToMap(item.lat, item.long);
+
+    let stopEtaList = await ListHelper.getKMBStopThreeETAList(
+      item.stop,
+      item.route,
+    );
+    setStopETAList(stopEtaList);
+
+    console.log('positionList.current:', positionList.current, item);
+
+    let yCoor = _.find(positionList.current, (ele) => {
+      if (item.stop === ele.stop) {
+        return ele;
+      }
+    }).yCoor;
+    console.log('yCoor:', yCoor);
+
+    selectedStopPositionRef.current.scrollTo({
+      x: 0,
+      y: Number(yCoor),
+      animated: true,
+    });
+  };
+
+  const zoomToMap = (lat, lng) => {
+    if (mapRef && mapRef.current) {
+      let tempCoords = {
+        latitude: Number(lat),
+        longitude: Number(lng),
+      };
+      mapRef.current.animateCamera({
+        center: tempCoords,
+        pitch: 2,
+        heading: 20,
+        altitude: 200,
+        zoom: 8,
+        duration: 500,
+      });
     }
   };
 
@@ -102,7 +187,11 @@ export default function RouteMapScreen({ navigation, route }) {
   };
 
   const onStopItemPressed = async (item) => {
+    layoutAnimationFunc();
     setSelectedStop(item);
+    setCurrentLat(item.lat);
+    setCurrentLng(item.long);
+    zoomToMap(item.lat, item.long);
 
     let stopEtaList = await ListHelper.getKMBStopThreeETAList(
       item.stop,
@@ -114,10 +203,6 @@ export default function RouteMapScreen({ navigation, route }) {
 
   const getDiffETAMinutes = (eta) => {
     let currentTime = new Date();
-    console.log(
-      'currentTimecurrentTime:',
-      moment(eta).diff(moment(currentTime), 'minutes'),
-    );
     return moment(eta).diff(moment(currentTime), 'minutes');
   };
 
@@ -135,10 +220,12 @@ export default function RouteMapScreen({ navigation, route }) {
         }
       />
       <MapView
+        userInterfaceStyle="light"
+        ref={mapRef}
         style={styles.mapView}
         initialRegion={{
-          latitude: currentLat,
-          longitude: currentLng,
+          latitude: Number(currentLat),
+          longitude: Number(currentLng),
           latitudeDelta: 0.01,
           longitudeDelta: 0.01,
         }}
@@ -156,21 +243,34 @@ export default function RouteMapScreen({ navigation, route }) {
             }}
             onPress={(e) => {
               console.log('BranchMapScreen -> clicked marker: ', marker);
-              // onMakerClick(marker, index);
+              onMakerClick(marker, index);
             }}
+            pinColor={selectedStop === marker ? '#455960' : '#7A8C93'}
             // image={{
             //   uri:
-            //     selectedBranch === marker
-            //       ? 'marker_focus_icon'
+            //     selectedStop === marker
+            //       ? '~src/assets/images/background/selected-location-icon.png'
             //       : 'marker_icon',
             // }}
           />
         ))}
+        <Polyline
+          coordinates={latLongListRef.current}
+          strokeWidth={6}
+          strokeColor="#455960"
+          lineJoin={'round'}
+          geodesic={true}
+          lineCap={'round'}
+        />
       </MapView>
-      <ScrollView style={styles.stopListView}>
+      <ScrollView style={styles.stopListView} ref={selectedStopPositionRef}>
         {markerListRef.current.map((item, index) => {
           return (
             <AppPressable
+              onLayout={(event) => {
+                const layout = event.nativeEvent.layout;
+                getStopItemPositionList(item, layout.y);
+              }}
               disableDelayPress={true}
               key={index}
               style={styles.stopItemWholeview}
