@@ -1,6 +1,7 @@
 import _ from 'lodash';
 
 import { store } from '~src/contexts/store/Store';
+import ApiService from '~src/services/ApiService';
 import StorageService from '~src/services/StorageService';
 
 export const KEYBOARD_LIST = [
@@ -115,6 +116,67 @@ const updateSearchList = (searchRoute) => {
   return allRouteList;
 };
 
+// Call Map Api
+const getRouteStopList = async (
+  route,
+  bound,
+  serviceType,
+  showLoading,
+  hideLoading,
+) => {
+  let restructuredList = [];
+  showLoading();
+  try {
+    let routeStopListResponse = await ApiService.getKMBRouteStopList(
+      route,
+      bound,
+      serviceType,
+    );
+    console.log('routeStopListResponse:', routeStopListResponse.data);
+    if (routeStopListResponse.data) {
+      restructuredList = routeStopListResponse.data;
+    }
+
+    hideLoading();
+  } catch (error) {
+    console.log('getKMBAllRouteList error ->', error);
+    hideLoading();
+  }
+  return restructuredList;
+};
+
+const getKMBStopLatLongDetailList = async (stopId) => {
+  let list = [];
+  try {
+    let getKMBStopLatLongDetailResponse = await ApiService.getKMBStopLatLongDetail(
+      stopId,
+    );
+    if (getKMBStopLatLongDetailResponse.data) {
+      list = getKMBStopLatLongDetailResponse.data;
+    }
+  } catch (error) {
+    console.log('getKMBStopLatLongDetailResponse error ->', error);
+  }
+  return list;
+};
+
+const getKMBStopThreeETAList = async (stopId, route) => {
+  let list = [];
+  try {
+    let getKMBStopThreeETAListResponse = await ApiService.getKMBStopThreeETA(
+      stopId,
+    );
+    if (getKMBStopThreeETAListResponse.data) {
+      list = _.filter(getKMBStopThreeETAListResponse.data, {
+        route: route,
+      });
+    }
+  } catch (error) {
+    console.log('getKMBStopThreeETAListResponse error ->', error);
+  }
+  return list;
+};
+
 export default {
   setFavouriteListFunc,
   deleteFavouriteListFunc,
@@ -122,4 +184,7 @@ export default {
   updateSearchList,
   getSearchKeyboardItemEnable,
   getSearchAlplabetList,
+  getRouteStopList,
+  getKMBStopLatLongDetailList,
+  getKMBStopThreeETAList,
 };

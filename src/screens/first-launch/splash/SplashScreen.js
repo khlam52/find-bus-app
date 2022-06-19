@@ -32,6 +32,10 @@ export default function SplashScreen({ navigation }) {
     (action) => action.user.setFavouriteList,
   );
 
+  const setAllStopDetailList = useStoreActions(
+    (action) => action.user.setAllStopDetailList,
+  );
+
   useEffect(() => {
     console.log('SplashScreen -> useEffect');
 
@@ -68,12 +72,23 @@ export default function SplashScreen({ navigation }) {
       if (response.data) {
         setAllBusRouteList(response.data);
       }
-      setTimeout(() => {
-        goNextPage();
-      }, 3000);
     } catch (error) {
       console.log('getKMBAllRouteList error ->', error);
     }
+
+    try {
+      let response = await ApiService.getKMBStopLatLongDetail('');
+      console.log('getKMBStopLatLongDetail response:', response);
+      if (response.data) {
+        setAllStopDetailList(response.data);
+      }
+    } catch (error) {
+      console.log('getKMBAllRouteList error ->', error);
+    }
+
+    setTimeout(() => {
+      goNextPage();
+    }, 3000);
 
     // initAppData()
     //   .then(() => {

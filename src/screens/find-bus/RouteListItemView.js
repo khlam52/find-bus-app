@@ -72,8 +72,19 @@ export default function RouteListItemView({ item, index }) {
     }
   };
 
-  const onItemPressed = () => {
-    RootNavigation.navigate(Route.ROUTE_MAP_SCREEN);
+  const onItemPressed = async () => {
+    let routeDetailList = await ListHelper.getRouteStopList(
+      item.route,
+      item.bound,
+      item.service_type,
+      showLoading,
+      hideLoading,
+    );
+    RootNavigation.navigate(Route.ROUTE_MAP_SCREEN, {
+      routeDetailList: routeDetailList,
+      stationTitle: getDestStationName(),
+      routeTitle: item.route,
+    });
   };
 
   const getOriginStationName = () => {

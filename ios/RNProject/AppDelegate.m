@@ -39,7 +39,6 @@ static void InitializeFlipper(UIApplication *application) {
   if ([FIRApp defaultApp] == nil) {
       [FIRApp configure];
   }
-  [GMSServices provideAPIKey:[ReactNativeConfig envFor:@"IOS_GOOGLE_MAPS_API_KEY"]];
 
 
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
