@@ -52,14 +52,14 @@ export default function SearchScreen({ navigation }) {
     <View style={styles.container}>
       <BackHeader
         leftElement={null}
-        title={'Search Bus'}
+        title={t('SCREENS.SEARCH_SCREEN.TITLE')}
         isShowChangeLang={true}
       />
 
       <View style={styles.searchBarView}>
         <SearchIcon fill={theme.colors.secondary} />
         <Text style={styles.searchText}>
-          {searchRoute ? searchRoute : 'Search Bus No.'}
+          {searchRoute ? searchRoute : t('SCREENS.SEARCH_SCREEN.PLACEHOLDER')}
         </Text>
       </View>
 

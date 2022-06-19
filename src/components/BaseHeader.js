@@ -73,7 +73,7 @@ const BaseHeader = ({
       selectedCallback: onSelectLangItem,
       selectedItem: selectedLang,
       selectionListArray: LANG_ARRAY.current,
-      title: 'Select Language',
+      title: t('MODAL.SELECT_LANGUAGE.TITLE'),
     });
   };
 

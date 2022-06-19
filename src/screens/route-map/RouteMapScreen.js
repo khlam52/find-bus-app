@@ -209,7 +209,10 @@ export default function RouteMapScreen({ navigation, route }) {
   return (
     <View style={styles.container}>
       <BaseHeader
-        title={routeTitle + ' To ' + stationTitle}
+        title={t('SCREENS.MAP_SCREEN.TITLE', {
+          route: routeTitle,
+          station: stationTitle,
+        })}
         leftElement={
           <Pressable
             onPress={() => {
@@ -278,7 +281,7 @@ export default function RouteMapScreen({ navigation, route }) {
                 onStopItemPressed(item);
               }}>
               <View style={styles.stopItemview}>
-                <View style={styles.stopLeftItremView}>
+                <View style={styles.stopLeftItemView}>
                   {themeName === THEME_NAME.DARK ? (
                     selectedStop === item ? (
                       <DarkMapSelectedStopIcon />
@@ -294,12 +297,13 @@ export default function RouteMapScreen({ navigation, route }) {
                     {item.seq + '. ' + getDestStationName(item)}
                   </Text>
                 </View>
-
-                {selectedStop === item ? (
-                  <ArrowUpIcon fill={theme.colors.secondary} />
-                ) : (
-                  <ArrowDownIcon fill={theme.colors.secondary} />
-                )}
+                <View style={{ flex: 1 }}>
+                  {selectedStop === item ? (
+                    <ArrowUpIcon fill={theme.colors.secondary} />
+                  ) : (
+                    <ArrowDownIcon fill={theme.colors.secondary} />
+                  )}
+                </View>
               </View>
               {selectedStop === item &&
                 stopETAList &&
@@ -308,7 +312,9 @@ export default function RouteMapScreen({ navigation, route }) {
                     getDiffETAMinutes(etaItem.eta) > 0 && (
                       <View key={etaIndex}>
                         <Text style={styles.etaText}>
-                          {'- ' + getDiffETAMinutes(etaItem.eta) + ' mins'}
+                          {t('SCREENS.MAP_SCREEN.MINS', {
+                            time: getDiffETAMinutes(etaItem.eta),
+                          })}
                         </Text>
                       </View>
                     )
@@ -352,14 +358,18 @@ const getStyle = (insets, theme) => {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
+      paddingRight: sw(18),
     },
     stopItemText: {
+      flex: 1,
       ...Typography.ts(theme.fonts.weight.bold, theme.fonts.size.para),
       color: theme.colors.text,
       paddingLeft: sw(12),
     },
-    stopLeftItremView: {
+    stopLeftItemView: {
+      // flex: 1,
       flexDirection: 'row',
+      marginRight: sw(8),
     },
     etaText: {
       ...Typography.ts(theme.fonts.weight.regular, theme.fonts.size.para),

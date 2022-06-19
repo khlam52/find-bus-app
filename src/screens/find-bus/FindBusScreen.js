@@ -69,7 +69,7 @@ export default function FindBusScreen({ navigation }) {
     <View style={styles.container}>
       <BackHeader
         leftElement={null}
-        title={'Find Your Bus'}
+        title={t('SCREENS.FIND_BUS_SCREEN.TITLE')}
         isShowChangeLang={true}
       />
       <FlatList

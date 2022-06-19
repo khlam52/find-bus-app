@@ -46,7 +46,9 @@ export default function FavouriteScreen({ navigation }) {
     return (
       <View style={styles.emptyView}>
         <AddHeartIcon fill={theme.colors.secondary} />
-        <Text style={styles.emptyText}>{'Add Favourite First!'}</Text>
+        <Text style={styles.emptyText}>
+          {t('SCREENS.FAVOURITE_SCREEN.ADD_LIST')}
+        </Text>
       </View>
     );
   };
@@ -55,7 +57,7 @@ export default function FavouriteScreen({ navigation }) {
     <View style={styles.container}>
       <BackHeader
         leftElement={null}
-        title={'Favourite List'}
+        title={t('SCREENS.FAVOURITE_SCREEN.TITLE')}
         isShowChangeLang={true}
       />
       <FlatList
