@@ -103,37 +103,37 @@ static void InitializeFlipper(UIApplication *application) {
 }
 
 // disable app snapshot in app switcher
--(void)applicationDidBecomeActive:(UIApplication *)application{
-  bool isDisableAppSwitcherPreview = [[ReactNativeConfig envFor:@"IS_DISABLE_APP_SWITCHER_PREVIEW"] boolValue];
-  
-  if (isDisableAppSwitcherPreview) {
-    if(self.launchScreenController){
-      [[self launchScreenController] dismissViewControllerAnimated:NO completion:nil];
-    }
-  }
-}
-
--(void)applicationWillResignActive:(UIApplication *)application{
-  
-  bool isDisableAppSwitcherPreview = [[ReactNativeConfig envFor:@"IS_DISABLE_APP_SWITCHER_PREVIEW"] boolValue];
-
-  if (isDisableAppSwitcherPreview) {
-    if(self.launchScreenController){
-      [[self launchScreenController] dismissViewControllerAnimated:NO completion:nil];
-    }
-    
-    self.launchScreenStoryboard = [UIStoryboard storyboardWithName:
-                               @"LaunchScreen" bundle:[NSBundle mainBundle]];
-
-    self.launchScreenController = [self.launchScreenStoryboard instantiateViewControllerWithIdentifier:@"launchScreenContoller"];
-
-    if (@available(iOS 13.0, *)) {
-         [self.launchScreenController setModalPresentationStyle: UIModalPresentationFullScreen];
-     }
-    [self.window.rootViewController presentViewController:self.launchScreenController animated:NO completion:nil];
-  }
-
-
-}
+//-(void)applicationDidBecomeActive:(UIApplication *)application{
+//  bool isDisableAppSwitcherPreview = [[ReactNativeConfig envFor:@"IS_DISABLE_APP_SWITCHER_PREVIEW"] boolValue];
+//
+//  if (isDisableAppSwitcherPreview) {
+//    if(self.launchScreenController){
+//      [[self launchScreenController] dismissViewControllerAnimated:NO completion:nil];
+//    }
+//  }
+//}
+//
+//-(void)applicationWillResignActive:(UIApplication *)application{
+//
+//  bool isDisableAppSwitcherPreview = [[ReactNativeConfig envFor:@"IS_DISABLE_APP_SWITCHER_PREVIEW"] boolValue];
+//
+//  if (isDisableAppSwitcherPreview) {
+//    if(self.launchScreenController){
+//      [[self launchScreenController] dismissViewControllerAnimated:NO completion:nil];
+//    }
+//
+//    self.launchScreenStoryboard = [UIStoryboard storyboardWithName:
+//                               @"LaunchScreen" bundle:[NSBundle mainBundle]];
+//
+//    self.launchScreenController = [self.launchScreenStoryboard instantiateViewControllerWithIdentifier:@"launchScreenContoller"];
+//
+//    if (@available(iOS 13.0, *)) {
+//         [self.launchScreenController setModalPresentationStyle: UIModalPresentationFullScreen];
+//     }
+//    [self.window.rootViewController presentViewController:self.launchScreenController animated:NO completion:nil];
+//  }
+//
+//
+//}
 
 @end

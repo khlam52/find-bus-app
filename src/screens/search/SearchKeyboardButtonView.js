@@ -38,7 +38,7 @@ export default function SearchKeyboardButtonView({
   }, []);
 
   const onKeyboardItemPressed = (item) => {
-    if (item === t('SCREENS.SEARCH_SCREEN.CLEAR')) {
+    if (item === 'Clear') {
       setSearchRoute('');
     } else if (item === 'Close') {
       setSearchRoute(String(searchRoute).slice(0, -1));
@@ -94,7 +94,7 @@ export default function SearchKeyboardButtonView({
       <View style={styles.numberKeyboardView}>
         {KEYBOARD_LIST.map((item, index) => {
           let isDisabled =
-            item !== t('SCREENS.SEARCH_SCREEN.CLEAR') && item !== 'Close'
+            item !== 'Clear' && item !== 'Close'
               ? !ListHelper.getSearchKeyboardItemEnable(searchRoute, item)
               : false;
           return (
@@ -106,7 +106,9 @@ export default function SearchKeyboardButtonView({
               disabled={isDisabled}
               style={styles.numberBlockView}>
               {item !== 'Close' ? (
-                <Text style={styles.numberText}>{item}</Text>
+                <Text style={styles.numberText}>
+                  {item === 'Clear' ? t('SCREENS.SEARCH_SCREEN.CLEAR') : item}
+                </Text>
               ) : (
                 <KeyboardBackIcon fill={theme.colors.text} />
               )}

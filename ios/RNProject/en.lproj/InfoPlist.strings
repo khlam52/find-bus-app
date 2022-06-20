@@ -1,6 +1,6 @@
-"CFBundleDisplayName" = "RNProject";
+"CFBundleDisplayName" = "Bus Finder";
 "CFBundleName" = "RNProject";
-"NSFaceIDUsageDescription" = "Please allow RNProject to access \"Face ID\" in order to use Mobile Security Token.";
-"NSCameraUsageDescription" = "Please allow RNProject to access \"Camera\" in order to conduct Identify Verification.";
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "Please allow RNProject to access \"Location\" in order to find you the nearest branch.";
-"NSLocationAlwaysUsageDescription" = "Please allow RNProject to access \"Location\" in order to find you the nearest branch.";
+"NSFaceIDUsageDescription" = "Please allow Bus Finder to access \"Face ID\" in order to use Mobile Security Token.";
+"NSCameraUsageDescription" = "Please allow Bus Finder to access \"Camera\" in order to conduct Identify Verification.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Please allow Bus Finder to access \"Location\" in order to find you the nearest branch.";
+"NSLocationAlwaysUsageDescription" = "Please allow Bus Finder to access \"Location\" in order to find you the nearest branch.";

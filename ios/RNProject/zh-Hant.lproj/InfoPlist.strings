@@ -1,6 +1,6 @@
-"CFBundleDisplayName" = "RNProject";
+"CFBundleDisplayName" = "Bus Finder";
 "CFBundleName" = "RNProject";
-"NSFaceIDUsageDescription" = "請允許「RNProject」取用「Face ID」以使用流動保安編碼。";
-"NSCameraUsageDescription" = "請允許「RNProject」取用「相機」以使用身份識別功能。";
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "請允許「RNProject」取用「位置」以找出最接近您之分行。";
-"NSLocationAlwaysUsageDescription" = "請允許「RNProject」取用「位置」以找出最接近您之分行。";
+"NSFaceIDUsageDescription" = "請允許「Bus Finder」取用「Face ID」以使用流動保安編碼。";
+"NSCameraUsageDescription" = "請允許「Bus Finder」取用「相機」以使用身份識別功能。";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "請允許「Bus Finder」取用「位置」以找出最接近您之分行。";
+"NSLocationAlwaysUsageDescription" = "請允許「Bus Finder」取用「位置」以找出最接近您之分行。";

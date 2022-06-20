@@ -1,4 +1,3 @@
-import I18n from 'i18n-js';
 import _ from 'lodash';
 
 import { store } from '~src/contexts/store/Store';
@@ -9,7 +8,7 @@ export const KEYBOARD_LIST = [
   ...new Array(9).fill().map((item, index) => {
     return index + 1;
   }),
-  I18n.t('SCREENS.SEARCH_SCREEN.CLEAR'),
+  'Clear',
   0,
   'Close',
 ];
