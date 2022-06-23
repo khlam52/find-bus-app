@@ -47,5 +47,8 @@ export default {
       TITLE: '{{route}} 前往 {{station}}',
       MINS: '- {{time}} 分鐘',
     },
+    SPLASH_SCREEN: {
+      TITLE: '資料由DATA.GOV.HK提供',
+    },
   },
 };

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useStoreActions, useStoreState } from 'easy-peasy';
 import i18n from 'i18n-js';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text, ActivityIndicator } from 'react-native';
 import * as RNLocalize from 'react-native-localize';
 
 import { AppIcon } from '~src/assets/images';
@@ -15,12 +15,14 @@ import AppInitService from '~src/services/AppInitService';
 import LinkingService from '~src/services/LinkingService';
 import PushService from '~src/services/PushService';
 import StorageService from '~src/services/StorageService';
+import { Typography } from '~src/styles';
 import { sw } from '~src/styles/Mixins';
+import { FONT_FAMILY_400 } from '~src/styles/Typography';
 
 export default function SplashScreen({ navigation }) {
   const { locale, setLocale, t } = useLocalization();
   const { theme, setTheme } = useAppTheme();
-  const styles = getStyle();
+  const styles = getStyle(theme);
 
   const appState = useStoreState((state) => state.appState);
 
@@ -185,18 +187,28 @@ export default function SplashScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <AppIcon />
+      <View style={{ flex: 1 }}>
+        <AppIcon />
+      </View>
+      <ActivityIndicator />
+      <Text style={styles.dataText}>{t('SCREENS.SPLASH_SCREEN.TITLE')}</Text>
     </View>
   );
 }
 
-const getStyle = () => {
+const getStyle = (theme) => {
   return StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#17181E',
       alignItems: 'center',
       paddingTop: sw(200),
+    },
+    dataText: {
+      ...Typography.ts(FONT_FAMILY_400, sw(18)),
+      paddingBottom: sw(28),
+      paddingTop: sw(20),
+      color: '#EFF0F2',
     },
   });
 };
