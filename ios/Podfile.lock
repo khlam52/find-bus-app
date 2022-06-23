@@ -433,8 +433,6 @@ PODS:
     - React-Core
   - react-native-pdf (6.4.0):
     - React-Core
-  - react-native-promon (1.0.0):
-    - React
   - react-native-safe-area-context (3.3.2):
     - React-Core
   - react-native-webview (11.17.2):
@@ -638,7 +636,6 @@ DEPENDENCIES:
   - react-native-maps (from `../node_modules/react-native-maps`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-pdf (from `../node_modules/react-native-pdf`)
-  - react-native-promon (from `../native_modules/react-native-promon`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-webview (from `../node_modules/react-native-webview`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
@@ -767,8 +764,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/netinfo"
   react-native-pdf:
     :path: "../node_modules/react-native-pdf"
-  react-native-promon:
-    :path: "../native_modules/react-native-promon"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-webview:
@@ -895,7 +890,6 @@ SPEC CHECKSUMS:
   react-native-maps: d752b0dd0e1951d815b1336332835aab6b4a836f
   react-native-netinfo: c023b7c36ff34e3b607d1446002b5b39089a860b
   react-native-pdf: a6a5a3f0bdf340eb2eed6c96034424d2cc3f84b0
-  react-native-promon: 8b9cc1ea8dd670561221d9557aedd0918b294931
   react-native-safe-area-context: 584dc04881deb49474363f3be89e4ca0e854c057
   react-native-webview: 380c1a03ec94b7ed764dac8db1e7c9952d08c93a
   React-perflogger: 93d3f142d6d9a46e635f09ba0518027215a41098

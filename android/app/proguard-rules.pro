@@ -51,10 +51,10 @@
 # react-native-config
 # Remark: add production one when package is known
 -keep class com.rnproject.BuildConfig { *; }
--keep class com.forms.rnproject.dev.BuildConfig { *; }
--keep class com.forms.rnproject.sit.BuildConfig { *; }
--keep class com.forms.rnproject.uat.BuildConfig { *; }
--keep class com.forms.rnproject.prod.BuildConfig { *; }
+-keep class com.busfinder.dev.BuildConfig { *; }
+-keep class com.busfinder.sit.BuildConfig { *; }
+-keep class com.busfinder.uat.BuildConfig { *; }
+-keep class com.busfinder.prod.BuildConfig { *; }
 
 # react-native-inappbrowser
 -keepattributes *Annotation*

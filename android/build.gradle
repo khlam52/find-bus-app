@@ -3,7 +3,7 @@
 buildscript {
     ext {
         buildToolsVersion = "30.0.2"
-        minSdkVersion = 29
+        minSdkVersion = 26
         compileSdkVersion = 31
         targetSdkVersion = 31
         ndkVersion = "21.4.7075529"
@@ -19,7 +19,6 @@ buildscript {
         classpath("com.android.tools.build:gradle:4.2.2")
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-        classpath 'com.google.gms:google-services:4.3.10' // firebase
         // sonarqube
         classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.3"
     }
@@ -34,9 +33,6 @@ allprojects {
         maven {
             // Android JSC is installed from npm
             url("$rootDir/../node_modules/jsc-android/dist")
-        }
-        maven {
-            url "$rootDir/../native_modules/react-native-promon/android/sdk/maven"
         }
 
         mavenCentral {

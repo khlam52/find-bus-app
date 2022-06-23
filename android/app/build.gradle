@@ -1,5 +1,4 @@
 apply plugin: "com.android.application"
-apply plugin: 'com.google.gms.google-services' // firebase
 apply plugin: "org.sonarqube"
 
 sonarqube {
@@ -180,12 +179,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
-        formsrelease {
-            if (project.hasProperty('FORMS_APP_UPLOAD_STORE_FILE')) {
-                storeFile file(FORMS_APP_UPLOAD_STORE_FILE)
-                storePassword FORMS_APP_UPLOAD_STORE_PASSWORD
-                keyAlias FORMS_APP_UPLOAD_KEY_ALIAS
-                keyPassword FORMS_APP_UPLOAD_KEY_PASSWORD
+        busrelease {
+            if (project.hasProperty('BUS_APP_UPLOAD_STORE_FILE')) {
+                storeFile file(BUS_APP_UPLOAD_STORE_FILE)
+                storePassword BUS_APP_UPLOAD_STORE_PASSWORD
+                keyAlias BUS_APP_UPLOAD_KEY_ALIAS
+                keyPassword BUS_APP_UPLOAD_KEY_PASSWORD
             }
         }
     }
@@ -204,7 +203,7 @@ android {
             if (project.env.get("AOS_BUILD_UNSIGN") == 'true') {
                 signingConfig null
             } else {
-                signingConfig signingConfigs.formsrelease
+                signingConfig signingConfigs.busrelease
             }
             minifyEnabled enableProguardInReleaseBuilds
             shrinkResources true // some unused images maybe delete if they are not used
@@ -214,14 +213,14 @@ android {
 //            initWith debug
 //            matchingFallbacks = ['debug']
             initWith release
-            signingConfig signingConfigs.formsrelease
+            signingConfig signingConfigs.busrelease
             matchingFallbacks = ['release']
         }
         uat {
 //            initWith debug
 //            matchingFallbacks = ['debug']
             initWith release
-            signingConfig signingConfigs.formsrelease
+            signingConfig signingConfigs.busrelease
             matchingFallbacks = ['release']
         }
     }
@@ -317,26 +316,5 @@ project.afterEvaluate {
 project.afterEvaluate {
     android.applicationVariants.all { variant ->
         def isBuildUnsign = project.env.get("AOS_BUILD_UNSIGN")
-        def isEnablePromon = project.env.get("IS_ENABLE_PROMON")
-        if (isEnablePromon == 'true' && isBuildUnsign == 'false') {
-            def separator = "-"
-            def branchName = getGitRevParseInfo('--abbrev-ref')
-            branchName = branchName.split("/").last()
-            def gitCommitHash = getGitRevParseInfo('--short')
-            def versionName = variant.versionName
-            def versionCode = variant.versionCode
-            def date = new Date()
-            def formattedDate = date.format('yyyyMMddHHmm')
-            def variantName = variant.name
-            def apkFileName = "shielded-app"+ separator + variantName + separator + branchName + separator + versionName + separator + versionCode + separator + gitCommitHash + separator + formattedDate + ".apk"
-
-            Task createPromonAPKTask = project.task("createPromon${variant.name.capitalize()}APK", type:Exec) {
-                workingDir '../../promon-shielder/android'
-                commandLine './gen_promon_apk.sh'
-                def argsList = [variant.name, apkFileName]
-                args argsList
-            }
-            variant.assemble.finalizedBy(createPromonAPKTask)
-        }
     }
 }

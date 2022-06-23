@@ -4,7 +4,3 @@
 *.framework filter=lfs diff=lfs merge=lfs -text
 *.xcframework filter=lfs diff=lfs merge=lfs -text
 *.bundle filter=lfs diff=lfs merge=lfs -text
-promon-shielder/android/Shielder.jar filter=lfs diff=lfs merge=lfs -text
-promon-shielder/android/Shielder.debug.dat filter=lfs diff=lfs merge=lfs -text
-promon-shielder/android/Shielder.release.dat filter=lfs diff=lfs merge=lfs -text
-promon-shielder/ios/Shielder.jar filter=lfs diff=lfs merge=lfs -text

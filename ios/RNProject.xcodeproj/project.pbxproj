@@ -302,7 +302,6 @@
 				B63B9BFCD50BFB4D1CFDEA04 /* [CP] Embed Pods Frameworks */,
 				A3D6FA9D4CF2818EDF880C6C /* [CP-User] [RNFB] Core Configuration */,
 				DB6904CA27BDBD3700F4821D /* [RNProject] Setup Firebase Environment GoogleService-Info.plist */,
-				DB11482A27CE5C90005FE4B0 /* [RNProject] Promon Shield IPA */,
 			);
 			buildRules = (
 			);
@@ -408,13 +407,11 @@
 				"${PODS_ROOT}/Target Support Files/Pods-RNProject-RNProjectTests/Pods-RNProject-RNProjectTests-frameworks.sh",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion/double-conversion.framework/double-conversion",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/react-native-promon/ShieldSDK.framework/ShieldSDK",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ShieldSDK.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -517,13 +514,11 @@
 				"${PODS_ROOT}/Target Support Files/Pods-RNProject/Pods-RNProject-frameworks.sh",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion/double-conversion.framework/double-conversion",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/react-native-promon/ShieldSDK.framework/ShieldSDK",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ShieldSDK.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -551,24 +546,6 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
-		};
-		DB11482A27CE5C90005FE4B0 /* [RNProject] Promon Shield IPA */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "[RNProject] Promon Shield IPA";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ \"${IS_ENABLE_PROMON}\" = \"true\" ]; then\n\nset -e\n\nSHIELDER=\"$SRCROOT/../promon-shielder/ios/Shielder.jar\"\nCONFIG=\"$SRCROOT/../promon-shielder/ios/promon_config_ios.xml\"\nIPANAME=\"$TARGET_BUILD_DIR/$PRODUCT_NAME.$WRAPPER_EXTENSION\"\n\n#java -jar \"$SHIELDER\" --xcode --config \"$CONFIG\" -o \"$IPANAME\" \"$IPANAME\"\n\n# debug for promon\njava -jar \"$SHIELDER\" --xcode --debug --no-bind --verbose --config \"$CONFIG\" -o \"$IPANAME\" \"$IPANAME\"\n\nfi\n";
 		};
 		DB6904CA27BDBD3700F4821D /* [RNProject] Setup Firebase Environment GoogleService-Info.plist */ = {
 			isa = PBXShellScriptBuildPhase;

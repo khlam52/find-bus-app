@@ -38,7 +38,7 @@ Or you may choose the scheme in Xcode and click run.
 variant can have 'debug', 'sit', 'uat', 'release'
 
 ```bash
-react-native run-android --appId=com.forms.rnproject.uat --variant=uat
+react-native run-android --appId=com.busfinder.uat --variant=uat
 ```
 
 Or you may choose the variant in Android Studio and click run.
@@ -52,41 +52,6 @@ cd android
 
 You may assembleSit, assembleUat, assembleRelease, the apk will be generated in release config.
 
-How to build Android App Bundle with promon：
-
-1.  ` brew install bundletool`
-2.  set `IS_ENABLE_PROMON` to true
-3.  In Android Studio, Build -> Generate Signed Bundle, then generate aab file
-4.  Shield the aab file with promon
-    ```
-    java -jar Shielder.jar --config xxx_android_pp.xml $rawApkPath \
-      --keystore ../../android/app/forms_release.keystore --storepass Aa123456 \
-      --keyname forms --keypass Aa123456 \
-      --sigalg SHA256withRSA --digestalg SHA256 \
-      --dat Shielder.release.dat
-    ```
-    Wrapped aab files should be generated.
-5.  Generate a set of APKs from your app bundle:
-
-    ```
-    bundletool build-apks --bundle=/MyApp/my_app.aab --output=/MyApp/my_app.apks
-    ```
-
-    If you want to deploy the APKs to a device, you need to also include your app’s signing information, as shown in the command below. If you do not specify signing information, bundletool attempts to sign your APKs with a debug key for you.
-
-    ```
-    bundletool build-apks --bundle=/MyApp/my_app.aab --output=/MyApp/my_app.apks
-    --ks=/MyApp/keystore.jks
-    --ks-pass=file:/MyApp/keystore.pwd
-    --ks-key-alias=MyKeyAlias
-    --key-pass=file:/MyApp/key.pwd
-    ```
-
-6.  Deploy APKs to a connected device:
-    ```
-    bundletool install-apks --apks=/MyApp/my_app.apks
-    ```
-
 ## Import
 
 All import statement should follow the following:
@@ -96,10 +61,6 @@ import useAppTheme from '~src/contexts/theme';
 ```
 
 ~src is the root path alias of ~/src
-
-## Git Flow
-
-[Git Flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) will be used in this project. Please have a look on it before pushing any code.
 
 ## Coding Style
 
@@ -112,15 +73,6 @@ import useAppTheme from '~src/contexts/theme';
 ## Environment
 
 [React Native Config](https://github.com/luggit/react-native-config) has been used for configurating different environment. .env files are located in root directory and environment variables can be found inside it.
-
-## API Mocking
-
-When `IS_MOCK_DATA` is true from `.env` file, all the api call from `ApiService` will return mock data from `MockService`.
-
-1. Define api url in `src/Config.js`
-2. Add dummy json file in `src/assets/dummy-json`
-3. Add return sample json from `getMockData` function in `MockService`
-4. Add new function in `ApiService`
 
 ## Responsive UI
 
@@ -255,103 +207,3 @@ Android (in Android Studio)
 2. Select Build Variant to release (Click Project "RNProject" folder > Build > Select Build Variant... > change "app" to release (p.s. below library Build Variant will auto change after changed "app"))
 3. Build apk (Build > Build Bundle(s)/APK(s) > Build APK(s))
 4. APK will be located at /promon-shielder/android/wrapped-rnproject-release-#-#-#-#.apk
-
-## Example of deploy Android App Bundle to devices for testing
-
-- When building release, may get this error:
-
-```
-E/AndroidRuntime: FATAL EXCEPTION: create_react_context
-    Process: com.xxx.xxx, PID: 15571
-    java.lang.RuntimeException: Unable to load script. Make sure you're either running Metro (run 'react-native start') or that your bundle 'index.android.bundle' is packaged correctly for release.
-        at com.facebook.react.bridge.CatalystInstanceImpl.jniLoadScriptFromAssets(Native Method)
-```
-
-- need to add this in build.gradle:
-
-```
-project.ext.react = [
-    enableHermes: false,  // clean and rebuild if changing
-    inputExcludes: ["ios/**", "__tests__/**", "js_build/**", "fastlane/**", "fastlane_build/**"],
-    bundleInSit: true,
-    bundleInUat: true,
-    bundleInRelease: true,
-    jsBundleDirRelease: "$buildDir/intermediates/assets/release",
-]
-```
-
-- Build aar first:
-
-```
-cd android
-./gradlew bundleUat
-```
-
-- Shield with Promon:
-
-```
-cd ../promon-shielder/android
-java -jar Shielder.jar --config xxx_android_pp.xml path-to-RNProject/RNProject/android/app/uat/app-uat.aab \
- --keystore ../../android/app/forms_release.keystore --storepass Aa123456 \
- --keyname forms --keypass Aa123456 \
---sigalg SHA256withRSA --digestalg SHA256 \
- --dat Shielder.release.dat \
---output path-to-RNProject/RNProject/app-build/shielded-app-uat.aab
-```
-
-- Generate apks from aar
-
-```
-bundletool build-apks --bundle=path-to-RNProject/RNProject/app-build/shielded-app-uat.aab \
---ks=path-to-RNProject/RNProject/android/app/forms_release.keystore \
---ks-pass=pass:Aa123456 \
---ks-key-alias=forms \
---key-pass=pass:Aa123456 \
---output=path-to-RNProject/RNProject/app-build/shielded-app-uat.apks
-```
-
-- Deploy to device for testing
-
-```
-bundletool install-apks --apks=path-to-RNProject/RNProject/app-build/shielded-app-uat.apks
-```
-
-- Conclusion (Only generate app bundle to submit to Play Store)
-
-```
-cd android
-./gradlew bundleUat
-cd ../promon-shielder/android
-java -jar Shielder.jar --config xxx_android_pp.xml path-to-RNProject/RNProject/android/app/uat/app-uat.aab \
- --keystore ../../android/app/forms_release.keystore --storepass Aa123456 \
- --keyname forms --keypass Aa123456 \
---sigalg SHA256withRSA --digestalg SHA256 \
- --dat Shielder.release.dat \
---output path-to-RNProject/RNProject/app-build/shielded-app-uat.aab
-```
-
-- Conclusion (Generate app bundle and deploy to device for testing)
-
-```
-cd android
-./gradlew bundleUat
-cd ../promon-shielder/android
-java -jar Shielder.jar --config xxx_android_pp.xml path-to-RNProject/RNProject/android/app/uat/app-uat.aab \
- --keystore ../../android/app/forms_release.keystore --storepass Aa123456 \
- --keyname forms --keypass Aa123456 \
---sigalg SHA256withRSA --digestalg SHA256 \
- --dat Shielder.release.dat \
---output path-to-RNProject/RNProject/app-build/shielded-app-uat.aab
-bundletool build-apks --bundle=path-to-RNProject/RNProject/app-build/shielded-app-uat.aab \
---ks=path-to-RNProject/RNProject/android/app/forms_release.keystore \
---ks-pass=pass:Aa123456 \
---ks-key-alias=forms \
---key-pass=pass:Aa123456 \
---output=path-to-RNProject/RNProject/app-build/shielded-app-uat.apks
-bundletool install-apks --apks=path-to-RNProject/RNProject/app-build/shielded-app-uat.apks
-```
-
-- Development Debug
-  react-native run-android --appId=com.forms.rnproject.dev --variant=debug
-  react-native run-android --appId=com.forms.rnproject.sit --variant=sit
-  react-native run-android --appId=com.forms.rnproject.uat --variant=uat

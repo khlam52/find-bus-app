@@ -73,7 +73,7 @@ export default function FindBusScreen({ navigation }) {
         isShowChangeLang={true}
       />
       <FlatList
-        data={allBusRouteList}
+        data={allBusRouteList ? allBusRouteList : []}
         renderItem={renderItem}
         ListFooterComponent={listFooterComponent}
         ListHeaderComponent={listHeaderComponent}

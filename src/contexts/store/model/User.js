@@ -1,16 +1,18 @@
 import { action } from 'easy-peasy';
 
-let initalAllBusRouteList = {
-  bound: null,
-  dest_en: null,
-  dest_sc: null,
-  dest_tc: null,
-  orig_en: null,
-  orig_sc: null,
-  orig_tc: null,
-  route: null,
-  service_type: null,
-};
+let initalAllBusRouteList = [
+  {
+    bound: null,
+    dest_en: null,
+    dest_sc: null,
+    dest_tc: null,
+    orig_en: null,
+    orig_sc: null,
+    orig_tc: null,
+    route: null,
+    service_type: null,
+  },
+];
 
 let initFavouriteList = [];
 

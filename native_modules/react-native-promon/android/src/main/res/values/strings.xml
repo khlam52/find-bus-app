@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<resources>
-	<string name="rooted_alert">We detected your mobile device\'s operating system has been modified. For security reasons, your RNProject App has been disabled. To protect the security of your account, please use another device to access the App. (%1$s)</string>
-	<string name="security_risk">We cannot proceed with your request. If the problem persists, please contact Customer Service. (%1$s)</string>
-	<string name="common_exit">Quit</string>
-</resources>
