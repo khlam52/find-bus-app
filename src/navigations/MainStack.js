@@ -10,7 +10,6 @@ import DeviceInfo from 'react-native-device-info';
 import useAppContext from '~src/contexts/app';
 import Route from '~src/navigations/Route';
 import { TabStack } from '~src/navigations/TabStack';
-import LandingScreen from '~src/screens/auth/landing/LandingScreen';
 import FavouriteScreen from '~src/screens/favourite/FavouriteScreen';
 import FindBusScreen from '~src/screens/find-bus/FindBusScreen';
 import SplashScreen from '~src/screens/first-launch/splash/SplashScreen';
@@ -29,7 +28,6 @@ launchingScreens[Route.SPLASH_SCREEN] = SplashScreen;
 
 // Pre login Screens
 const authScreens = {};
-authScreens[Route.LANDING_SCREEN] = LandingScreen;
 
 // Post login Screens
 const postLoginScreens = {};

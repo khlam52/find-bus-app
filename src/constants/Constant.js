@@ -36,22 +36,3 @@ export const THEME_NAME = {
   DARK: 'DARK',
   LIGHT: 'LIGHT',
 };
-
-// Used in LoginScreen for normal login and biometric enable
-export const LOGIN_TYPE = {
-  USER_NAME_PASSWORD: 'USER_NAME_PASSWORD',
-};
-
-// Used in OtpScreen for handling different screen navigation
-export const OTP_FROM_TYPE = {
-  FROM_USERNAME_PASSWORD_LOGIN: 'FROM_USERNAME_PASSWORD_LOGIN',
-  NONE: 'NONE',
-};
-
-// Login Sequence
-export const LOGIN_SEQUENCE = {
-  OTP: 'OTP',
-  TNC: 'TNC',
-  CHANGE_PW: 'CHANGE_PW',
-  TAB_SCREEN: 'TAB_SCREEN',
-};

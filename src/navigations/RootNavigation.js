@@ -50,8 +50,6 @@ const getScreenOptions = (route) => {
     case Route.BOTTOM_SHEET_SELECTION_MODAL:
       return modalOption;
     case Route.MAIN_STACK:
-    case Route.ONBOARDING_TUTORIAL_MODAL:
-    case Route.PERMISSION_SCREEN:
       return defaultOption;
     case Route.BOTTOM_SHEET_MODAL:
       return defaultOption;
