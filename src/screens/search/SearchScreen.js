@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -26,15 +26,6 @@ export default function SearchScreen({ navigation }) {
   const styles = getStyle(insets, theme);
 
   const [searchRoute, setSearchRoute] = useState('');
-
-  const [searchedList, setSearchList] = useState([]);
-
-  useEffect(() => {
-    console.log(
-      'ListHelper.getSearchAlplabetList():',
-      ListHelper.getSearchAlplabetList(),
-    );
-  }, []);
 
   const renderItem = ({ item, index }) => {
     return <SearchListItemView item={item} index={index} />;

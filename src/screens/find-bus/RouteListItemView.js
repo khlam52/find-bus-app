@@ -84,6 +84,7 @@ export default function RouteListItemView({ item, index }) {
       routeDetailList: routeDetailList,
       stationTitle: getDestStationName(),
       routeTitle: item.route,
+      selectedItem: item,
     });
   };
 

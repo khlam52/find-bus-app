@@ -61,6 +61,7 @@ export default function FavouriteListItemView({ item, index }) {
       routeDetailList: routeDetailList,
       stationTitle: getDestStationName(),
       routeTitle: item.route,
+      selectedItem: item,
     });
   };
 

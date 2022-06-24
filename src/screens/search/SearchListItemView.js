@@ -50,6 +50,7 @@ export default function SearchListItemView({ item, index }) {
       routeDetailList: routeDetailList,
       stationTitle: getDestStationName(),
       routeTitle: item.route,
+      selectedItem: item,
     });
   };
 

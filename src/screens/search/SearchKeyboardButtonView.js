@@ -58,6 +58,7 @@ export default function SearchKeyboardButtonView({
   const renderAlphabetItem = ({ item, index }) => {
     return (
       <AppPressable
+        disableDelayPress={true}
         key={index}
         onPress={() => {
           onKeyboardItemPressed(item);
@@ -99,6 +100,7 @@ export default function SearchKeyboardButtonView({
               : false;
           return (
             <AppPressable
+              disableDelayPress={true}
               key={index}
               onPress={() => {
                 onKeyboardItemPressed(item);

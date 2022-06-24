@@ -205,10 +205,10 @@ const getStyle = (theme) => {
       paddingTop: sw(200),
     },
     dataText: {
-      ...Typography.ts(FONT_FAMILY_400, sw(18)),
-      paddingBottom: sw(28),
+      ...Typography.ts(FONT_FAMILY_400, sw(14)),
+      paddingBottom: sw(36),
       paddingTop: sw(20),
-      color: '#EFF0F2',
+      color: '#B6B6B6',
     },
   });
 };

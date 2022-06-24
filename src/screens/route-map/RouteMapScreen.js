@@ -1,12 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import Geolocation from '@react-native-community/geolocation';
-import { useStoreState } from 'easy-peasy';
+import { useFocusEffect } from '@react-navigation/native';
+import { useStoreActions, useStoreState } from 'easy-peasy';
 import _ from 'lodash';
 import moment from 'moment';
 import {
   LayoutAnimation,
-  Pressable,
   ScrollView,
   StyleSheet,
   Text,
@@ -22,6 +22,8 @@ import {
   BackIcon,
   DarkMapNotSelectedStopIcon,
   DarkMapSelectedStopIcon,
+  FillHeartIcon,
+  HeartIcon,
   LightMapNotSelectedStopIcon,
   LightMapSelectedStopIcon,
 } from '~src/assets/images';
@@ -48,6 +50,10 @@ export default function RouteMapScreen({ navigation, route }) {
   const routeDetailList = _.get(route, 'params.routeDetailList', []);
   const stationTitle = _.get(route, 'params.stationTitle', '');
   const routeTitle = _.get(route, 'params.routeTitle', '');
+  const selectedItem = _.get(route, 'params.selectedItem', {});
+
+  const [isHeartIconPressed, setIsHeartIconPressed] = useState(false);
+  const isHeartIconPressedRef = useRef(false);
 
   const mapRef = useRef(null);
 
@@ -67,6 +73,24 @@ export default function RouteMapScreen({ navigation, route }) {
 
   const allStopDetailList = useStoreState(
     (state) => state.user.allStopDetailList,
+  );
+
+  const favouriteList = useStoreState((state) => state.user.favouriteList);
+
+  const setFavouriteList = useStoreActions(
+    (action) => action.user.setFavouriteList,
+  );
+
+  useFocusEffect(
+    useCallback(() => {
+      if (ListHelper.isFavouriteItem(selectedItem) === true) {
+        setIsHeartIconPressed(true);
+        isHeartIconPressedRef.current = true;
+      } else {
+        setIsHeartIconPressed(false);
+        isHeartIconPressedRef.current = false;
+      }
+    }, []),
   );
 
   useEffect(() => {
@@ -206,6 +230,24 @@ export default function RouteMapScreen({ navigation, route }) {
     return moment(eta).diff(moment(currentTime), 'minutes');
   };
 
+  const onHeartIconPressed = () => {
+    setIsHeartIconPressed(!isHeartIconPressed);
+    isHeartIconPressedRef.current = !isHeartIconPressedRef.current;
+    if (isHeartIconPressedRef.current) {
+      ListHelper.setFavouriteListFunc(
+        selectedItem,
+        favouriteList,
+        setFavouriteList,
+      );
+    } else {
+      ListHelper.deleteFavouriteListFunc(
+        selectedItem,
+        favouriteList,
+        setFavouriteList,
+      );
+    }
+  };
+
   return (
     <View style={styles.container}>
       <BaseHeader
@@ -214,12 +256,21 @@ export default function RouteMapScreen({ navigation, route }) {
           station: stationTitle,
         })}
         leftElement={
-          <Pressable
+          <AppPressable
             onPress={() => {
               navigation.goBack();
             }}>
             <BackIcon fill={theme.colors.text} />
-          </Pressable>
+          </AppPressable>
+        }
+        rightElement={
+          <AppPressable onPress={onHeartIconPressed} disableDelayPress={true}>
+            {isHeartIconPressed ? (
+              <FillHeartIcon width={sw(30)} height={sw(27)} />
+            ) : (
+              <HeartIcon width={sw(30)} height={sw(27)} />
+            )}
+          </AppPressable>
         }
       />
       <MapView

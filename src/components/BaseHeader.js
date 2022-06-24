@@ -32,6 +32,7 @@ const BaseHeader = ({
   leftElement,
   leftElementContainerStyle,
   rightElementContainerStyle,
+  rightElement,
   additionalStyle,
   isShowChangeLang,
   ...props
@@ -224,6 +225,7 @@ const BaseHeader = ({
                 </View>
               </AppPressable>
             )}
+            {rightElement ? rightElement : null}
           </View>
         </View>
       </SafeAreaView>
