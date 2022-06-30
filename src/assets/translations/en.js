@@ -46,6 +46,7 @@ export default {
     MAP_SCREEN: {
       TITLE: '{{route}} To {{station}}',
       MINS: '- {{time}} mins',
+      NO_ETA: 'No scheduled departures',
     },
     SPLASH_SCREEN: {
       TITLE: 'Information provided by DATA.GOV.HK',

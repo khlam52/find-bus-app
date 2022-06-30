@@ -357,20 +357,26 @@ export default function RouteMapScreen({ navigation, route }) {
                 </View>
               </View>
               {selectedStop === item &&
-                stopETAList &&
-                stopETAList.map((etaItem, etaIndex) => {
-                  return (
-                    getDiffETAMinutes(etaItem.eta) > 0 && (
-                      <View key={etaIndex}>
-                        <Text style={styles.etaText}>
-                          {t('SCREENS.MAP_SCREEN.MINS', {
-                            time: getDiffETAMinutes(etaItem.eta),
-                          })}
-                        </Text>
-                      </View>
-                    )
-                  );
-                })}
+                (stopETAList && stopETAList[0].eta ? (
+                  stopETAList.map((etaItem, etaIndex) => {
+                    return (
+                      etaIndex < 3 &&
+                      getDiffETAMinutes(etaItem.eta) > 0 && (
+                        <View key={etaIndex}>
+                          <Text style={styles.etaText}>
+                            {t('SCREENS.MAP_SCREEN.MINS', {
+                              time: getDiffETAMinutes(etaItem.eta),
+                            })}
+                          </Text>
+                        </View>
+                      )
+                    );
+                  })
+                ) : (
+                  <Text style={styles.etaText}>
+                    {t('SCREENS.MAP_SCREEN.NO_ETA')}
+                  </Text>
+                ))}
             </AppPressable>
           );
         })}

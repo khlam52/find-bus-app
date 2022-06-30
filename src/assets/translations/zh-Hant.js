@@ -46,6 +46,7 @@ export default {
     MAP_SCREEN: {
       TITLE: '{{route}} 前往 {{station}}',
       MINS: '- {{time}} 分鐘',
+      NO_ETA: '沒有預定的班次',
     },
     SPLASH_SCREEN: {
       TITLE: '資料由DATA.GOV.HK提供',
