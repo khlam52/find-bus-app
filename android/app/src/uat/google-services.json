@@ -1,48 +1,41 @@
 {
   "project_info": {
-    "project_number": "282864327067",
-    "project_id": "rnproject-uat-9c598",
-    "storage_bucket": "rnproject-uat-9c598.appspot.com"
+    "project_number": "760813741522",
+    "project_id": "bus-finder-89641",
+    "storage_bucket": "bus-finder-89641.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:282864327067:android:ff00ed63dd2d6123cb293e",
+        "mobilesdk_app_id": "1:760813741522:android:36c3ddcde998157f6a140b",
         "android_client_info": {
-          "package_name": "com.forms.rnproj.uat"
+          "package_name": "com.busfinder.uat"
         }
       },
       "oauth_client": [
         {
-          "client_id": "282864327067-eu3alaa7r29c5toksk9sijb9oa9blqes.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.forms.rnproj.uat",
-            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
-          }
-        },
-        {
-          "client_id": "282864327067-91r70qd75nf8h40613lrc3gl0gki54mt.apps.googleusercontent.com",
+          "client_id": "760813741522-2fvvva5s3b92d2j6insj9k3unno50h9d.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCF0NeuAQ7eC-7ooRk0DECid8PtQJyeM84"
+          "current_key": "AIzaSyC9eaYCj1XTJIhs4_r-LNRQu_GMG8JMxic"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "282864327067-91r70qd75nf8h40613lrc3gl0gki54mt.apps.googleusercontent.com",
+              "client_id": "760813741522-2fvvva5s3b92d2j6insj9k3unno50h9d.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "282864327067-pa5on44g8n0o21j2jpc9lnr1u154oo6n.apps.googleusercontent.com",
+              "client_id": "760813741522-fjke9o3vt2ftffu2viakp65j25vg61ld.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.forms.rnproj.uat"
+                "bundle_id": "com.busfinder.uat",
+                "app_store_id": "123456789"
               }
             }
           ]

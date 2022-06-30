@@ -12,9 +12,10 @@ import {
   Text,
   View,
 } from 'react-native';
-import MapView, { Marker, Polyline } from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 import { RESULTS } from 'react-native-permissions';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Polyline } from 'react-native-svg';
 
 import {
   ArrowDownIcon,
@@ -317,7 +318,10 @@ export default function RouteMapScreen({ navigation, route }) {
           lineCap={'round'}
         />
       </MapView>
-      <ScrollView style={styles.stopListView} ref={selectedStopPositionRef}>
+      <ScrollView
+        style={styles.stopListView}
+        ref={selectedStopPositionRef}
+        showsVerticalScrollIndicator={false}>
         {markerListRef.current.map((item, index) => {
           return (
             <AppPressable

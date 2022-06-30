@@ -90,7 +90,7 @@ export default function SplashScreen({ navigation }) {
 
     setTimeout(() => {
       goNextPage();
-    }, 3000);
+    }, 1000);
 
     // initAppData()
     //   .then(() => {
