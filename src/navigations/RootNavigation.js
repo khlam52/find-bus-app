@@ -15,7 +15,7 @@ const getScreenOptions = (route) => {
   // console.log('RootNavigation -> getScreenOptions -> route:', route);
 
   let defaultOption = {
-    cardStyle: { backgroundColor: 'transparent' },
+    cardStyle: { backgroundColor: 'transparent', marginLeft: -2 },
     cardOverlayEnabled: true,
     animationEnabled: false,
     transparentCard: true,

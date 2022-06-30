@@ -53,7 +53,6 @@ export const MainStack = () => {
 
   const getScreenCardStyleInterpolator = (name) => {
     switch (name) {
-      case Route.LANDING_SCREEN:
       case Route.SPLASH_SCREEN:
         return CardStyleInterpolators.forNoAnimation;
       //   return CardStyleInterpolators.forVerticalIOS;
