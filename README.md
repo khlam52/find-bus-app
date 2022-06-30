@@ -12,10 +12,9 @@ Features:
 
 Sample Screen:
 <img src="./example/IMG_4839.PNG" width="212" height="448" />
-![alt text](./example/IMG_4839.PNG =212x448)
-![alt text](./example/IMG_4840.PNG)
-![alt text](./example/IMG_4841.PNG)
-![alt text](./example/IMG_4842.PNG)
+<img src="./example/IMG_4840.PNG" width="212" height="448" />
+<img src="./example/IMG_4841.PNG" width="212" height="448" />
+<img src="./example/IMG_4842.PNG" width="212" height="448" />
 
 ## Prerequisite
 
