@@ -11,7 +11,7 @@ Features:
 - Theme Change (Dark, Light)
 
 Sample Screen:
-![alt text](./example/IMG_4839.PNG)
+![alt text](./example/IMG_4839.PNG =212x448)
 ![alt text](./example/IMG_4840.PNG)
 ![alt text](./example/IMG_4841.PNG)
 ![alt text](./example/IMG_4842.PNG)
