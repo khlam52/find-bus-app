@@ -1,5 +1,21 @@
 # RNProject Template
 
+This is a bus searching app called Bus Finder.
+
+Features:
+
+- Show all the bus route in a list
+- Search bus route
+- Add favourite list
+- Locate the bus stop and show 3 ETA
+- Theme Change (Dark, Light)
+
+Sample Screen:
+![alt text](./example/IMG_4839.PNG)
+![alt text](./example/IMG_4840.PNG)
+![alt text](./example/IMG_4841.PNG)
+![alt text](./example/IMG_4842.PNG)
+
 ## Prerequisite
 
 - Xcode 13.2.1
@@ -95,115 +111,3 @@ Please visit below websites before coding:
 [Context API](https://reactjs.org/docs/context.html)
 
 [React Navigation v6](https://reactnavigation.org/docs/getting-started)
-
-## Can't show image in Non-Prod env
-
-`iOS`
-Search RCTHTTPRequestHandler.m file in Xcode
-
-In that file you will see a line like this:
-
-```bash
-#pragma mark - NSURLSession delegate
-```
-
-Right after that line, add this function
-
-```bash
-- (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler
-{
-    NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
-    NSLog(@"bundleIdentifier: %@", bundleIdentifier);
-    if ([bundleIdentifier rangeOfString:@".dev"].location != NSNotFound ||
-        [bundleIdentifier rangeOfString:@".sit"].location != NSNotFound ||
-        [bundleIdentifier rangeOfString:@".uat"].location != NSNotFound) {
-        if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-            if (challenge.previousFailureCount == 0) {
-                NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
-                completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
-            } else {
-                completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
-            }
-        }
-    }
-    else{
-        completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
-    }
-}
-```
-
-## Can't show PDF in Non-Prod env
-
-`iOS`
-Search RNPDFView.m file in Xcode
-
-In that file you will see a line like this:
-
-```bash
-#pragma mark - webview delegate
-```
-
-Right after that line, add this function
-
-```bash
-- (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler {
-    NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
-       NSLog(@"bundleIdentifier: %@", bundleIdentifier);
-       if ([bundleIdentifier rangeOfString:@".dev"].location != NSNotFound ||
-           [bundleIdentifier rangeOfString:@".sit"].location != NSNotFound ||
-           [bundleIdentifier rangeOfString:@".uat"].location != NSNotFound) {
-           if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-               if (challenge.previousFailureCount == 0) {
-                   NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
-                   completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
-               } else {
-                   completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
-               }
-           }
-       }
-       else{
-           completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
-       }
-  }
-```
-
-## Troubleshoot
-
-App seems like cache / cannot run properly after install new library
-
-1. close metro server (terminal)
-2. watchman watch-del-all
-3. npm start -- --reset-cache
-4. delete app and run the app again
-
-## Production Release Build
-
-- Make sure in "env.prod" all settings are correct
-- Update "IOS_APP_VERSION", "AOS_APP_VERSION", "IOS_BUILD_VERSION" and "AOS_BUILD_VERSION"
-- Check app display name is using correctly
-
-  1. XCode -> InfoPlist.strings (Simplified, Traditional, English) -> Uncomment `CFBundleDisplayName`
-  2. XCode -> Info.plist -> change `Bundle display name`
-  3. Android Studio -> AndroidManifest.xml -> `android:label="@string/APP_NAME"` to  
-     `android:label="@string/app_name"`
-  4. Android Studio -> values, values-zh, values-zh-rCN, values-zh-rHK, values-zh-rTW -> strings.xml -> change `app_name`
-
-- Increase "IOS_BUILD_VERSION" and "AOS_BUILD_VERSION" if need to re-submit to AppStore Connect or Google Play Store
-- Run command to make sure using the latest library (`npm i` > `cd ios` > `pod install`)
-
-iOS (in Xcode)
-
-1. Select prodction scheme (RNProject-PROD) and Select Generic iOS Device
-2. Clean Build Folder in Xcode (Product > Clean Build Folder)
-3. Archive (Product > Archive)
-4. Choose archived app and press Distribute App
-5. Select App Store Connect > Next
-6. Choose Upload > Next (p.s. If wanna to export the ipa file and upload to AppStore Connect later, you can choose "Export")
-7. No need to select any checkbox in the following steps until you can see the app is being uploading to the AppStore Connect.
-
-Android (in Android Studio)
-
-1. Sync Gradle Files (File > Sync Project with Gradle files)
-2. Select Build Variant to release (Click Project "RNProject" folder > Build > Select Build Variant... > change "app" to release (p.s. below library Build Variant will auto change after changed "app"))
-3. Build apk (Build > Build Bundle(s)/APK(s) > Build APK(s))
-4. APK will be located at /promon-shielder/android/wrapped-rnproject-release-#-#-#-#.apk

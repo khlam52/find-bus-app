@@ -32,7 +32,7 @@ export default {
   },
   SCREENS: {
     FIND_BUS_SCREEN: {
-      TITLE: 'Bus Finder App',
+      TITLE: 'Bus Finder',
     },
     FAVOURITE_SCREEN: {
       TITLE: 'Favourite List',

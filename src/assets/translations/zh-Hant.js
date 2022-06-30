@@ -32,7 +32,7 @@ export default {
   },
   SCREENS: {
     FIND_BUS_SCREEN: {
-      TITLE: '巴士App',
+      TITLE: 'Bus Finder',
     },
     FAVOURITE_SCREEN: {
       TITLE: '收藏列表',
