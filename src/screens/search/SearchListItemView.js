@@ -91,7 +91,11 @@ export default function SearchListItemView({ item, index }) {
           </View>
         </View>
         <View style={styles.stationRightView}>
-          <GoArrowIcon fill={theme.colors.secondary} />
+          <GoArrowIcon
+            fill={theme.colors.secondary}
+            width={sw(15)}
+            height={sw(15)}
+          />
         </View>
       </View>
     </AppPressable>
@@ -102,7 +106,7 @@ const getStyle = (insets, theme, locale) => {
   return StyleSheet.create({
     itemView: {
       flexDirection: 'row',
-      flex: 1,
+      // flex: 1,
       marginBottom: sw(8),
       marginLeft: sw(16),
       marginRight: sw(45),
@@ -127,11 +131,11 @@ const getStyle = (insets, theme, locale) => {
       marginBottom: sw(8),
     },
     stationRightView: {
-      //   flex: 1,
+      // flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: theme.colors.primary,
-      borderRadius: sw(100),
+      borderRadius: sw(1000),
       borderWidth: sw(8),
       borderColor: theme.colors.background,
       padding: sw(12),

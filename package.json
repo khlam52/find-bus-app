@@ -35,6 +35,7 @@
     "react": "17.0.2",
     "react-native": "0.67.3",
     "react-native-background-timer": "2.4.1",
+    "react-native-big-list": "^1.5.4",
     "react-native-blob-util": "0.14.0",
     "react-native-common-util": "file:native_modules/react-native-common-util",
     "react-native-config": "1.4.5",

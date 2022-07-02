@@ -84,6 +84,21 @@ export default function FindBusScreen({ navigation }) {
           />
         }
       />
+      {/* <BigList
+        data={allBusRouteList ? allBusRouteList : []}
+        renderItem={renderItem}
+        itemHeight={sw(90)}
+        footerHeight={sw(120)}
+        headerHeight={sw(36)}
+        renderFooter={listFooterComponent}
+        renderHeader={listHeaderComponent}
+        refreshControl={
+          <RefreshControl
+            refreshing={isRefreshing}
+            onRefresh={getAllRouteList}
+          />
+        }
+      /> */}
     </View>
   );
 }

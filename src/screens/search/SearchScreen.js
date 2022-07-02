@@ -1,7 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
 
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import BigList from 'react-native-big-list';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import SearchKeyboardButtonView from './SearchKeyboardButtonView';
@@ -54,12 +55,27 @@ export default function SearchScreen({ navigation }) {
         </Text>
       </View>
 
-      <FlatList
+      {/* <FlatList
+        maxToRenderPerBatch={10}
+        updateCellsBatchingPeriod={10 / 2}
         bounces={false}
         data={ListHelper.updateSearchList(searchRoute)}
         renderItem={renderItem}
         ListFooterComponent={listFooterComponent}
         ListHeaderComponent={listHeaderComponent}
+        // keyExtractor={(item, index) => index}
+      /> */}
+
+      <BigList
+        bounces={false}
+        itemHeight={sw(110)}
+        footerHeight={sw(450)}
+        headerHeight={sw(36)}
+        data={ListHelper.updateSearchList(searchRoute)}
+        renderItem={renderItem}
+        renderFooter={listFooterComponent}
+        renderHeader={listHeaderComponent}
+        keyExtractor={(item) => item.id}
       />
 
       <View style={styles.keyboardView}>
