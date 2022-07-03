@@ -143,7 +143,7 @@ const getStyle = (insets, theme) => {
           : sw(theme.spacings.s2) + sw(70),
       borderTopRightRadius: sw(20),
       borderTopLeftRadius: sw(20),
-      shadowOpacity: 0.8,
+      shadowOpacity: 0.5,
       shadowRadius: 10.0,
       shadowOffset: { 0: 15 },
       backgroundColor: theme.colors.tabBackground,
