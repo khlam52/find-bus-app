@@ -65,6 +65,7 @@ export default function RouteMapScreen({ navigation, route }) {
   const [selectedStop, setSelectedStop] = useState(null);
 
   const markerListRef = useRef([]);
+  const [markerList, setMarkerList] = useState([]);
   const latLongListRef = useRef([]);
   const [stopETAList, setStopETAList] = useState(null);
 
@@ -123,6 +124,8 @@ export default function RouteMapScreen({ navigation, route }) {
       };
     });
 
+    setMarkerList(markerListRef.current);
+
     latLongListRef.current = _.map(markerListRef.current, (item) => {
       return {
         latitude: item.lat,
@@ -153,11 +156,64 @@ export default function RouteMapScreen({ navigation, route }) {
           setIsGotGeoLoc(true);
 
           zoomToMap(position.coords.latitude, position.coords.longitude);
+          findNearestStop(position.coords.latitude, position.coords.longitude);
         },
         (error) => console.log(error.message),
         { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 },
       );
+    } else {
+      findNearestStop();
     }
+  };
+  ////
+
+  // Find Nearest Stop
+  const findNearestStop = async (lat, lng) => {
+    return new Promise(async (resolve) => {
+      let nearestStop = {};
+      let accessedStopesData = markerListRef.current;
+      let stopDistance = 9999999;
+      accessedStopesData.forEach((stop) => {
+        let newDist = getDistanceFromLatLonInKm(
+          lat ? lat : currentLat,
+          lng ? lng : currentLng,
+          stop.lat,
+          stop.long,
+        );
+        if (nearestStop === {}) {
+          nearestStop = stop;
+          stopDistance = newDist;
+        } else {
+          if (newDist <= stopDistance) {
+            nearestStop = stop;
+            stopDistance = newDist;
+          }
+        }
+      });
+      console.log(
+        'StopMapScreen -> findNearestStop:' + JSON.stringify(nearestStop),
+      );
+
+      setSelectedStop(nearestStop);
+      onMakerClick(nearestStop);
+      resolve(nearestStop);
+    });
+  };
+
+  const getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {
+    lat1 = deg2rad(lat1);
+    lat2 = deg2rad(lat2);
+    lon1 = deg2rad(lon1);
+    lon2 = deg2rad(lon2);
+    const R = 6371;
+    const x = (lon2 - lon1) * Math.cos((lat1 + lat2) / 2);
+    const y = lat2 - lat1;
+    const d = Math.sqrt(x * x + y * y) * R;
+    return d;
+  };
+
+  const deg2rad = (deg) => {
+    return deg * (Math.PI / 180);
   };
   ////
 
@@ -297,7 +353,7 @@ export default function RouteMapScreen({ navigation, route }) {
               longitude: Number(marker.long),
             }}
             onPress={(e) => {
-              console.log('BranchMapScreen -> clicked marker: ', marker);
+              console.log('StopMapScreen -> clicked marker: ', marker);
               onMakerClick(marker, index);
             }}
             pinColor={selectedStop === marker ? '#455960' : '#7A8C93'}
@@ -316,13 +372,14 @@ export default function RouteMapScreen({ navigation, route }) {
           lineJoin={'round'}
           geodesic={true}
           lineCap={'round'}
+          lineDashPattern={[1]}
         />
       </MapView>
       <ScrollView
         style={styles.stopListView}
         ref={selectedStopPositionRef}
         showsVerticalScrollIndicator={false}>
-        {markerListRef.current.map((item, index) => {
+        {markerList.map((item, index) => {
           return (
             <AppPressable
               onLayout={(event) => {

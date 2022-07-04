@@ -8,7 +8,7 @@ export default {
     DONE: 'Done',
     EXIT: 'Exit',
     HELP: 'Help',
-    OK: 'OK',
+    OK: '確定',
     QUIT: 'Quit',
     YES: 'Yes',
     NO: 'No',
@@ -50,6 +50,7 @@ export default {
     },
     SPLASH_SCREEN: {
       TITLE: '資料由DATA.GOV.HK提供',
+      ERROR: '無法連接網絡。',
     },
   },
 };

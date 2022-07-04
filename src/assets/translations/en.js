@@ -50,6 +50,7 @@ export default {
     },
     SPLASH_SCREEN: {
       TITLE: 'Information provided by DATA.GOV.HK',
+      ERROR: 'Network Connect Failed.',
     },
   },
 };

@@ -154,6 +154,7 @@ const getStyle = (insets, theme, locale) => {
       backgroundColor: theme.colors.primary,
       marginRight: sw(8),
       paddingVertical: sw(8),
+      paddingTop: sw(12),
       borderRadius: sw(10),
     },
     routeText: {

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useStoreActions, useStoreState } from 'easy-peasy';
 import i18n from 'i18n-js';
-import { View, StyleSheet, Text, ActivityIndicator } from 'react-native';
+import { View, StyleSheet, Text, ActivityIndicator, Alert } from 'react-native';
 import * as RNLocalize from 'react-native-localize';
 
 import { AppIcon } from '~src/assets/images';
@@ -11,13 +11,13 @@ import useLocalization from '~src/contexts/i18n';
 import useAppTheme from '~src/contexts/theme';
 import Route from '~src/navigations/Route';
 import ApiService from '~src/services/ApiService';
-import AppInitService from '~src/services/AppInitService';
 import LinkingService from '~src/services/LinkingService';
 import PushService from '~src/services/PushService';
 import StorageService from '~src/services/StorageService';
 import { Typography } from '~src/styles';
 import { sw } from '~src/styles/Mixins';
 import { FONT_FAMILY_400 } from '~src/styles/Typography';
+import CommonUtil from '~src/utils/CommonUtil';
 
 export default function SplashScreen({ navigation }) {
   const { locale, setLocale, t } = useLocalization();
@@ -68,6 +68,35 @@ export default function SplashScreen({ navigation }) {
     let favouriteList = await StorageService.getFavouriteList();
     setFavouriteList(favouriteList);
 
+    setTimeout(() => {
+      goNextPage();
+    }, 1000);
+
+    initAppData()
+      .then(() => {
+        console.log('SplashScreen -> initAppData -> success');
+        setTimeout(() => {
+          goNextPage();
+        }, 3000);
+      })
+      .catch((error) => {
+        Alert.alert(
+          i18n.t('SCREENS.SPLASH_SCREEN.ERROR'),
+          null,
+          [
+            {
+              text: i18n.t('BUTTONS.OK'),
+              onPress: () => CommonUtil.exitApp(),
+              style: 'cancel',
+            },
+          ],
+          null,
+        );
+        console.log('SplashScreen -> initAppData -> error: ', error);
+      });
+  };
+
+  const initAppData = async () => {
     try {
       let response = await ApiService.getKMBAllRouteList();
       console.log('getKMBAllRouteList response:', response);
@@ -86,36 +115,6 @@ export default function SplashScreen({ navigation }) {
       }
     } catch (error) {
       console.log('getKMBAllRouteList error ->', error);
-    }
-
-    setTimeout(() => {
-      goNextPage();
-    }, 1000);
-
-    // initAppData()
-    //   .then(() => {
-    //     console.log('SplashScreen -> initAppData -> success');
-    //     setTimeout(() => {
-    //       goNextPage();
-    //     }, 3000);
-    //   })
-    //   .catch((error) => {
-    //     ErrorUtil.showApiErrorMsgAlert(error, CommonUtil.exitApp);
-    //     console.log('SplashScreen -> initAppData -> error: ', error);
-    //   });
-  };
-
-  const initAppData = async () => {
-    try {
-      let checkAppDataResult = await AppInitService.checkAppUpdate();
-      console.log(
-        'SplashScreen -> initAppData -> checkAppDataResult: ',
-        checkAppDataResult,
-      );
-      // let allDataResult = await DataUpdateService.getAllData();
-      return Promise.resolve();
-    } catch (error) {
-      return Promise.reject(error);
     }
   };
 
