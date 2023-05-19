@@ -139,11 +139,11 @@ const getStyle = (insets, theme) => {
       position: 'absolute',
       height:
         insets.bottom > 0
-          ? insets.bottom + sw(70)
+          ? insets.bottom + sw(60)
           : sw(theme.spacings.s2) + sw(70),
       borderTopRightRadius: sw(20),
       borderTopLeftRadius: sw(20),
-      shadowOpacity: 0.5,
+      shadowOpacity: 0.2,
       shadowRadius: 10.0,
       shadowOffset: { 0: 15 },
       backgroundColor: theme.colors.tabBackground,

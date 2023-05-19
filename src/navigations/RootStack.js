@@ -1,9 +1,15 @@
 import React from 'react';
 
-import { NavigationContainer } from '@react-navigation/native';
+import {
+  DarkTheme,
+  DefaultTheme,
+  NavigationContainer,
+} from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { THEME_NAME } from '~src/constants/Constant';
+import useAppTheme from '~src/contexts/theme';
 import { MainStack } from '~src/navigations/MainStack';
 import RootNavigation from '~src/navigations/RootNavigation';
 import Route from '~src/navigations/Route';
@@ -18,6 +24,9 @@ commonModals[Route.BOTTOM_SHEET_SELECTION_MODAL] = BottomSheetSelectionModal;
 const Stack = createStackNavigator();
 
 export default function RootStack() {
+  const {
+    themeSwitched: { settings: theme, name: themeName },
+  } = useAppTheme();
   React.useEffect(() => {
     return () => (RootNavigation.isReadyRef.current = false);
   }, []);
@@ -25,6 +34,7 @@ export default function RootStack() {
   return (
     <SafeAreaProvider>
       <NavigationContainer
+        theme={themeName === THEME_NAME.DARK ? DarkTheme : DefaultTheme}
         ref={RootNavigation.navigationRef}
         onStateChange={RootNavigation.onStateChange}
         onReady={() => {

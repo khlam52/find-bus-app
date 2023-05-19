@@ -113,7 +113,7 @@ const getStyle = (insets, { theme, themeName }) => {
       textAlign: 'center',
       marginTop: sh(5),
       marginBottom: sh(18),
-      ...Typography.ts(theme.fonts.weight.bold, theme.fonts.size.h4),
+      ...Typography.ts(theme.fonts.weight.bold, theme.fonts.size.h5),
       color: theme.colors.text,
     },
   });

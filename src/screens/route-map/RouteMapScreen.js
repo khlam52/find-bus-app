@@ -311,151 +311,147 @@ export default function RouteMapScreen({ navigation, route }) {
   };
 
   return (
-    <View style={styles.container}>
-      <BaseHeader
-        title={t('SCREENS.MAP_SCREEN.TITLE', {
-          route: routeTitle,
-          station: stationTitle,
-        })}
-        leftElement={
-          <AppPressable
-            onPress={() => {
-              navigation.goBack();
-            }}>
-            <BackIcon fill={theme.colors.text} />
-          </AppPressable>
-        }
-        rightElement={
-          <AppPressable onPress={onHeartIconPressed} disableDelayPress={true}>
-            {isHeartIconPressed ? (
-              <FillHeartIcon width={sw(30)} height={sw(27)} />
-            ) : (
-              <HeartIcon width={sw(30)} height={sw(27)} />
-            )}
-          </AppPressable>
-        }
-      />
-      <MapView
-        userInterfaceStyle="light"
-        ref={mapRef}
-        style={styles.mapView}
-        initialRegion={{
-          latitude: Number(currentLat),
-          longitude: Number(currentLng),
-          latitudeDelta: 0.01,
-          longitudeDelta: 0.01,
-        }}
-        showsUserLocation={true}
-        loadingEnabled={true}
-        cacheEnabled={false}>
-        {/* Generate Marker */}
-        {markerListRef.current.map((marker, index) => (
-          <Marker
-            key={index}
-            // identifier={'' + marker.id}
-            coordinate={{
-              latitude: Number(marker.lat),
-              longitude: Number(marker.long),
-            }}
-            onPress={(e) => {
-              console.log('StopMapScreen -> clicked marker: ', marker);
-              onMakerClick(marker, index);
-            }}
-            pinColor={selectedStop === marker ? '#455960' : '#7A8C93'}
-            // image={{
-            //   uri:
-            //     selectedStop === marker
-            //       ? '~src/assets/images/background/selected-location-icon.png'
-            //       : 'marker_icon',
-            // }}
-          />
-        ))}
-        <Polyline
-          coordinates={latLongListRef.current}
-          strokeWidth={6}
-          strokeColor="#455960"
-          lineJoin={'round'}
-          geodesic={true}
-          lineCap={'round'}
-          lineDashPattern={[1]}
-        />
-      </MapView>
-      <ScrollView
-        style={styles.stopListView}
-        ref={selectedStopPositionRef}
-        showsVerticalScrollIndicator={false}>
-        {markerList.map((item, index) => {
-          return (
+    <>
+      <View style={styles.container}>
+        <BaseHeader
+          title={t('SCREENS.MAP_SCREEN.TITLE', {
+            route: routeTitle,
+            station: stationTitle,
+          })}
+          leftElement={
             <AppPressable
-              onLayout={(event) => {
-                const layout = event.nativeEvent.layout;
-                getStopItemPositionList(item, layout.y);
-              }}
-              disableDelayPress={true}
-              key={index}
-              style={styles.stopItemWholeview}
               onPress={() => {
-                onStopItemPressed(item);
+                navigation.goBack();
               }}>
-              <View style={styles.stopItemview}>
-                <View style={styles.stopLeftItemView}>
-                  {themeName === THEME_NAME.DARK ? (
-                    selectedStop === item ? (
-                      <DarkMapSelectedStopIcon />
-                    ) : (
-                      <DarkMapNotSelectedStopIcon />
-                    )
-                  ) : selectedStop === item ? (
-                    <LightMapSelectedStopIcon />
-                  ) : (
-                    <LightMapNotSelectedStopIcon />
-                  )}
-                  <Text style={styles.stopItemText}>
-                    {item.seq + '. ' + getDestStationName(item)}
-                  </Text>
-                </View>
-                <View style={{ flex: 1 }}>
-                  {selectedStop === item ? (
-                    <ArrowUpIcon fill={theme.colors.secondary} />
-                  ) : (
-                    <ArrowDownIcon fill={theme.colors.secondary} />
-                  )}
-                </View>
-              </View>
-              {selectedStop === item &&
-                (stopETAList && stopETAList[0].eta ? (
-                  stopETAList.map((etaItem, etaIndex) => {
-                    return (
-                      etaIndex < 3 &&
-                      getDiffETAMinutes(etaItem.eta) > 0 && (
-                        <View key={etaIndex}>
-                          <Text style={styles.etaText}>
-                            {t('SCREENS.MAP_SCREEN.MINS', {
-                              time: getDiffETAMinutes(etaItem.eta),
-                            })}
-                          </Text>
-                        </View>
-                      )
-                    );
-                  })
-                ) : (
-                  <Text style={styles.etaText}>
-                    {t('SCREENS.MAP_SCREEN.NO_ETA')}
-                  </Text>
-                ))}
+              <BackIcon fill={theme.colors.text} />
             </AppPressable>
-          );
-        })}
-        <View style={{ paddingBottom: sw(90) }} />
-      </ScrollView>
+          }
+          rightElement={
+            <AppPressable onPress={onHeartIconPressed} disableDelayPress={true}>
+              {isHeartIconPressed ? (
+                <FillHeartIcon width={sw(30)} height={sw(27)} />
+              ) : (
+                <HeartIcon width={sw(30)} height={sw(27)} />
+              )}
+            </AppPressable>
+          }
+        />
+        <MapView
+          userInterfaceStyle="light"
+          ref={mapRef}
+          style={styles.mapView}
+          initialRegion={{
+            latitude: Number(currentLat),
+            longitude: Number(currentLng),
+            latitudeDelta: 0.01,
+            longitudeDelta: 0.01,
+          }}
+          showsUserLocation={true}
+          loadingEnabled={true}
+          cacheEnabled={false}>
+          {/* Generate Marker */}
+          {markerListRef.current.map((marker, index) => (
+            <Marker
+              key={index}
+              // identifier={'' + marker.id}
+              coordinate={{
+                latitude: Number(marker.lat),
+                longitude: Number(marker.long),
+              }}
+              onPress={(e) => {
+                console.log('StopMapScreen -> clicked marker: ', marker);
+                onMakerClick(marker, index);
+              }}
+              pinColor={selectedStop === marker ? '#455960' : '#7A8C93'}
+            />
+          ))}
+          <Polyline
+            coordinates={latLongListRef.current}
+            strokeWidth={6}
+            strokeColor="#455960"
+            lineJoin={'round'}
+            geodesic={true}
+            lineCap={'round'}
+            lineDashPattern={[1]}
+          />
+        </MapView>
+        <ScrollView
+          style={styles.stopListView}
+          ref={selectedStopPositionRef}
+          showsVerticalScrollIndicator={false}>
+          {markerList.map((item, index) => {
+            return (
+              <AppPressable
+                onLayout={(event) => {
+                  const layout = event.nativeEvent.layout;
+                  getStopItemPositionList(item, layout.y);
+                }}
+                disableDelayPress={true}
+                key={index}
+                style={styles.stopItemWholeview}
+                onPress={() => {
+                  onStopItemPressed(item);
+                }}>
+                <View style={styles.stopItemview}>
+                  <View style={styles.stopLeftItemView}>
+                    {themeName === THEME_NAME.DARK ? (
+                      selectedStop === item ? (
+                        <DarkMapSelectedStopIcon />
+                      ) : (
+                        <DarkMapNotSelectedStopIcon />
+                      )
+                    ) : selectedStop === item ? (
+                      <LightMapSelectedStopIcon />
+                    ) : (
+                      <LightMapNotSelectedStopIcon />
+                    )}
+                    <Text style={styles.stopItemText}>
+                      {item.seq + '. ' + getDestStationName(item)}
+                    </Text>
+                  </View>
+                  <View style={{ flex: 1 }}>
+                    {selectedStop === item ? (
+                      <ArrowUpIcon fill={theme.colors.secondary} />
+                    ) : (
+                      <ArrowDownIcon fill={theme.colors.secondary} />
+                    )}
+                  </View>
+                </View>
+                {selectedStop === item &&
+                  (stopETAList && stopETAList[0].eta ? (
+                    stopETAList.map((etaItem, etaIndex) => {
+                      return (
+                        etaIndex < 3 &&
+                        getDiffETAMinutes(etaItem.eta) > 0 && (
+                          <View key={etaIndex}>
+                            <Text style={styles.etaText}>
+                              {t('SCREENS.MAP_SCREEN.MINS', {
+                                time: getDiffETAMinutes(etaItem.eta),
+                              })}
+                            </Text>
+                          </View>
+                        )
+                      );
+                    })
+                  ) : (
+                    <Text style={styles.etaText}>
+                      {t('SCREENS.MAP_SCREEN.NO_ETA')}
+                    </Text>
+                  ))}
+              </AppPressable>
+            );
+          })}
+          <View style={{ paddingBottom: sw(90) }} />
+        </ScrollView>
+      </View>
       <BannerAd
         unitId={TestIds.BANNER}
-        size={BannerAdSize.INLINE_ADAPTIVE_BANNER}
+        size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
         requestOptions={{
           requestNonPersonalizedAdsOnly: true,
         }}
       />
-    </View>
+    </>
   );
 }
 

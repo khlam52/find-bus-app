@@ -77,7 +77,7 @@ export default function SelectionFlatList({
                 selectedItem === item
                   ? theme.fonts.weight.bold
                   : theme.fonts.weight.semibold,
-                theme.fonts.size.lead,
+                theme.fonts.size.para,
               ),
               color:
                 selectedItem === item
