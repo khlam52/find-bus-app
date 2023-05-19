@@ -1,4 +1,7 @@
 {
   "name": "RNProject",
-  "displayName": "RNProject"
+  "displayName": "RNProject",
+  "react-native-google-mobile-ads": {
+    "ios_app_id": "ca-app-pub-7938970871123577~5614219250"
+  }
 }

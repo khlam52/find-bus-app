@@ -10,6 +10,8 @@ PODS:
     - React-Core (= 0.67.3)
     - React-jsi (= 0.67.3)
     - ReactCommon/turbomodule/core (= 0.67.3)
+  - Firebase (8.12.1):
+    - Firebase/Core (= 8.12.1)
   - Firebase/Analytics (8.12.1):
     - Firebase/Core
   - Firebase/Core (8.12.1):
@@ -50,6 +52,8 @@ PODS:
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/Logger (~> 7.7)
     - nanopb (~> 2.30908.0)
+  - FirebaseCoreInternal (9.6.0):
+    - "GoogleUtilities/NSData+zlib (~> 7.7)"
   - FirebaseDynamicLinks (8.12.0):
     - FirebaseCore (~> 8.0)
   - FirebaseInstallations (8.12.0):
@@ -147,6 +151,9 @@ PODS:
     - GoogleMaps
   - Google-Maps-iOS-Utils/QuadTree (3.10.3):
     - GoogleMaps
+  - Google-Mobile-Ads-SDK (10.3.0):
+    - GoogleAppMeasurement (< 11.0, >= 7.0)
+    - GoogleUserMessagingPlatform (>= 1.1)
   - GoogleAppMeasurement (8.12.0):
     - GoogleAppMeasurement/AdIdSupport (= 8.12.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
@@ -176,12 +183,25 @@ PODS:
   - GoogleMaps/Base (5.1.0)
   - GoogleMaps/Maps (5.1.0):
     - GoogleMaps/Base
+  - GoogleUserMessagingPlatform (2.0.1)
+  - GoogleUtilities (7.7.0):
+    - GoogleUtilities/AppDelegateSwizzler (= 7.7.0)
+    - GoogleUtilities/Environment (= 7.7.0)
+    - GoogleUtilities/ISASwizzler (= 7.7.0)
+    - GoogleUtilities/Logger (= 7.7.0)
+    - GoogleUtilities/MethodSwizzler (= 7.7.0)
+    - GoogleUtilities/Network (= 7.7.0)
+    - "GoogleUtilities/NSData+zlib (= 7.7.0)"
+    - GoogleUtilities/Reachability (= 7.7.0)
+    - GoogleUtilities/SwizzlerTestHelpers (= 7.7.0)
+    - GoogleUtilities/UserDefaults (= 7.7.0)
   - GoogleUtilities/AppDelegateSwizzler (7.7.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
   - GoogleUtilities/Environment (7.7.0):
     - PromisesObjC (< 3.0, >= 1.2)
+  - GoogleUtilities/ISASwizzler (7.7.0)
   - GoogleUtilities/Logger (7.7.0):
     - GoogleUtilities/Environment
   - GoogleUtilities/MethodSwizzler (7.7.0):
@@ -193,6 +213,8 @@ PODS:
   - "GoogleUtilities/NSData+zlib (7.7.0)"
   - GoogleUtilities/Reachability (7.7.0):
     - GoogleUtilities/Logger
+  - GoogleUtilities/SwizzlerTestHelpers (7.7.0):
+    - GoogleUtilities/MethodSwizzler
   - GoogleUtilities/UserDefaults (7.7.0):
     - GoogleUtilities/Logger
   - libevent (2.1.12)
@@ -528,6 +550,10 @@ PODS:
     - RNFBApp
   - RNGestureHandler (2.2.0):
     - React-Core
+  - RNGoogleMobileAds (10.3.2):
+    - Google-Mobile-Ads-SDK (= 10.3.0)
+    - GoogleUserMessagingPlatform (= 2.0.1)
+    - React-Core
   - RNInAppBrowser (3.6.3):
     - React-Core
   - RNLocalize (2.1.9):
@@ -585,6 +611,9 @@ DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
+  - Firebase
+  - FirebaseCore
+  - FirebaseCoreInternal
   - Flipper (= 0.99.0)
   - Flipper-Boost-iOSX (= 1.76.0.1.11)
   - Flipper-DoubleConversion (= 3.1.7)
@@ -607,6 +636,7 @@ DEPENDENCIES:
   - FlipperKit/FlipperKitUserDefaultsPlugin (= 0.99.0)
   - FlipperKit/SKIOSNetworkPlugin (= 0.99.0)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - GoogleUtilities
   - lottie-ios (from `../node_modules/lottie-ios`)
   - lottie-react-native (from `../node_modules/lottie-react-native`)
   - OpenSSL-Universal (= 1.1.180)
@@ -659,6 +689,7 @@ DEPENDENCIES:
   - "RNFBDynamicLinks (from `../node_modules/@react-native-firebase/dynamic-links`)"
   - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNGoogleMobileAds (from `../node_modules/react-native-google-mobile-ads`)
   - RNInAppBrowser (from `../node_modules/react-native-inappbrowser-reborn`)
   - RNLocalize (from `../node_modules/react-native-localize`)
   - "RNNotifee (from `../node_modules/@notifee/react-native`)"
@@ -677,6 +708,7 @@ SPEC REPOS:
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseCoreDiagnostics
+    - FirebaseCoreInternal
     - FirebaseDynamicLinks
     - FirebaseInstallations
     - FirebaseMessaging
@@ -691,9 +723,11 @@ SPEC REPOS:
     - FlipperKit
     - fmt
     - Google-Maps-iOS-Utils
+    - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleMaps
+    - GoogleUserMessagingPlatform
     - GoogleUtilities
     - libevent
     - nanopb
@@ -810,6 +844,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/messaging"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
+  RNGoogleMobileAds:
+    :path: "../node_modules/react-native-google-mobile-ads"
   RNInAppBrowser:
     :path: "../node_modules/react-native-inappbrowser-reborn"
   RNLocalize:
@@ -841,6 +877,7 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: bd10d7706ba8d6e01ea2816f8fe9e9b881cb0918
   FirebaseCore: 8138de860a90ca7eec5e324da5788fb0ebf1d93c
   FirebaseCoreDiagnostics: 3b40dfadef5b90433a60ae01f01e90fe87aa76aa
+  FirebaseCoreInternal: bca76517fe1ed381e989f5e7d8abb0da8d85bed3
   FirebaseDynamicLinks: 98a5f0fe542245a89ec55f646d2581298c29219d
   FirebaseInstallations: 25764cf322e77f99449395870a65b2bef88e1545
   FirebaseMessaging: 23db8bf05585e929ada8af0f0968933c25252808
@@ -856,9 +893,11 @@ SPEC CHECKSUMS:
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: 85ecdd10ee8d8ec362ef519a6a45ff9aa27b2e85
   Google-Maps-iOS-Utils: 95d5ca4d2004314eff88c1819b969db6cac37ab6
+  Google-Mobile-Ads-SDK: eba3109a9aa504596a207e4d18d433b329596b76
   GoogleAppMeasurement: ae033c3aad67e68294369373056b4d74cc8ae0d6
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
   GoogleMaps: 086ae1dab659eaa7339bdb30fc88e2f44e7c597c
+  GoogleUserMessagingPlatform: 5f8b30daf181805317b6b985bb51c1ff3beca054
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
@@ -908,11 +947,12 @@ SPEC CHECKSUMS:
   RNCMaskedView: c298b644a10c0c142055b3ae24d83879ecb13ccd
   RNCommonUtil: 2f196e5838aa365b101a31eb076e21ea93ef2ee7
   RNDeviceInfo: 4944cf8787b9c5bffaf301fda68cc1a2ec003341
-  RNFBAnalytics: afd361a31db57b61853ef321a872a132df0f4519
-  RNFBApp: 06c8447270d295edc431bccd55970d8711a07a42
-  RNFBDynamicLinks: ae608ba253ddd907e01a2c51384da6ae609d7bf4
-  RNFBMessaging: 8e3575bb0303b43a852bf5decbe99c3272035048
+  RNFBAnalytics: c4a66d8adc21e327934adda1ef2f56ef996acc21
+  RNFBApp: 9c42183e293dc913d5dfce732f84c9a8ed06942b
+  RNFBDynamicLinks: fbe88ccac0ffd5fcefa0bc8b61a769898f3652f5
+  RNFBMessaging: 58ec8e969d1fd355e5898cb7771eeffc9f59c1c2
   RNGestureHandler: bf572f552ea324acd5b5464b8d30755b2d8c1de6
+  RNGoogleMobileAds: 3032aa481cbc5c93bf9d08d8247b681cf4a00c9f
   RNInAppBrowser: 3ff3a3b8f458aaf25aaee879d057352862edf357
   RNLocalize: 291e5e21b53cd30b5205c10ed95d31b0dc9b8d63
   RNNotifee: f1ba270897bd7491f889a1a257d0c038a43376f7
@@ -925,6 +965,6 @@ SPEC CHECKSUMS:
   Yoga: 90dcd029e45d8a7c1ff059e8b3c6612ff409061a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 762cf0b1ced4300cdf66fc1af5a2b027e58d84d1
+PODFILE CHECKSUM: 6e990b0093cce38ba9ecaa94b5c5330621f469fe
 
 COCOAPODS: 1.11.3

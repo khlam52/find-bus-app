@@ -11,6 +11,12 @@ target 'RNProject' do
     # to enable hermes on iOS, change `false` to `true` and then install pods
     :hermes_enabled => false
   )
+    # Firebase
+    pod 'Firebase', :modular_headers => true
+    pod 'FirebaseCoreInternal', :modular_headers => true
+    pod 'GoogleUtilities', :modular_headers => true
+    pod 'FirebaseCore', :modular_headers => true
+    $RNFirebaseAsStaticFramework = true
 
   # React Native Maps dependencies
   rn_maps_path = '../node_modules/react-native-maps'

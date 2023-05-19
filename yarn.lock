@@ -1234,6 +1234,11 @@
   dependencies:
     "@hapi/hoek" "^9.0.0"
 
+"@iabtcf/core@^1.5.3":
+  "integrity" "sha512-u2q9thI9vLurYZdGtyJsDYOqoeLc4EgQsYGSc+UVibYII61B/ENJPZS6eFlML1F0hSoTR/goptpo5nGRDkKd2w=="
+  "resolved" "https://registry.npmjs.org/@iabtcf/core/-/core-1.5.6.tgz"
+  "version" "1.5.6"
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   "integrity" "sha512-VjeHSlIzpv/NyD3N0YuHfXOPDIixcA1q2ZV98wsMqcYlPmv2n3Yb2lYP9XMElnaFVXg5A7YLTeLu6V84uQDjmQ=="
   "resolved" "https://registry.npmjs.org/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz"
@@ -3719,6 +3724,11 @@
   "integrity" "sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak="
   "resolved" "https://registry.npmjs.org/depd/-/depd-1.1.2.tgz"
   "version" "1.1.2"
+
+"dequal@^2.0.2":
+  "integrity" "sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA=="
+  "resolved" "https://registry.npmjs.org/dequal/-/dequal-2.0.3.tgz"
+  "version" "2.0.3"
 
 "destroy@~1.0.4":
   "integrity" "sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA="
@@ -7880,6 +7890,14 @@
   dependencies:
     "fast-base64-decode" "^1.0.0"
 
+"react-native-google-mobile-ads@^10.3.2":
+  "integrity" "sha512-fuhZuPWW4vH4LcfEDn7z5WchyfG3o9kP1LaxxBaz2qPZlm8rg4+K3b+6ufEiMrEBPu627oEpvCtMJGXpPkZKyA=="
+  "resolved" "https://registry.npmjs.org/react-native-google-mobile-ads/-/react-native-google-mobile-ads-10.3.2.tgz"
+  "version" "10.3.2"
+  dependencies:
+    "@iabtcf/core" "^1.5.3"
+    "use-deep-compare-effect" "^1.8.1"
+
 "react-native-inappbrowser-reborn@3.6.3":
   "integrity" "sha512-fqF708GVZ/7zja0/GyJQfjDfKREOe1fxYq8RAKZo8/KK6SkFO9hBlYqC3PwLFPw29zzwBzR+6EpL3qo95igkLw=="
   "resolved" "https://registry.npmjs.org/react-native-inappbrowser-reborn/-/react-native-inappbrowser-reborn-3.6.3.tgz"
@@ -8087,7 +8105,7 @@
     "react-shallow-renderer" "^16.13.1"
     "scheduler" "^0.20.2"
 
-"react@*", "react@^16.0.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^17.0.0", "react@>= 16.0 || < 18.0", "react@>= 16.8.0", "react@>=15.0.0", "react@>=16.13.1", "react@>=16.8.6", "react@>=16.x", "react@16 || 17", "react@17.0.2":
+"react@*", "react@^16.0.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^17.0.0", "react@>= 16.0 || < 18.0", "react@>= 16.8.0", "react@>=15.0.0", "react@>=16.13", "react@>=16.13.1", "react@>=16.8.6", "react@>=16.x", "react@16 || 17", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
@@ -9544,6 +9562,14 @@
   "integrity" "sha1-2pN/emLiH+wf0Y1Js1wpNQZ6bHI="
   "resolved" "https://registry.npmjs.org/urix/-/urix-0.1.0.tgz"
   "version" "0.1.0"
+
+"use-deep-compare-effect@^1.8.1":
+  "integrity" "sha512-kbeNVZ9Zkc0RFGpfMN3MNfaKNvcLNyxOAAd9O4CBZ+kCBXXscn9s/4I+8ytUER4RDpEYs5+O6Rs4PqiZ+rHr5Q=="
+  "resolved" "https://registry.npmjs.org/use-deep-compare-effect/-/use-deep-compare-effect-1.8.1.tgz"
+  "version" "1.8.1"
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    "dequal" "^2.0.2"
 
 "use-subscription@^1.0.0":
   "integrity" "sha512-Xv2a1P/yReAjAbhylMfFplFKj9GssgTwN7RlcTxBujFQcloStWNDQdc4g4NRWH9xS4i/FDk04vQBptAXoF3VcA=="

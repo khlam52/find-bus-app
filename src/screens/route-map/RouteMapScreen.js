@@ -12,6 +12,11 @@ import {
   Text,
   View,
 } from 'react-native';
+import {
+  BannerAd,
+  BannerAdSize,
+  TestIds,
+} from 'react-native-google-mobile-ads';
 import MapView, { Marker } from 'react-native-maps';
 import { RESULTS } from 'react-native-permissions';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -443,6 +448,13 @@ export default function RouteMapScreen({ navigation, route }) {
         })}
         <View style={{ paddingBottom: sw(90) }} />
       </ScrollView>
+      <BannerAd
+        unitId={TestIds.BANNER}
+        size={BannerAdSize.INLINE_ADAPTIVE_BANNER}
+        requestOptions={{
+          requestNonPersonalizedAdsOnly: true,
+        }}
+      />
     </View>
   );
 }
