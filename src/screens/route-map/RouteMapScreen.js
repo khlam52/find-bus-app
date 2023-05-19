@@ -13,8 +13,8 @@ import {
   View,
 } from 'react-native';
 import {
-  BannerAd,
   BannerAdSize,
+  GAMBannerAd,
   TestIds,
 } from 'react-native-google-mobile-ads';
 import MapView, { Marker } from 'react-native-maps';
@@ -87,6 +87,10 @@ export default function RouteMapScreen({ navigation, route }) {
   const setFavouriteList = useStoreActions(
     (action) => action.user.setFavouriteList,
   );
+
+  const adMobId = __DEV__
+    ? TestIds.GAM_BANNER
+    : 'ca-app-pub-7938970871123577/1260837436';
 
   useFocusEffect(
     useCallback(() => {
@@ -444,9 +448,9 @@ export default function RouteMapScreen({ navigation, route }) {
           <View style={{ paddingBottom: sw(90) }} />
         </ScrollView>
       </View>
-      <BannerAd
-        unitId={TestIds.BANNER}
-        size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+      <GAMBannerAd
+        unitId={adMobId}
+        sizes={[BannerAdSize.ANCHORED_ADAPTIVE_BANNER]}
         requestOptions={{
           requestNonPersonalizedAdsOnly: true,
         }}
